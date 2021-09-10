@@ -1,13 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.base import Model
-from django.db.models.deletion import SET_DEFAULT
-from django.utils import tree
-
 from ckeditor.fields import RichTextField
 
 # Create your models here.
-class USerProfile(models.Model):
+class UserProfile(models.Model):
     user_account = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     user_phone_number = models.CharField(max_length=254, null=True, blank=True)
     user_address = models.CharField(max_length=254, null = True, blank=True)
@@ -18,6 +14,8 @@ class USerProfile(models.Model):
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.user_account)
@@ -33,6 +31,8 @@ class UniversityFact(models.Model):
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
 
     def __str__(self):
         return self.fact_name
@@ -50,28 +50,48 @@ class University(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
 
+    set_draft = models.BooleanField(default=True)
+
     def __str__(self):
         return self.university_name
 
     class Meta:
         verbose_name = 'University'
         verbose_name_plural = 'Universities'
-
-class Pages(models.Model):
-    page_name = models.CharField(max_length=254, null=True, blank=True)
-    realted_university = models.ManyToManyField(University, blank=True)
-    page_description = RichTextField(blank = True, null = True)
-    page_image = models.ImageField(default = 'default.pmg')
+class ProgramCategory(models.Model):
+    program_category_title = models.CharField(max_length=254, null= True, blank=True)
+    program_category_description = RichTextField(null = True, blank = True)
+    program_category_image = models.ImageField(default = 'default')
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
 
+    set_draft = models.BooleanField(default=True)
+
     def __str__(self):
-        return self.page_name
+        return self.post_category_title
 
     class Meta:
-        verbose_name = 'Page'
-        verbose_name_plural = 'Pages'
+        verbose_name = 'Program Category'
+        verbose_name_plural = 'Program Categories'     
+
+class Program(models.Model):
+    program_name = models.CharField(max_length=254, null=True, blank=True)
+    realted_university = models.ManyToManyField(University, blank=True)
+    program_description = RichTextField(blank = True, null = True)
+    program_image = models.ImageField(default = 'default.pmg')
+
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.program_name
+
+    class Meta:
+        verbose_name = 'Program'
+        verbose_name_plural = 'Programs'
 
 class PostCategory(models.Model):
     post_category_title = models.CharField(max_length=254, null= True, blank=True)
@@ -80,6 +100,8 @@ class PostCategory(models.Model):
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
 
     def __str__(self):
         return self.post_category_title
@@ -93,6 +115,8 @@ class Tag(models.Model):
     
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
 
     def __str__(self):
         return self.tag_name
@@ -111,6 +135,8 @@ class BlogPost(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
 
+    set_draft = models.BooleanField(default=True)
+
     def __str__(self):
         return self.post_title
 
@@ -118,21 +144,23 @@ class BlogPost(models.Model):
         verbose_name = 'Blog Post'
         verbose_name_plural = 'Blogs Post'
 
-class PostReview(models.Model):
-    review_title = models.CharField(max_length=254, null=True, blank=True)
+class PostComment(models.Model):
+    commented_by = models.CharField(max_length=254, null=True, blank=True)
+    email = models.EmailField(max_length=254, null=True, blank=True)
     blog_post = models.OneToOneField(BlogPost, on_delete=models.PROTECT)
-    review = RichTextField(null = True, blank = True)
-    review_star_number = models.IntegerField(null =True, blank=True)
+    commment = models.TextField(max_length=500, null=True, blank=True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
 
+    set_draft = models.BooleanField(default=True)
+
     def __str__(self):
-        return self.review_title
+        return self.commment
 
     class Meta:
-        verbose_name = 'POst reviews'
-        verbose_name_plural = 'Posst reviews'
+        verbose_name = 'Post comment'
+        verbose_name_plural = 'Post Comments'
 
 class Country(models.Model):
     country_name = models.CharField(max_length=254, null=True, blank=True)
@@ -144,6 +172,7 @@ class Country(models.Model):
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
+    set_draft = models.BooleanField(default=True)
 
     def __str__(self):
         return self.country_name
@@ -152,3 +181,70 @@ class Country(models.Model):
         verbose_name = 'Country'
         verbose_name_plural = 'Countries'
     
+class TeamMember(models.Model):
+    name = models.CharField(max_length=254, null =True, blank=True)
+    role = models.CharField(max_length=254, null=True, blank=True)
+    profile_image = models.ImageField(default = 'default.png')
+
+    phone_number = models.CharField(max_length=254, null=True,blank=True)
+    email = models.EmailField(max_length=254, null=True, blank=True)
+    address = models.CharField(max_length=254, null = True, blank=True)
+
+    team_membre_description = RichTextField(null = True, blank = True)
+
+    facebook_account = models.URLField(max_length=254, null =True, blank=True)
+    linkedin_account = models.URLField(max_length=254, null =True, blank=True)
+    twiter_account = models.URLField(max_length=254, null =True, blank=True)
+    instagram_account = models.URLField(max_length=254, null =True, blank=True)
+
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Team member'
+        verbose_name_plural = 'Team Members'
+
+class TeamMemberSkill(models.Model):
+    skill = models.CharField(max_length=254, null = True, blank=True)
+    assign_to = models.OneToOneField(TeamMember, null=True, blank=True, on_delete=models.PROTECT)
+    skill_level = models.IntegerField(null=True, blank=True)
+    skill_detail = RichTextField(null = True, blank = True)
+
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.skill
+
+    class Meta:
+        verbose_name = 'Team member skill'
+        verbose_name_plural = 'Team Members skills'
+class InterpriseContactInformatiom(models.Model):
+    phone_number = models.CharField(max_length=254, null=True, blank=True)
+    email = models.EmailField(max_length=254, null=True, blank=True)
+    address = models.CharField(max_length=254, null=True, blank=True)
+
+    facebook_account = models.URLField(max_length=254, null =True, blank=True)
+    linkedin_account = models.URLField(max_length=254, null =True, blank=True)
+    twiter_account = models.URLField(max_length=254, null =True, blank=True)
+    instagram_account = models.URLField(max_length=254, null =True, blank=True)
+
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = 'Interprise contact information'
+        verbose_name_plural = 'Interprise contact informations'
+

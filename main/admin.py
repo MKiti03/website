@@ -3,12 +3,16 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(USerProfile)
+admin.site.register(UserProfile)
 admin.site.register(UniversityFact)
 admin.site.register(University)
-admin.site.register(Pages)
+admin.site.register(ProgramCategory)
+admin.site.register(Program)
 admin.site.register(BlogPost)
 admin.site.register(PostCategory)
-admin.site.register(PostReview)
+admin.site.register(PostComment)
 admin.site.register(Tag)
 admin.site.register(Country)
+admin.site.register(TeamMember)
+admin.site.register(TeamMemberSkill)
+admin.site.register(InterpriseContactInformatiom)
