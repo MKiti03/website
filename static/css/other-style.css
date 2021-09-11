@@ -1,0 +1,68 @@
+.border-none {
+    border: none;
+}
+
+.form-input {
+    border: 0px solid #273c75;
+    background-color: #273c7511;
+    height: 50px;
+    width: 100%;
+}
+
+.form-texterea {
+    border: 0px solid #273c75;
+    background-color: #273c7511;
+    width: 100%;
+}
+
+.program-name {
+    color: #133286;
+}
+
+.apply-btn {
+    background-color: #273c75e3;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.apply-btn:hover {
+    background-color: #273c75;
+    color: white;
+}
+
+.university-name {
+    font-weight: 500;
+    font-size: 18px;
+    color: #273c75;
+}
+
+.university-name:hover {
+    color: #c8a64a;
+}
+
+.university-image {
+    width: 180px;
+    height: 180px;
+}
+
+.university-read-more {
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 10px;
+    background-color: #273c75e1;
+    width: 70%;
+    color: white;
+    font-size: 16px;
+}
+
+.university-read-more:hover {
+    background-color: #273c75;
+    color: white;
+}
