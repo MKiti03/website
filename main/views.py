@@ -21,7 +21,11 @@ def index(request):
     # context = {
     #     'form':form,
     # }
-    return render(request, 'main/main-home-page.html') 
+    return render(request, 'main/main-home-page.html')
+
+def programPage(request):
+
+    return render(request, 'main/program.html')
 
 def singleProgram(request):
 
@@ -29,4 +33,7 @@ def singleProgram(request):
 
 def universityPage(request):
 
-    return render(request, 'main/university.html')  
+    return render(request, 'main/university.html')
+
+def singleUniversity(request):
+    return render(request, 'main/single-university.html')

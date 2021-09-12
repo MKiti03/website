@@ -34,6 +34,10 @@
     color: white;
 }
 
+.remove-decoration {
+    text-decoration: none;
+}
+
 .university-name {
     font-weight: 500;
     font-size: 18px;
@@ -50,6 +54,7 @@
 }
 
 .university-read-more {
+    text-decoration: none;
     margin-top: 20px;
     text-align: center;
     padding-top: 10px;
@@ -63,6 +68,39 @@
 }
 
 .university-read-more:hover {
+    margin-top: 15px;
     background-color: #273c75;
     color: white;
+    transition: 0.50s;
+}
+
+.fact-title {
+    color: #133286;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: sofia-pro-soft, sans-serif;
+    ;
+}
+
+.fact-content {
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    color: #3c3c3c;
+    line-height: 20px;
+    font-size: 15px;
+}
+
+.fact-icon {
+    font-size: 40px;
+    margin-left: 10px;
+    margin-top: 20px;
+    color: #c8a64a;
+}
+
+.fast-fact {
+    background-color: #133286be;
+    padding: 10px;
+    color: #fffffff1;
+    font-size: 20px;
+    z-index: 10;
+    width: auto;
 }

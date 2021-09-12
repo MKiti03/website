@@ -1,13 +1,8 @@
  {% load static %}
-<style>
-    .tns-visually-hidden {
-        display: none;
-    }
-</style>
 <section class="hero-slider">
     <!-- Single Slider -->
     <div class="single-slider">
-        <div class="container-fluid">
+        <div class="container-md">
             <div class="row g-5">
                 <div class="col-lg-6 co-12">
                     <div class="home-slider">
@@ -17,7 +12,7 @@
                             <p class="wow fadeInUp" data-wow-delay=".7s">Lorem Ipsum is simply dummy text of the printing and typesetting <br> industry. Lorem Ipsum has been the industry's standard
                                 <br>dummy text ever since.</p>
                             <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                <a href="about-us.html" class="btn mouse-dir">Discover More <span
+                                <a href="{% url 'programs' %}" class="btn mouse-dir">Discover More <span
                                         class="dir-part"></span></a>
                             </div>
                         </div>

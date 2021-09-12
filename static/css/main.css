@@ -17,7 +17,7 @@ body {
     font-family: "Sen", sans-serif;
     font-weight: normal;
     font-style: normal;
-    color: #5E678C;
+    color: #242733;
     overflow-x: hidden;
 }
 
@@ -1386,11 +1386,13 @@ p {
 ========================================*/
 
 .hero-slider {
+    width: 100%;
     position: relative;
     z-index: 0;
 }
 
 .hero-slider .single-slider {
+    width: 100%;
     background-image: url(../images/hero-bg.jpg);
     background-size: cover;
     background-position: center;
@@ -1402,7 +1404,6 @@ p {
     width: 100%;
     float: none;
     margin-top: 90px;
-    padding-left: 120px;
 }
 
 .hero-slider .hero-text .small-title {
@@ -1471,6 +1472,7 @@ p {
 
 .hero-slider .home-slider {
     position: relative;
+    width: 100%;
 }
 
 .hero-slider .tns-nav {
@@ -1850,8 +1852,9 @@ p {
 }
 
 .services .single-service .content p {
-    color: #666;
+    color: rgb(61, 62, 63);
     transition: all 0.4s ease;
+    font-size: 16px;
 }
 
 .services .single-service .content .button {
@@ -3536,8 +3539,8 @@ blockquote h4 {
 }
 
 .footer .gallery ul li img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 }
 
 .footer .footer-bottom {}
