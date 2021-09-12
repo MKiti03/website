@@ -5,6 +5,8 @@ from .models import *
 
 admin.site.register(UserProfile)
 admin.site.register(UniversityFact)
+admin.site.register(CountryFact)
+admin.site.register(ProgramFact)
 admin.site.register(University)
 admin.site.register(ProgramCategory)
 admin.site.register(Program)

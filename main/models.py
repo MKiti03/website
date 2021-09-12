@@ -23,9 +23,27 @@ class UserProfile(models.Model):
     class Meta:
         verbose_name = 'User Account'
         verbose_name_plural = 'Users Accounts'
+class Country(models.Model):
+    country_name = models.CharField(max_length=254, null=True, blank=True)
+    map_latitud = models.IntegerField(null=True, blank=True)
+    map_longitud = models.IntegerField(null=True, blank=True)
+    country_image = models.ImageField(default = 'default.png')
+    country_description = RichTextField(null = True, blank = True)
 
-class UniversityFact(models.Model):
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    last_update = models.DateTimeField(null=True, blank=True)
+    set_draft = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.country_name
+
+    class Meta:
+        verbose_name = 'Country'
+        verbose_name_plural = 'Countries'
+
+class CountryFact(models.Model):
     fact_name = models.CharField(max_length=254, null=True, blank=True)
+    chose_country = models.OneToOneField(Country, on_delete=models.PROTECT, null=True, blank=True)
     fact_description = models.TextField(max_length=254, null=True, blank=True)
     fact_icon = models.CharField(max_length=254, null=True, blank=True)
 
@@ -38,12 +56,11 @@ class UniversityFact(models.Model):
         return self.fact_name
 
     class Meta:
-        verbose_name = 'University fact'
-        verbose_name_plural = 'Universities Fact'
-
+        verbose_name = 'Country fact'
+        verbose_name_plural = 'Countries Fact'
 class University(models.Model):
     university_name = models.CharField(max_length=254, null=True, blank=True)
-    university_fact = models.ManyToManyField(UniversityFact, blank=True)
+    chose_country = models.OneToOneField(Country, on_delete=models.PROTECT, null=True, blank=True)
     university_image = models.ImageField(default = 'default.png')
     university_description = RichTextField(blank = True, null = True)
 
@@ -58,6 +75,23 @@ class University(models.Model):
     class Meta:
         verbose_name = 'University'
         verbose_name_plural = 'Universities'
+class UniversityFact(models.Model):
+    fact_name = models.CharField(max_length=254, null=True, blank=True)
+    chose_university = models.OneToOneField(University, on_delete=models.PROTECT, null=True, blank=True)
+    fact_description = models.TextField(max_length=254, null=True, blank=True)
+    fact_icon = models.CharField(max_length=254, null=True, blank=True)
+
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.fact_name
+
+    class Meta:
+        verbose_name = 'University fact'
+        verbose_name_plural = 'Universities Fact'
 class ProgramCategory(models.Model):
     program_category_title = models.CharField(max_length=254, null= True, blank=True)
     program_category_description = RichTextField(null = True, blank = True)
@@ -77,7 +111,7 @@ class ProgramCategory(models.Model):
 
 class Program(models.Model):
     program_name = models.CharField(max_length=254, null=True, blank=True)
-    realted_university = models.ManyToManyField(University, blank=True)
+    realted_university = models.OneToOneField(University, on_delete=models.PROTECT, null=True, blank=True)
     program_description = RichTextField(blank = True, null = True)
     program_image = models.ImageField(default = 'default.pmg')
 
@@ -93,6 +127,23 @@ class Program(models.Model):
         verbose_name = 'Program'
         verbose_name_plural = 'Programs'
 
+class ProgramFact(models.Model):
+    fact_name = models.CharField(max_length=254, null=True, blank=True)
+    chose_program = models.OneToOneField(Program, on_delete=models.PROTECT, null=True, blank=True)
+    fact_description = models.TextField(max_length=254, null=True, blank=True)
+    fact_icon = models.CharField(max_length=254, null=True, blank=True)
+
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    last_update = models.DateTimeField(null=True, blank=True)
+
+    set_draft = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.fact_name
+
+    class Meta:
+        verbose_name = 'Program fact'
+        verbose_name_plural = 'Programs Fact'
 class PostCategory(models.Model):
     post_category_title = models.CharField(max_length=254, null= True, blank=True)
     post_category_description = RichTextField(null = True, blank = True)
@@ -126,7 +177,7 @@ class Tag(models.Model):
         verbose_name_plural = 'Tags'
 class BlogPost(models.Model):
     post_title = models.CharField(max_length=254, null =True, blank=True)
-    post_category = models.OneToOneField(PostCategory, on_delete=models.PROTECT)
+    post_category = models.OneToOneField(PostCategory, on_delete=models.PROTECT, null=True, blank=True)
     post_tag = models.ManyToManyField(Tag, blank=True)
     psot_description = RichTextField(null = True, blank = True)
     post_image = models.ImageField(default = 'default.png')
@@ -162,25 +213,7 @@ class PostComment(models.Model):
         verbose_name = 'Post comment'
         verbose_name_plural = 'Post Comments'
 
-class Country(models.Model):
-    country_name = models.CharField(max_length=254, null=True, blank=True)
-    university_in_country = models.ManyToManyField(University, blank=True)
-    map_latitud = models.IntegerField(null=True, blank=True)
-    map_longitud = models.IntegerField(null=True, blank=True)
-    country_image = models.ImageField(default = 'default.png')
-    country_description = RichTextField(null = True, blank = True)
 
-    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    last_update = models.DateTimeField(null=True, blank=True)
-    set_draft = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.country_name
-
-    class Meta:
-        verbose_name = 'Country'
-        verbose_name_plural = 'Countries'
-    
 class TeamMember(models.Model):
     name = models.CharField(max_length=254, null =True, blank=True)
     role = models.CharField(max_length=254, null=True, blank=True)
