@@ -1,0 +1,43 @@
+{% load static %}
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
+
+<style type="text/css">
+    .bg-custom {
+        z-index: 100;
+        background-color: #130f40;
+    }
+    
+    .button-fixed {
+        bottom: 0;
+        position: fixed;
+        right: 0;
+        border-radius: 4px;
+    }
+    
+    .fas {
+        cursor: pointer;
+        font-size: 24px;
+    }
+    
+    p {
+        font-size: 14px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-4 col-sm-12 button-fixed">
+        <div class="p-3 pb-4 bg-custom text-white">
+            <div class="row">
+                <div class="col-10">
+                    <h2>Allow Cookies</h2>
+                </div>
+                <div class="col-2 text-center">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <button type="button" class="btn btn-danger w-100">Accept Cookies</button>
+        </div>
+    </div>
+</div>

@@ -53,6 +53,11 @@
     height: 180px;
 }
 
+.country-image {
+    width: 180px;
+    height: 140px;
+}
+
 .university-read-more {
     text-decoration: none;
     margin-top: 20px;

@@ -14,7 +14,7 @@
             <div class="nav-inner">
                 <nav class="navbar navbar-expand-lg">
                     <a class="navbar-brand" href="{% url 'index' %}">
-                        <img src="{% static 'images/logo.svg' %}" alt="Logo">
+                        <img src="{% static 'images/logo.png' %}" alt="Logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="toggler-icon"></span>
@@ -46,7 +46,7 @@
                                 <a class="page-scroll" href="{% url 'universitis' %}">Universities</a>
                             </li>
                             <li class="nav-item">
-                                <a class="page-scroll" href="#">Countries</a>
+                                <a class="page-scroll" href="{% url 'countries' %}">Countries</a>
                             </li>
                         </ul>
                     </div>

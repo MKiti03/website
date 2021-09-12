@@ -37,3 +37,9 @@ def universityPage(request):
 
 def singleUniversity(request):
     return render(request, 'main/single-university.html')
+
+def countryPage(request):
+    return render(request, 'main/countries.html')
+
+def singleCountry(request):
+    return render(request, 'main/single-country.html')
