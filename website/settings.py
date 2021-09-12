@@ -38,9 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Project apps
     'main',
-    'ckeditor',
+    'admin_dashboard',
     'contact_form',
+
+    # Third party apps
+    'ckeditor',
     'tawkto',
 ]
 
