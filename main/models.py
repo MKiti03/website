@@ -111,6 +111,7 @@ class ProgramCategory(models.Model):
 
 class Program(models.Model):
     program_name = models.CharField(max_length=254, null=True, blank=True)
+    program_category = models.ManyToManyField(ProgramCategory, blank=True)
     choose_university = models.OneToOneField(University, on_delete=models.PROTECT, null=True, blank=True)
     program_description = RichTextField(blank = True, null = True)
     program_image = models.ImageField(default = 'default.pmg')
