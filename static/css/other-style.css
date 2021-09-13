@@ -4,14 +4,14 @@
 
 .form-input {
     border: 0px solid #273c75;
-    background-color: #273c7511;
+    background-color: #273c754f;
     height: 50px;
     width: 100%;
 }
 
 .form-texterea {
     border: 0px solid #273c75;
-    background-color: #273c7511;
+    background-color: #273c754f;
     width: 100%;
 }
 
@@ -108,4 +108,12 @@
     font-size: 20px;
     z-index: 10;
     width: auto;
+}
+
+.blog-post-title {
+    color: #273c75;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 10px;
 }

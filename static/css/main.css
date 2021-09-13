@@ -2468,11 +2468,14 @@ p {
 
 .post-details .post-title a {
     font-size: 26px;
-    font-weight: 600
+    font-weight: 600;
+    color: #222e85;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
 }
 
 .post-details .post-title a:hover {
-    color: #3e54ff
+    color: #222e85;
+    pointer-events: none;
 }
 
 ul.custom-flex {
@@ -2496,7 +2499,7 @@ ul.custom-flex {
 }
 
 .post-details .post-meta li a:hover {
-    color: #3e54ff
+    color: #222e85
 }
 
 .post-details p {
@@ -2507,8 +2510,8 @@ ul.custom-flex {
 .post-details h3 {
     font-size: 25px;
     margin-bottom: 20px;
-    font-weight: 600;
-    line-height: 28px
+    font-weight: 500;
+    line-height: 28px proxima-nova, Helvetica, Arial, sans-serif
 }
 
 .post-details p:last-child {
@@ -2540,7 +2543,7 @@ blockquote {
     text-align: left;
     clear: both;
     box-shadow: 0 0 20px #eee!important;
-    border-left: 10px solid #106eea;
+    border-left: 10px solid #222e85;
     z-index: 1;
     margin: 25px 0
 }
@@ -2580,7 +2583,7 @@ blockquote h4 {
     content: "\eab6";
     font-family: icofont;
     text-align: left;
-    color: #3e54ff;
+    color: #222e85;
     font-size: 12px
 }
 
@@ -2596,7 +2599,7 @@ blockquote h4 {
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 500;
-    background: #3e54ff;
+    background: #222e85;
     margin-right: 7px;
     margin-bottom: 10px;
     color: #fff
@@ -2609,7 +2612,7 @@ blockquote h4 {
 
 .post-details .post-tags-media .post-tags .tags a:hover {
     color: #fff;
-    background-color: #3e54ff
+    background-color: #c8a64a
 }
 
 .post-details .post-tags-media .post-social-media ul {
@@ -2812,7 +2815,7 @@ blockquote h4 {
     margin-bottom: 30px!important;
     font-size: 25px;
     font-weight: 600;
-    border-left: 4px solid #3e54ff;
+    border-left: 4px solid #222e85;
     padding-left: 10px;
     padding-bottom: 5px;
     line-height: 28px
@@ -2823,23 +2826,16 @@ blockquote h4 {
     margin-bottom: 30px!important;
     font-size: 25px;
     font-weight: 600;
-    border-left: 4px solid #3e54ff;
+    border-left: 4px solid #222e85;
     padding-left: 10px;
     padding-bottom: 5px;
     line-height: 28px
 }
 
 .post-comments .comments-list li {
-    padding-left: 130px;
+    padding-left: 40px;
     position: relative;
     font-size: 14px
-}
-
-.post-comments .comments-list li .comment-img {
-    position: absolute;
-    left: 0;
-    width: 100px;
-    height: 100px
 }
 
 .post-comments .comments-list li .comment-img img {
@@ -2912,46 +2908,6 @@ blockquote h4 {
     padding: 40px;
     box-shadow: 0 0 35px #eee!important;
     margin-top: 40px
-}
-
-.comment-form form {}
-
-.comment-form form .form-box {
-    position: relative
-}
-
-.comment-form form .form-box .icon {
-    position: absolute;
-    top: 17px;
-    right: 25px;
-    font-size: 16px
-}
-
-.comment-form form .form-box .form-control-custom {
-    border: none;
-    background: #fff;
-    font-size: 14px;
-    color: #333;
-    padding: 25px;
-    padding-left: 30px;
-    padding-right: 50px;
-    font-weight: 500;
-    height: 60px;
-    border: 2px solid #eee;
-    margin-bottom: 25px;
-    border-radius: 0;
-    font-size: 14px;
-    font-weight: 400
-}
-
-.comment-form form .form-box textarea.form-control-custom {
-    height: auto
-}
-
-.comment-form form .form-box .form-control-custom::placeholder {
-    font-size: 14px;
-    color: #333;
-    font-weight: 500
 }
 
 .sidebar .widget {

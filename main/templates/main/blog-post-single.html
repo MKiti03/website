@@ -98,17 +98,6 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <div class="detail-post-navigation">
-                            <div class="prev-post">
-                                <span><i class="lni lni-arrow-left"></i>Prev Post</span>
-                                <a href="#">Successful Web Design Business in 2020</a>
-                            </div>
-                            <div class="next-post">
-                                <span>Next Post <i class="lni lni-arrow-right"></i></span>
-                                <a href="#">Soundtrack Filma Lady Exclusive Music</a>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="post-comments">
@@ -140,30 +129,7 @@
                     </div>
                     <div class="comment-form">
                         <h3 class="comment-reply-title">Post Comments</h3>
-                        <form action="#" method="POST">
-                            <div class="row">
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-box form-group">
-                                        <input type="text" name="#" class="form-control form-control-custom" placeholder="Type your name...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-box form-group">
-                                        <input type="email" name="#" class="form-control form-control-custom" placeholder="Type your email...">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-box form-group">
-                                        <textarea name="#" rows="6" class="form-control form-control-custom" placeholder="Type your comments..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="button">
-                                        <button type="submit" class="btn mouse-dir white-bg">Post Comment <span class="dir-part"></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        {% include 'main/comment-form.html' %}
                     </div>
                 </div>
             </div>
