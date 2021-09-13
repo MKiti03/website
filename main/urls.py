@@ -9,4 +9,6 @@ urlpatterns = [
     path('single-universty', views.singleUniversity, name='signle-university'),
     path('all-countries', views.countryPage, name='countries'),
     path('single-country', views.singleCountry, name='single-country'),
+    path('all-posts', views.blogPostPage, name='post'),
+    path('single-post', views.singlePost, name='single-post'),
 ]

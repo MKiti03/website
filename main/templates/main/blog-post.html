@@ -1,0 +1,136 @@
+{% extends 'main/index.html' %} {% load static %} {% block contain%}
+<section class="section blog-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-12">
+
+                <div class="single-list">
+                    <div class="post-thumbnils">
+                        <img src="{% static 'images/blog/blog-single.jpg' %}" alt="#">
+                    </div>
+                    <div class="post-details">
+                        <div class="detail-inner">
+                            <h2 class="post-title">
+                                <a href="{% url 'single-post' %}">Start &amp; Run a Successful Web Design Business in 2020</a>
+                            </h2>
+
+                            <ul class="custom-flex post-meta">
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-user"></i> by Piklo D. Sindom
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-calendar"></i> 24th March 2023
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-comments"></i> 35 Comments
+                                    </a>
+                                </li>
+                            </ul>
+                            <p>We denounce with righteous indige nation and dislike men who are so beguiled and demo realized by the charms of pleasure of the moment that...</p>
+                            <div class="button">
+                                <a href="{% url 'single-post' %}" class="btn mouse-dir white-bg">Read More <span class="dir-part"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="single-list">
+                    <div class="post-thumbnils">
+                        <img src="{% static 'images/blog/blog-single2.jpg' %}" alt="#">
+                    </div>
+                    <div class="post-details">
+                        <div class="detail-inner">
+                            <h2 class="post-title">
+                                <a href="{% url 'single-post' %}">Covid-19 threatens the next generation of smartphones</a>
+                            </h2>
+
+                            <ul class="custom-flex post-meta">
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-user"></i> by Piklo D. Sindom
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-calendar"></i> 15th Feb 2023
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-comments"></i> 35 Comments
+                                    </a>
+                                </li>
+                            </ul>
+                            <p>We denounce with righteous indige nation and dislike men who are so beguiled and demo realized by the charms of pleasure of the moment that...</p>
+                            <div class="button">
+                                <a href="{% url 'single-post' %}" class="btn mouse-dir white-bg">Read More <span class="dir-part"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="single-list">
+                    <div class="post-thumbnils">
+                        <img src="{% static 'images/blog/blog-single3.jpg' %}" alt="#">
+                    </div>
+                    <div class="post-details">
+                        <div class="detail-inner">
+                            <h2 class="post-title">
+                                <a href="{% url 'single-post' %}">Start &amp; Run a Successful Web Design Business in 2020</a>
+                            </h2>
+
+                            <ul class="custom-flex post-meta">
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-user"></i> by Piklo D. Sindom
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-calendar"></i> 12th Jan 2020
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="lni lni-comments"></i> 35 Comments
+                                    </a>
+                                </li>
+                            </ul>
+                            <p>We denounce with righteous indige nation and dislike men who are so beguiled and demo realized by the charms of pleasure of the moment that...</p>
+                            <div class="button">
+                                <a href="{% url 'single-post' %}" class="btn mouse-dir white-bg">Read More <span class="dir-part"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="pagination center">
+                    <ul class="pagination-list">
+                        <li><a href="#"><i class="lni lni-arrow-left"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="lni lni-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <aside class="col-lg-4 col-md-5 col-12">
+                {% include 'main/post-event-sidebar.html' %}
+            </aside>
+        </div>
+    </div>
+</section>
+<!-- Start Newsletter Area -->
+{% include 'main/newsletter.html' %}
+<!-- /End Newsletter Area -->
+{% endblock %}

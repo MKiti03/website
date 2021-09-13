@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    font-family: "Sen", sans-serif;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     color: #242733;
@@ -1551,8 +1551,9 @@ p {
 .Features .feature-content .title h3 {
     font-size: 40px;
     line-height: 50px;
-    font-weight: 700;
+    font-weight: 500;
     color: white;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
 }
 
 .Features .feature-item {
@@ -1590,18 +1591,19 @@ p {
     font-weight: 700;
     text-transform: capitalize;
     margin-bottom: 0px;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
     line-height: 38px;
     color: white;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
 }
 
 .Features .feature-item .banner-content p {
-    color: rgb(161, 161, 161);
+    color: rgb(199, 198, 198);
     font-weight: 400;
     font-size: 16px;
     display: block;
     margin-top: 6px;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
 }
 
 .feature-right {
@@ -1760,11 +1762,12 @@ p {
 
 .services .single-service h3 a {
     color: #273c75;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 22px;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
 }
 
 .services .single-service:hover h3 a {
@@ -1774,10 +1777,12 @@ p {
 .services .single-service p {
     margin-top: 20px;
     line-height: 24px;
-    font-size: 14px;
+    font-size: 15px;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 .services .single-service:hover p {
@@ -3595,10 +3600,11 @@ blockquote h4 {
 .free-version-banner .section-title h2 {
     padding-bottom: 20px;
     margin-bottom: 25px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 50px;
     font-size: 35px;
     color: #273c75;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
 }
 
 .free-version-banner .section-title p {

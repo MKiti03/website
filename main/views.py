@@ -43,3 +43,9 @@ def countryPage(request):
 
 def singleCountry(request):
     return render(request, 'main/single-country.html')
+
+def blogPostPage(request):
+    return render(request, 'main/blog-post.html')
+
+def singlePost(request):
+    return render(request, 'main/blog-post-single.html')

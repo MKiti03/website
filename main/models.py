@@ -103,7 +103,7 @@ class ProgramCategory(models.Model):
     set_draft = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.post_category_title
+        return self.program_category_title
 
     class Meta:
         verbose_name = 'Program Category'
@@ -178,7 +178,7 @@ class Tag(models.Model):
         verbose_name_plural = 'Tags'
 class BlogPost(models.Model):
     post_title = models.CharField(max_length=254, null =True, blank=True)
-    post_category = models.OneToOneField(PostCategory, on_delete=models.PROTECT, null=True, blank=True)
+    post_category = models.ManyToManyField(PostCategory, blank=True)
     post_tag = models.ManyToManyField(Tag, blank=True)
     psot_description = RichTextField(null = True, blank = True)
     post_image = models.ImageField(default = 'default.png')
