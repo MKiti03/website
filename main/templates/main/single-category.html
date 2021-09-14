@@ -1,17 +1,26 @@
 {% extends 'main/index.html' %} {% load static %} {% block contain%}
-
+<style>
+    .category-title {
+        color: #273c75;
+        font-weight: 500;
+        font-size: 20px;
+    }
+</style>
 <section class="services section p-lg-4">
     <div class="container-fluid">
-        {% if all_programs %}
+        <div class="program-category-title text-center">
+            <h3 class="category-title">{{program_category.program_category_title}}</h3>
+        </div>
+        {% if program %}
         <div class="row">
-            {% for item in all_programs %}
+            {% for programs in program %}
             <div class="col-lg-3 col-md-6 col-12">
-                <a href="#">
+                <a href="{% url 'single-program' programs.program_name %}">
                     <div class="single-service wow fadeInUp" data-wow-delay=".2s">
                         <div class="serial">
                             <span><i class="lni lni-code"></i></span>
                         </div>
-                        <h3><a href="{% url 'single-program' item.program_name %}">{{item.program_name}}</a></h3>
+                        <h3><a href="{% url 'single-program' programs.program_name %}">{{programs.program_name}}</a></h3>
                     </div>
                 </a>
             </div>

@@ -1,0 +1,31 @@
+{% load static %}
+<!--  -->
+<div style="border: 1px solid #1332869c;" class="card p-2 mb-10 mt-10">
+    <div class="row g0">
+        <div class="col-auto">
+            <div class="fast-fact">{{single_program.program_name}} fast Fact</div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            {% for item in program_fact %}
+            <div class="col-lg-4">
+                <div class="card border-none mb-3">
+                    <div class="row g-5">
+                        <div class="col-md-2">
+                            <i class="fact-icon lni lni-investment"></i>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="card-body">
+                                <h5 class="fact-title card-title">{{item.fact_name}}</h5>
+                                <p class="fact-content card-text">{{item.fact_description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>

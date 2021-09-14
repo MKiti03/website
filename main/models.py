@@ -101,6 +101,7 @@ class ProgramCategory(models.Model):
     last_update = models.DateTimeField(null=True, blank=True)
 
     set_draft = models.BooleanField(default=True)
+    set_featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.program_category_title
@@ -111,15 +112,16 @@ class ProgramCategory(models.Model):
 
 class Program(models.Model):
     program_name = models.CharField(max_length=254, null=True, blank=True)
-    program_category = models.ManyToManyField(ProgramCategory, blank=True)
-    choose_university = models.OneToOneField(University, on_delete=models.PROTECT, null=True, blank=True)
+    program_category = models.ForeignKey(ProgramCategory, blank=True, null=True, on_delete=models.PROTECT)
+    choose_university = models.ForeignKey(University, on_delete=models.PROTECT, null=True, blank=True)
     program_description = RichTextField(blank = True, null = True)
-    program_image = models.ImageField(default = 'default.pmg')
+    program_image = models.ImageField(default = 'default.png')
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
 
     set_draft = models.BooleanField(default=True)
+    set_featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.program_name
@@ -130,7 +132,7 @@ class Program(models.Model):
 
 class ProgramFact(models.Model):
     fact_name = models.CharField(max_length=254, null=True, blank=True)
-    chose_program = models.OneToOneField(Program, on_delete=models.PROTECT, null=True, blank=True)
+    chose_program = models.ForeignKey(Program, on_delete=models.PROTECT, null=True, blank=True)
     fact_description = models.TextField(max_length=254, null=True, blank=True)
     fact_icon = models.CharField(max_length=254, null=True, blank=True)
 

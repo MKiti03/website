@@ -1,0 +1,79 @@
+{% extends 'main/index.html' %} {% load static %} {% block contain%}
+<style>
+    .programe-category-page {
+        min-height: 100px;
+        max-height: 100px;
+        text-align: center;
+        box-shadow: 0px 5px 35px #273c752c;
+        border-radius: 0;
+        background: #fff;
+        z-index: 5;
+        overflow: hidden;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+    
+    .category-name {
+        margin-top: 10px;
+        line-height: 27px;
+        color: #273c75;
+        font-weight: 500;
+        font-size: 22px;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    }
+    
+    .category-name:hover {
+        color: #c8a64a;
+    }
+    
+    .program-count {
+        font-size: 14px;
+        font-weight: 400;
+    }
+    
+    .program-count-number {
+        font-size: 12px;
+        font-weight: 600;
+    }
+</style>
+<!--  -->
+{% if category_to_navebar %}
+<section class="services section p-lg-4">
+    <div class="container-fluid">
+        <div class="row g-3">
+            <div class="col-lg-9 col-md-9 col-12">
+                <div class="row">
+                    {% for items in category_to_navebar %}
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <a href="#">
+                            <div class="programe-category-page wow fadeInUp" data-wow-delay=".2s">
+                                <h3><a class="category-name" href="{% url 'single-category' items.program_category_title %}">{{items.program_category_title}}</a></h3>
+                                <!-- <h6 class="program-count">Pogram(s) count
+                            <span class="program-count-number">5</span>
+                        </h6> -->
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-8 col-12">
+                {% include 'main/page-sidebar.html' %}
+            </div>
+        </div>
+</section>
+{% endif %}
+<!-- Start Partners Area -->
+{% include 'main/latest-new.html' %}
+<!-- End Partners Area -->
+
+
+<!-- Start Newsletter Area -->
+{% include 'main/newsletter.html' %}
+<!-- /End Newsletter Area -->
+
+{% endblock %}

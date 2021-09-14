@@ -26,29 +26,15 @@
                     <span class="toggler-icon"></span>
                 </button>
                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                        <ul id="nav" class="navbar-nav ms-auto">
+
+                        <ul id="nav" class="navbar-nav ms-auto mx-1">
+                            {% if category_to_navebar %}
+                            <!--  -->
+                            {% for item in category_to_navebar %}
                             <li class="nav-item">
-                                <a class="page-scroll dd-menu collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Program Category</a>
-                                <ul class="sub-menu collapse" id="submenu-1-1">
-                                    <li class="Hover nav-item"><a href="{% url 'single-program' %}">Program name</a></li>
-                                    <li class="Hover nav-item"><a href="{% url 'single-program' %}">Program name</a></li>
-                                    <li class="Hover nav-item"><a href="{% url 'single-program' %}">Program name</a></li>
-                                    <li class="Hover nav-item"><a href="{% url 'single-program' %}">Program name</a></li>
-                                    <li class="Hover nav-item"><a href="{% url 'single-program' %}">Program name</a></li>
-                                </ul>
+                                <a class="page-scroll mx-1" href="{% url 'single-category' item.program_category_title %}">{{item.program_category_title}}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="page-scroll" href="{% url 'single-program' %}">Program name</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="page-scroll" href="{% url 'single-program' %}">Program name</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="page-scroll" href="{% url 'single-program' %}">Program name</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="page-scroll" href="{% url 'universitis' %}">Universities</a>
-                            </li>
+                            {% endfor %} {% endif %}
                             <li class="nav-item">
                                 <a class="page-scroll" href="{% url 'countries' %}">Countries</a>
                             </li>
@@ -56,6 +42,7 @@
                                 <a class="page-scroll" href="{% url 'post' %}">Post & Event</a>
                             </li>
                         </ul>
+
                     </div>
                     <!-- navbar collapse -->
                 </nav>
