@@ -1,57 +1,23 @@
 {% load static %}
+<!--  -->
 <hr style="height: 3px; background-color: #273c75;">
 <div class="row mb-4 text-center">
     <div class="col-lg-12">
-        <h1 class="h2 text-bald">Universities in (Country Name)</h1>
+        <h1 class="h2 text-bald">Universities in {{single_country.country_name}}</h1>
     </div>
 </div>
 <div class="row g-4">
+    {% for item in related_universities %}
     <div class="col-lg-4">
         <a href="">
             <div class="card border-none">
-                <img src="{% static 'images/university/university.png' %}" class="card-img-top university-image" alt="...">
+                <img src="{{item.university_image.url}}" class="card-img-top university-image" alt="{{item.university_name}}">
                 <div class="card-body">
-                    <h5 class="university-name card-title">University Name</h5>
-                    <p>qui ratione voluptatem sequi nesciunt.</p>
-                    <a style="color: white;" href="#" class="university-read-more">Read more</a>
+                    <h5 class="university-name card-title">{{item.university_name}}</h5>
+                    <a style="color: white;" href="#" class="university-read-more">Find Out More</a>
                 </div>
             </div>
         </a>
     </div>
-    <div class="col-lg-4">
-        <a href="">
-            <div class="card border-none">
-                <img src="{% static 'images/university/university.png' %}" class="card-img-top university-image" alt="...">
-                <div class="card-body">
-                    <h5 class="university-name card-title">University Name</h5>
-                    <p>qui ratione voluptatem sequi nesciunt.</p>
-                    <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-4">
-        <a href="">
-            <div class="card border-none">
-                <img src="{% static 'images/university/university.png' %}" class="card-img-top university-image" alt="...">
-                <div class="card-body">
-                    <h5 class="university-name card-title">University Name</h5>
-                    <p>qui ratione voluptatem sequi nesciunt.</p>
-                    <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-4">
-        <a href="">
-            <div class="card border-none">
-                <img src="{% static 'images/university/university.png' %}" class="card-img-top university-image" alt="...">
-                <div class="card-body">
-                    <h5 class="university-name card-title">University Name</h5>
-                    <p>qui ratione voluptatem sequi nesciunt.</p>
-                    <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                </div>
-            </div>
-        </a>
-    </div>
+    {% endfor %}
 </div>

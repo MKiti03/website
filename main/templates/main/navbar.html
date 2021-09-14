@@ -28,6 +28,9 @@
                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
 
                         <ul id="nav" class="navbar-nav ms-auto mx-1">
+                            <li class="nav-item">
+                                <a class="page-scroll mx-1" href="{% url 'index' %}">Home</a>
+                            </li>
                             {% if category_to_navebar %}
                             <!--  -->
                             {% for item in category_to_navebar %}
@@ -35,6 +38,9 @@
                                 <a class="page-scroll mx-1" href="{% url 'single-category' item.program_category_title %}">{{item.program_category_title}}</a>
                             </li>
                             {% endfor %} {% endif %}
+                            <li class="nav-item">
+                                <a class="page-scroll" href="{% url 'universitis' %}">Universities</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="page-scroll" href="{% url 'countries' %}">Countries</a>
                             </li>

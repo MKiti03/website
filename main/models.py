@@ -27,6 +27,7 @@ class Country(models.Model):
     country_name = models.CharField(max_length=254, null=True, blank=True)
     map_latitud = models.IntegerField(null=True, blank=True)
     map_longitud = models.IntegerField(null=True, blank=True)
+    country_flag = models.ImageField(default = 'default.png')
     country_image = models.ImageField(default = 'default.png')
     country_description = RichTextField(null = True, blank = True)
 
@@ -43,7 +44,7 @@ class Country(models.Model):
 
 class CountryFact(models.Model):
     fact_name = models.CharField(max_length=254, null=True, blank=True)
-    chose_country = models.OneToOneField(Country, on_delete=models.PROTECT, null=True, blank=True)
+    chose_country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True, blank=True)
     fact_description = models.TextField(max_length=254, null=True, blank=True)
     fact_icon = models.CharField(max_length=254, null=True, blank=True)
 
@@ -60,7 +61,8 @@ class CountryFact(models.Model):
         verbose_name_plural = 'Countries Fact'
 class University(models.Model):
     university_name = models.CharField(max_length=254, null=True, blank=True)
-    chose_country = models.OneToOneField(Country, on_delete=models.PROTECT, null=True, blank=True)
+    chose_country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True, blank=True)
+    university_logo = models.ImageField(default = 'default.png')
     university_image = models.ImageField(default = 'default.png')
     university_description = RichTextField(blank = True, null = True)
 
@@ -77,7 +79,7 @@ class University(models.Model):
         verbose_name_plural = 'Universities'
 class UniversityFact(models.Model):
     fact_name = models.CharField(max_length=254, null=True, blank=True)
-    chose_university = models.OneToOneField(University, on_delete=models.PROTECT, null=True, blank=True)
+    chose_university = models.ForeignKey(University, on_delete=models.PROTECT, null=True, blank=True)
     fact_description = models.TextField(max_length=254, null=True, blank=True)
     fact_icon = models.CharField(max_length=254, null=True, blank=True)
 
@@ -133,7 +135,7 @@ class Program(models.Model):
 class ProgramFact(models.Model):
     fact_name = models.CharField(max_length=254, null=True, blank=True)
     chose_program = models.ForeignKey(Program, on_delete=models.PROTECT, null=True, blank=True)
-    fact_description = models.TextField(max_length=254, null=True, blank=True)
+    fact_description = models.TextField(max_length=40, null=True, blank=True)
     fact_icon = models.CharField(max_length=254, null=True, blank=True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)

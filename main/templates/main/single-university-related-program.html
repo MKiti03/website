@@ -1,0 +1,25 @@
+{% load static %}
+<hr style="height: 3px; background-color: #273c75;">
+<div class="row mb-4 text-center">
+    <div class="col-lg-12">
+        <h1 class="h2 text-bald">Program(s) in {{single_university.university_name}}</h1>
+    </div>
+</div>
+<div class="row g-4">
+    {% for item in university_program %}
+    <div class="col-lg-4">
+        <a href="{% url 'single-program' item.program_name %}">
+            <div class="card border-none">
+                <img src="{{item.program_image.url}}" class="card-img-top university-image" alt="...">
+                <div class="card-body">
+                    <h5 class="university-name card-title">{{item.program_name}}</h5>
+                    <p>
+                        <a style="color: white;" href="{% url 'single-program' item.program_name %}" class="university-read-more">Read more</a>
+                    </p>
+
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>

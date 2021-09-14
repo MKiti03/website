@@ -60,7 +60,7 @@
 
 .university-read-more {
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -70,10 +70,11 @@
     width: 70%;
     color: white;
     font-size: 16px;
+    width: auto;
 }
 
 .university-read-more:hover {
-    margin-top: 15px;
+    margin-top: 7px;
     background-color: #273c75;
     color: white;
     transition: 0.50s;
@@ -92,6 +93,7 @@
     color: #3c3c3c;
     line-height: 20px;
     font-size: 15px;
+    margin-top: -10px;
 }
 
 .fact-icon {
@@ -105,7 +107,7 @@
     background-color: #133286be;
     padding: 10px;
     color: #fffffff1;
-    font-size: 20px;
+    font-size: 18px;
     z-index: 10;
     width: auto;
 }
@@ -116,4 +118,30 @@
     font-size: 18px;
     line-height: 25px;
     margin-bottom: 10px;
+}
+
+.fact-icon-container {
+    max-width: 80px;
+}
+
+.fact-content-container {
+    position: absolute;
+    margin-left: 50px;
+}
+
+.university-count {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.university-count-span {
+    padding-top: 2px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    height: 25px;
+    width: 25px;
+    background-color: #273c75;
+    color: white;
+    font-weight: 600;
 }

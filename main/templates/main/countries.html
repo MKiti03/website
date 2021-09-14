@@ -7,140 +7,28 @@
                 <h1 class="h2 text-bald ">Countries</h1>
             </div>
         </div>
+        {% if all_countries %}
         <div class="row g-3 ">
+            {% for item in all_countries %}
             <div class="col-lg-3 d-flex justify-content-center">
-                <a class="remove-decoration" href="{% url 'signle-university' %} ">
+                <a class="remove-decoration" href="{% url 'single-country' item.country_name %}">
                     <div class="card border-none ">
-                        <img src="{% static 'images/flags/cameroun-flag.png' %} " class="card-img-top country-image" alt="... ">
+                        <img src="{{item.country_flag.url}}" class="card-img-top country-image" alt="{{item.country_image}} ">
                         <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
+                            <h5 class="university-name card-title ">{{item.country_name}}</h5>
+                            <!-- <div>
+                                <h6 class="university-count">universities count <span class="university-count-span">5</span></h6>
+                            </div> -->
+                            <div style="width: 100%;">
+                                <a style="color: white;" href="{% url 'single-country' item.country_name %}" class="university-read-more">Fine out more</a>
+                            </div>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" {% url 'signle-university' %}">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/usa-flag.jpg' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/cameroun-flag.png' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/usa-flag.jpg' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href="{% url 'signle-university' %} ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/cameroun-flag.png' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'signle-university' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/usa-flag.jpg' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/cameroun-flag.png' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/usa-flag.jpg' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/cameroun-flag.png' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/usa-flag.jpg' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/flags/cameroun-flag.png' %} " class="card-img-top country-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'single-country' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            {% endfor %}
         </div>
+        {% endif %}
     </div>
 
     <!-- Start Partners Area -->

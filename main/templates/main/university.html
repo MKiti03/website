@@ -7,228 +7,32 @@
                 <h1 class="h2 text-bald ">Universities</h1>
             </div>
         </div>
+        {% if all_universities %}
         <div class="row g-3 ">
+            {% for item in all_universities %}
             <div class="col-lg-3 d-flex justify-content-center">
-                <a class="remove-decoration" href="{% url 'signle-university' %} ">
+                <a class="remove-decoration" href="{% url 'signle-university' item.university_name %}">
                     <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
+                        <img src="{{item.university_logo.url}}" class="card-img-top university-image" alt="{{item.university_name}}">
                         <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/usa-flag.jpg' %}" alt="">
+                            <h5 class="university-name card-title ">{{item.university_name}}</h5>
+                            <div class="row g-1">
+                                <div class="col-3">
+                                    <img style="height: 20px; width: 50px;" src="{{item.chose_country.country_flag.url}}" alt="{{item.chose_country}}">
                                 </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
+                                <div class="col-9">
+                                    <span>{{item.chose_country}}</span>
                                 </div>
                             </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'signle-university' %}" class="university-read-more">Read more</a>
+                            <p><a style="color: white;" href="{% url 'signle-university' item.university_name %}" class="university-read-more">Read more</a></p>
+
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" {% url 'signle-university' %}">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/cameroun-flag.png' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'signle-university' %}" class="university-read-more">Read more<span class="dir-part"> </span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/usa-flag.jpg' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/cameroun-flag.png' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href="{% url 'signle-university' %} ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/usa-flag.jpg' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="{% url 'signle-university' %}" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/cameroun-flag.png' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/usa-flag.jpg' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/cameroun-flag.png' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/usa-flag.jpg' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/cameroun-flag.png' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 d-flex justify-content-center">
-                <a href=" ">
-                    <div class="card border-none ">
-                        <img src="{% static 'images/university/university.png' %} " class="card-img-top university-image" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">University Name</h5>
-                            <div class="row g-0 mb-1">
-                                <div class="col-2">
-                                    <img style="height: 20px; width: 20px;" src="{% static 'images/flags/usa-flag.jpg' %}" alt="">
-                                </div>
-                                <div class="col-10">
-                                    <span style="margin-left: -10px;">Country Name</span>
-                                </div>
-                            </div>
-                            <p>qui ratione voluptatem sequi nesciunt.</p>
-                            <a style="color: white;" href="#" class="university-read-more">Read more</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            {% endfor %}
         </div>
+        {% endif %}
     </div>
 
     <!-- Start Partners Area -->
