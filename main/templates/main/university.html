@@ -10,7 +10,7 @@
         {% if all_universities %}
         <div class="row g-3 ">
             {% for item in all_universities %}
-            <div class="col-lg-3 d-flex justify-content-center">
+            <div class="col-lg-3 col-md-4 col-12 d-flex justify-content-center">
                 <a class="remove-decoration" href="{% url 'signle-university' item.university_name %}">
                     <div class="card border-none ">
                         <img src="{{item.university_logo.url}}" class="card-img-top university-image" alt="{{item.university_name}}">

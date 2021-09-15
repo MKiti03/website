@@ -1,9 +1,9 @@
 {% extends 'main/index.html' %} {% load static %} {% block contain%}
 
-<section class="section blog-single">
-    <div class="container">
+<section class="section p-lg-5 blog-single">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 col-md-8 col-12">
                 <div class="post-thumbnils">
                     <img src="{% static 'images/blog/blog-single.jpg' %}" alt="#">
                 </div>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <aside class="col-lg-4 col-md-12 col-12">
+            <aside class="col-lg-4 col-md-4 col-12">
                 {% include 'main/post-event-sidebar.html' %}
             </aside>
         </div>

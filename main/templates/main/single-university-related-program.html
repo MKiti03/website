@@ -7,12 +7,12 @@
 </div>
 <div class="row g-4">
     {% for item in university_program %}
-    <div class="col-lg-4">
+    <div class="col-lg-4 col-6">
         <a href="{% url 'single-program' item.program_name %}">
             <div class="card border-none">
                 <img src="{{item.program_image.url}}" class="card-img-top university-image" alt="...">
                 <div class="card-body">
-                    <h5 class="university-name card-title">{{item.program_name}}</h5>
+                    <h5 class="university-name card-title">{{item.program_name|truncatechars:40}}</h5>
                     <p>
                         <a style="color: white;" href="{% url 'single-program' item.program_name %}" class="university-read-more">Read more</a>
                     </p>

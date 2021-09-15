@@ -8,13 +8,15 @@
 </div>
 <div class="row g-4">
     {% for item in related_universities %}
-    <div class="col-lg-4">
-        <a href="">
+    <div class="col-lg-4 col-6 ">
+        <a href="{% url 'signle-university' item.university_name %}">
             <div class="card border-none">
-                <img src="{{item.university_image.url}}" class="card-img-top university-image" alt="{{item.university_name}}">
+                <img src="{{item.university_logo.url}}" class="card-img-top university-image" alt="{{item.university_name}}">
                 <div class="card-body">
                     <h5 class="university-name card-title">{{item.university_name}}</h5>
-                    <a style="color: white;" href="#" class="university-read-more">Find Out More</a>
+                    <p>
+                        <a style="color: white;" href="{% url 'signle-university' item.university_name %}" class="university-read-more">Find Out More</a>
+                    </p>
                 </div>
             </div>
         </a>
