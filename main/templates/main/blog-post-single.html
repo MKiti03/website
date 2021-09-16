@@ -5,68 +5,56 @@
         <div class="row">
             <div class="col-lg-8 col-md-8 col-12">
                 <div class="post-thumbnils">
-                    <img src="{% static 'images/blog/blog-single.jpg' %}" alt="#">
+                    <img src="{{single_post.post_image.url}}" alt="#">
                 </div>
                 <div class="post-details">
                     <div class="detail-inner">
                         <h2 class="post-title">
-                            <a href="#">Start &amp; Run a Successful Web Design Business in 2020</a>
+                            <a href="#">{{single_post.post_title}}</a>
                         </h2>
 
                         <ul class="custom-flex post-meta">
                             <li>
                                 <a href="#">
-                                    <i class="lni lni-user"></i> by Piklo D. Sindom
+                                    <i class="lni lni-user"></i> Vecademy staff
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="lni lni-calendar"></i> 20th March 2023
+                                    <i class="lni lni-calendar"></i> {{single_post.date_created}}
                                 </a>
                             </li>
+                            {% if post_comment_count %}
                             <li>
-                                <a href="#">
-                                    <i class="lni lni-comments"></i> 35 Comments
+                                <a href="#commentId">
+                                    {% if post_comment_count > 1 %}
+                                    <i class="lni lni-comments"></i> {{post_comment_count}} Comments
+                                    <!--  -->
+                                    {% else %}
+                                    <i class="lni lni-comments"></i> {{post_comment_count}} Comment
+                                    <!--  -->
+                                    {% endif %}
                                 </a>
                             </li>
+                            {% endif %}
                         </ul>
-                        <p>We denounce with righteous indige nation and dislike men who are so beguiled and demo realized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue;
-                            and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when
-                            our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided.</p>
-
-                        <h3>A cleansing hot shower or bath</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. </p>
-
-                        <blockquote>
-                            <h4>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications.</h4>
-                        </blockquote>
-                        <h3>Setting the mood with incense</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. </p>
-                        <ul class="list">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                            <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
-                            <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua et dolore magna aliqua.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
-                            unde omnis iste natus error sit voluptatem accusantium. </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
-                            unde omnis iste natus error sit voluptatem accusantium. </p>
-
+                        <div>
+                            <p>
+                                {{single_post.post_description|safe}}
+                            </p>
+                        </div>
                         <div class="post-tags-media">
+                            {% if post_tag %}
                             <div class="post-tags popular-tag-widget mb-xl-40">
-                                <h5 class="tag-title">Related Tags</h5>
+                                <h5 class="tag-title">Post Tags</h5>
                                 <div class="tags">
-                                    <a href="#">Popular</a>
-                                    <a href="#">Design</a>
-                                    <a href="#">UX</a>
+                                    {% for item in post_tag %}
+                                    <a href="#">{{item.tag_name}}</a>
+                                    <!--  -->
+                                    {% endfor %}
                                 </div>
                             </div>
+                            {% endif %}
                             <div class="post-social-media">
                                 <h5 class="share-title">Social Share</h5>
                                 <ul class="custom-flex">
@@ -99,34 +87,27 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="post-comments">
+                    {% if post_comment %}
+                    <div class="post-comments" id="commentId">
                         <h3 class="comment-title">Comments</h3>
                         <ul class="comments-list">
                             <li>
-                                <div class="comment-desc">
-                                    <div class="desc-top">
-                                        <h6>Rosalina Kelian</h6>
-                                        <span class="date">19th May 2023</span>
+                                {% for item in post_comment %}
+                                <div class="card mt-20">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{item.commented_by}}</h6>
+                                        <span class="date">{{item.date_created.date}}</span>
+                                        <p class="card-text">
+                                            {{item.comment}}
+                                        </p>
                                     </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    </p>
+
                                 </div>
-                            </li>
-                            <li>
-                                <div class="comment-desc">
-                                    <div class="desc-top">
-                                        <h6>Arista Williamson</h6>
-                                        <span class="date">12th May 2023</span>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    </p>
-                                </div>
+                                {% endfor %}
                             </li>
                         </ul>
                     </div>
+                    {% endif %}
                     <div class="comment-form">
                         <h3 class="comment-reply-title">Post Comments</h3>
                         {% include 'main/comment-form.html' %}

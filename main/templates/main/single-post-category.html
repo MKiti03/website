@@ -3,40 +3,31 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-7 col-12">
+                {% if post_content %}
                 <div class="row">
-                    {% for post in object_list %}
+                    <div class="d-flex justify-content-center">
+                        <h4 class="category-title">
+                            {{single_post_category.post_category_title}}
+                        </h4>
+                    </div>
+                    {% for item in post_content %}
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="letest-news-item wow fadeInUp" data-wow-delay=".4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                             <div class="image">
-                                <img src="{{post.post_image.url}}" alt="#">
+                                <img src="{{item.post_image.url}}" alt="{{item.post_title}}">
                             </div>
                             <div class="content-body">
                                 <div class="meta-details">
                                     <a href="#" class="meta-list"><i class="lni lni-user"></i><span>Vecademy staff</span></a>
-                                    <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>{{post.date_created.date}}</span></a>
+                                    <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>{{item.date_created.date}}</span></a>
                                 </div>
-                                <h4 class="title"><a href="{% url 'single-post' post.post_title %}">{{post.post_title}}</a></h4>
+                                <h4 class="title"><a href="{% url 'single-post' item.post_title %}">{{item.post_title}}</a></h4>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-
-                {% if is_paginated %}
-                <div class="pagination center">
-                    <ul class="pagination-list">
-                        {% if page_obj.has_previous %}
-                        <li><a href="?page={{ page_obj.previous_page_number }}"><i class="lni lni-arrow-left">Previous Posts</i></a></li>
-                        {% endif %}
-
-                        <!--  -->
-                        {% if page_obj.has_next %}
-                        <li><a href="?page={{ page_obj.next_page_number }}">Next Posts<i class="lni lni-arrow-right"></i></a></li>
-                        {% endif %}
-                    </ul>
-                </div>
                 {% endif %}
-
             </div>
             <aside class="col-lg-4 col-md-5 col-12">
                 {% include 'main/post-event-sidebar.html' %}

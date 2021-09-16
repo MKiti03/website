@@ -145,3 +145,8 @@
     color: white;
     font-weight: 600;
 }
+
+.post-category-cart-overlay {
+    background-color: #273c75;
+    opacity: 0.6;
+}

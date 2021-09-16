@@ -1,0 +1,43 @@
+{% extends 'main/index.html' %} {% load static %} {% block contain%}
+
+<section class="section latest-news-area p-lg-3 mt-xs--20">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-12">
+                {% if post_category %}
+                <div class="row g-3">
+                    {% for item in post_category %}
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <a href="{% url 'single-post-category' item.post_category_title %}">
+                            <div class="card" style="width: 100%;">
+                                <img src="{{item.post_category_image.url}}" class="card-img-top" alt="{{item.post_category_title}}">
+                                <div class="card-body">
+                                    <h4 class="card-title text-white">{{item.post_category_title}}</h4>
+                                    <p style="color: #636363; margin-top: -40px;" class="card-text">{{item.post_category_description}}</p>
+                                    <p>
+                                        <a style="color: rgb(255, 255, 255);" href="{% url 'single-post-category' item.post_category_title %}" class="university-read-more">Fine out more</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <aside class="col-lg-4 col-md-5 col-12">
+                {% include 'main/post-event-sidebar.html' %}
+            </aside>
+        </div>
+    </div>
+</section>
+<!-- Start Partners Area -->
+{% include 'main/latest-new.html' %}
+<!-- End Partners Area -->
+
+
+<!-- Start Newsletter Area -->
+{% include 'main/newsletter.html' %}
+<!-- /End Newsletter Area -->
+
+{% endblock %}

@@ -1,4 +1,6 @@
 {% load static %}
+<!--  -->
+{% if featured_post %}
 <div class="latest-news-area section">
     <div class="letast-news-grid">
         <div class="container-lg">
@@ -11,129 +13,25 @@
                 </div>
             </div>
             <div class="row">
+                {% for item in featured_post %}
                 <div class="col-lg-3 col-md-6 col-12">
-
                     <div class="letest-news-item wow fadeInUp" data-wow-delay=".4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                         <div class="image">
-                            <img src="{% static 'images/blog/news1.jpg' %}" alt="#">
+                            <img src="{{item.post_image.url}}" alt="{{item.post_title|truncatechars:75}}">
                         </div>
                         <div class="content-body">
                             <div class="meta-details">
-                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>By Admin</span></a>
-                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>25 May 2023</span></a>
+                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>Vecademy Staff</span></a>
+                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>{{item.date_created.date}}</span></a>
                             </div>
-                            <h4 class="title"><a href="blog-single-sidebar.html">Monthly Web Development Update Design Ethics &amp; Clarity Over Solution System</a></h4>
+                            <h4 class="title"><a href="{% url 'single-post' item.post_title  %}">{{item.post_title|truncatechars:75}}</a></h4>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="letest-news-item wow fadeInUp" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
-                        <div class="image">
-                            <img src="{% static 'images/blog/news2.jpg' %}" alt="#">
-                        </div>
-                        <div class="content-body">
-                            <div class="meta-details">
-                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>By Admin</span></a>
-                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>28 Feb 2023</span></a>
-                            </div>
-                            <h4 class="title"><a href="blog-single-sidebar.html">Monthly Web Development Update Design Ethics &amp; Clarity Over Solution System</a></h4>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="letest-news-item wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-                        <div class="image">
-                            <img src="{% static 'images/blog/news3.jpg' %}" alt="#">
-                        </div>
-                        <div class="content-body">
-                            <div class="meta-details">
-                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>By Admin</span></a>
-                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>30 Jan 2023</span></a>
-                            </div>
-                            <h4 class="title"><a href="blog-single-sidebar.html">Monthly Web Development Update Design Ethics &amp; Clarity Over Solution System</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="letest-news-item wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-                        <div class="image">
-                            <img src="{% static 'images/blog/news1.jpg' %}" alt="#">
-                        </div>
-                        <div class="content-body">
-                            <div class="meta-details">
-                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>By Admin</span></a>
-                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>30 Jan 2023</span></a>
-                            </div>
-                            <h4 class="title"><a href="blog-single-sidebar.html">Monthly Web Development Update Design Ethics &amp; Clarity Over Solution System</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="letest-news-item wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-                        <div class="image">
-                            <img src="{% static 'images/blog/news2.jpg' %}" alt="#">
-                        </div>
-                        <div class="content-body">
-                            <div class="meta-details">
-                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>By Admin</span></a>
-                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>30 Jan 2023</span></a>
-                            </div>
-                            <h4 class="title"><a href="blog-single-sidebar.html">Monthly Web Development Update Design Ethics &amp; Clarity Over Solution System</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="letest-news-item wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-                        <div class="image">
-                            <img src="{% static 'images/blog/news3.jpg' %}" alt="#">
-                        </div>
-                        <div class="content-body">
-                            <div class="meta-details">
-                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>By Admin</span></a>
-                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>30 Jan 2023</span></a>
-                            </div>
-                            <h4 class="title"><a href="blog-single-sidebar.html">Monthly Web Development Update Design Ethics &amp; Clarity Over Solution System</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="letest-news-item wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-                        <div class="image">
-                            <img src="{% static 'images/blog/news1.jpg' %}" alt="#">
-                        </div>
-                        <div class="content-body">
-                            <div class="meta-details">
-                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>By Admin</span></a>
-                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>30 Jan 2023</span></a>
-                            </div>
-                            <h4 class="title"><a href="blog-single-sidebar.html">Monthly Web Development Update Design Ethics &amp; Clarity Over Solution System</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="letest-news-item wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-                        <div class="image">
-                            <img src="{% static 'images/blog/news2.jpg' %}" alt="#">
-                        </div>
-                        <div class="content-body">
-                            <div class="meta-details">
-                                <a href="#" class="meta-list"><i class="lni lni-user"></i><span>By Admin</span></a>
-                                <a href="#" class="meta-list"><i class="lni lni-calendar"></i><span>30 Jan 2023</span></a>
-                            </div>
-                            <h4 class="title"><a href="blog-single-sidebar.html">Monthly Web Development Update Design Ethics &amp; Clarity Over Solution System</a></h4>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
+{% endif %}

@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+from .views import BlogPostPage
+
 urlpatterns = [
     path('', views.index, name='index'),
 
@@ -16,6 +18,9 @@ urlpatterns = [
     path('universties', views.universityPage, name='universitis'),
     path('universities/<str:university_url>/', views.singleUniversity, name='signle-university'),
 
-    path('all-posts', views.blogPostPage, name='post'),
-    path('single-post', views.singlePost, name='single-post'),
+    path('posts-categories', views.postCategory, name = 'post-category'),
+    path('posts-categories/<str:post_category_url>/', views.singlePostCategory, name = 'single-post-category'),
+
+    path('all-posts', BlogPostPage.as_view(), name= 'post'),
+    path('all-posts/<str:single_post_url>/', views.singlePost, name='single-post'),
 ]

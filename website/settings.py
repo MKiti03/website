@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=34b_m_=t)p7@!$(0v(zxttudc*8diz@+66#7_@2g-i@*$s@!j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['vecademy-consulting.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['vecademy-consulting.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # 'django.middleware.security.SecurityMiddleware'
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'website.urls'
