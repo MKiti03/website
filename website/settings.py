@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # Third party apps
     'ckeditor',
     'tawkto',
+    'fontawesome_5',
 ]
 
 MIDDLEWARE = [

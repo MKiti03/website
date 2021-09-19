@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
+from fontawesome_5.fields import IconField
 
 # Create your models here.
 class UserProfile(models.Model):
@@ -118,6 +119,7 @@ class Program(models.Model):
     choose_university = models.ForeignKey(University, on_delete=models.PROTECT, null=True, blank=True)
     program_description = RichTextField(blank = True, null = True)
     program_image = models.ImageField(default = 'default.png')
+    program_icon = IconField(null = True, blank =True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)

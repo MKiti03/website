@@ -1,10 +1,11 @@
 {% load static %}
-<form class="row g-3 needs-validation" novalidate>
+<form method = 'POST' class="row g-3 needs-validation" id = 'getInTouchForm' novalidate>
+    {% csrf_token %}
     <div class="mb-1">
         <label for="validationCustom01" class="form-label">First name
             <span style="color: rgb(153, 10, 10);">*</span>
         </label>
-        <input type="text" class="form-input form-control" id="validationCustom01" required style="border: none; padding-left: 20px;">
+        <input name = 'first_name' type="text" class="form-input form-control" id="validationCustom01" required style="border: none; padding-left: 20px;">
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -13,7 +14,7 @@
         <label for="validationCustom02" class="form-label">Last name
             <span style="color: rgb(153, 10, 10);">*</span>
         </label>
-        <input type="text" class="form-input form-control" id="validationCustom02" required style="border: none; padding-left: 20px;">
+        <input name = 'last_name' type="text" class="form-input form-control" id="validationCustom02" required style="border: none; padding-left: 20px;">
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -22,7 +23,7 @@
         <label for="validationCustom03" class="form-label">Nationality
             <span style="color: rgb(153, 10, 10);">*</span>
         </label>
-        <input type="text" class="form-input form-control" id="validationCustom03" required style="border: none; padding-left: 20px;">
+        <input name = 'nationality' type="text" class="form-input form-control" id="validationCustom03" required style="border: none; padding-left: 20px;">
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -31,7 +32,7 @@
         <label for="validationCustom04" class="form-label">Email
             <span style="color: rgb(153, 10, 10);">*</span>
         </label>
-        <input type="email" class="form-input form-control" id="validationCustom04" required style="border: none; padding-left: 20px;">
+        <input name = 'email' type="email" class="form-input form-control" id="validationCustom04" required style="border: none; padding-left: 20px;">
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -40,7 +41,7 @@
         <label for="validationCustom05" class="form-label">Phone number
             <span style="color: rgb(153, 10, 10);">*</span>
         </label>
-        <input type="tel" class="form-input form-control" id="validationCustom05" required style="border: none; padding-left: 20px;">
+        <input name = 'phone' type="tel" class="form-input form-control" id="validationCustom05" required style="border: none; padding-left: 20px;">
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -49,32 +50,38 @@
         <label for="validationCustom06" class="form-label">Year of graduation from High School (e.g. 2021)
             <span style="color: rgb(153, 10, 10);">*</span>
         </label>
-        <input type="date" class="form-input form-control" id="validationCustom06" required style="border: none; padding-left: 20px;">
+        <input name = 'graduate_date' type="date" class="form-input form-control" id="validationCustom06" required style="border: none; padding-left: 20px;">
         <div class="valid-feedback">
             Looks good!
         </div>
     </div>
+    {% if program_to_form %}
     <div class="mb-1">
         <label for="validationCustom07" class="form-label">Course of Interest 
             <span style="color: rgb(153, 10, 10);">*</span>
         </label>
-        <select required class="form-input form-select" aria-label="Default select example" id="validationCustom07" required style="padding-left: 20px;">
+        <select name = 'program_name' required class="form-input form-select" aria-label="Default select example" id="validationCustom07" required style="padding-left: 20px;">
             <option disabled selected value="">Select a program</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            {% for item in program_to_form %}
+            <option value="{{item.program_name}}">{{item.program_name}}</option>
+            {% endfor %}
+            
         </select>
     </div>
+    {% endif %}
     <div class="mb-1">
         <label for="validationCustom08" class="form-label">Your educational qualifications (inc. subjects & grades/predicted grades) 
             <span style="color: rgb(153, 10, 10);">*</span> 
         </label>
-        <textarea class="form-control form-texterea" id="validationCustom08" required rows="3" style="padding-left: 20px;"></textarea>
+        <textarea name = 'educational_qualification' class="form-control form-texterea" id="validationCustom08" required rows="3" style="padding-left: 20px;"></textarea>
         <div class="valid-feedback">
             Looks good!
         </div>
     </div>
     <div class="button">
         <button type="submit" class="btn white-bg mouse-dir">Submit<span class="dir-part"></span></button>
+    </div>
+    <div class="mb-1 mt-3" id = 'formMessage'>
+        
     </div>
 </form>

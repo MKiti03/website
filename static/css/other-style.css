@@ -2,6 +2,35 @@
     border: none;
 }
 
+.slide-container {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 100;
+}
+
+.hero-text h2 {
+    font-family: sofia-pro-soft, sans-serif;
+    font-size: 33px;
+    font-weight: 600;
+    line-height: 37px;
+    color: #ffffff;
+    position: relative;
+}
+
+.hero-text p {
+    margin: 30px 0px 30px 0px;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #d8d8d8;
+    max-width: 700px;
+    position: relative;
+}
+
 .form-input {
     border: 0px solid #273c75;
     background-color: #273c754f;
@@ -149,4 +178,93 @@
 .post-category-cart-overlay {
     background-color: #273c75;
     opacity: 0.6;
+}
+
+.toolbar-link {
+    display: inline;
+    padding-right: 10px;
+}
+
+.toolbar-link a {
+    color: #ffff;
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.toolbar-link a:hover {
+    text-decoration: none;
+    color: rgb(235, 233, 233);
+}
+
+.contact-info-title {
+    background-color: #273c7580;
+    padding: 15px 15px 15px 15px;
+}
+
+.contact-info-title h4 {
+    color: white;
+    text-transform: uppercase;
+    font-family: proxima-nova, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.contact-info-box {
+    padding: 15px;
+}
+
+.single-contac-info {
+    padding: 10px;
+}
+
+.single-contac-info p {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-family: proxima-nova, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+.single-contac-info i {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.single-contac-info span {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: proxima-nova, Arial, Helvetica, sans-serif;
+}
+
+.card-body i {
+    padding: 10px;
+    background-color: #273c756e;
+    font-size: 60px;
+    color: #fff;
+}
+
+.card-body p {
+    font-size: 16px;
+    color: #3c3c3c;
+    font-weight: 300;
+    line-height: 26px;
+    font-family: proxima-nova, Arial, Helvetica, sans-serif;
+}
+
+.about-us-title {
+    font-size: 33px;
+    font-weight: 500;
+    font-family: proxima-nova, Arial, Helvetica, sans-serif;
+    color: #1a3543;
+}
+
+.focus-text-about {}
+
+.focus-text-about p {
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #3c3c3c;
 }

@@ -2,18 +2,21 @@
 <div class="toolbar-area">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-5 col-md-9 col-12">
+            <div class="col-5">
                 <div class="toolbar-contact">
                     <p><i class="lni lni-envelope"></i><a href="#">info@vecademy.com</a></p>
                     <p><i class="lni lni-phone"></i><a href="#">(+237) 650 274 877 / 693 420 100</a></p>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-9 col-12">
+            <div class="col-5">
                 <div class="toolbar-contact">
-
+                    <ul style="float: right;">
+                        <li class="toolbar-link"><a style="color: #ffff;" href="{% url 'about' %}">About us</a></li>
+                        <li class="toolbar-link"><a style="color: #ffff;" href="{% url 'contact' %}">Contact us</i></a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-3 col-12">
+            <div class="col-2">
                 <div class="toolbar-sl-share">
                     <ul>
                         <li><a href="#"><i class="lni lni-facebook-original"></i></a></li>

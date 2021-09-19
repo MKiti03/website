@@ -3,12 +3,14 @@ from main.forms import UserProfileForm
 from django.shortcuts import render
 from .models import *
 from .forms import *
+from django.http import JsonResponse
+from contact_form.models import GetIntouch
 # Create your views here.
 def index(request):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
     # Display featured program on the home page
-    feature_program = Program.objects.all().filter(set_featured = True, set_draft = False)
+    feature_program = Program.objects.all().filter(set_featured = True, set_draft = False).order_by('-date_created')[:16]
 
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
@@ -22,11 +24,15 @@ def index(request):
 def programCategory(request):
     # To display items in nav bar and Category page
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
 
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'category_to_navebar':category_to_navebar,
     }
@@ -35,6 +41,9 @@ def programCategory(request):
 def singleProgramCategory(request, category_url):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
 
     # GEt fategorie programs
     program_category = ProgramCategory.objects.get(program_category_title =category_url, set_draft =False)
@@ -45,6 +54,7 @@ def singleProgramCategory(request, category_url):
     program = program_category.program_set.all().filter(set_draft = False)
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'program_category':program_category,
         'program':program,
@@ -56,6 +66,9 @@ def programPage(request):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
 
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
+
     # Query all programs
     all_programs = Program.objects.all().filter(set_draft = False)
 
@@ -63,6 +76,7 @@ def programPage(request):
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'all_programs':all_programs,
         'category_to_navebar':category_to_navebar,
@@ -74,6 +88,9 @@ def singleProgram(request, program_url):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
 
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
+
     # Query sigle programe
     single_program = Program.objects.get(program_name = program_url, set_draft = False)
     program_fact = single_program.programfact_set.all().filter(set_draft = False)
@@ -82,6 +99,7 @@ def singleProgram(request, program_url):
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'program_fact':program_fact,
         'single_program':single_program,
@@ -97,11 +115,15 @@ def countryPage(request):
     # Query all countries
     all_countries = Country.objects.all().filter(set_draft = False)
 
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
+
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'all_countries':all_countries,
         'category_to_navebar':category_to_navebar,
@@ -114,6 +136,9 @@ def singleCountry(request, country_url):
 
     single_country = Country.objects.get(country_name=country_url, set_draft = False)
 
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
+
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
@@ -124,6 +149,7 @@ def singleCountry(request, country_url):
     print(related_universities)
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'related_universities':related_universities,
         'universities_count':universities_count,
@@ -141,10 +167,14 @@ def universityPage(request):
 
     all_universities = University.objects.all().filter(set_draft = False)
 
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
+
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'all_universities':all_universities,
         'category_to_navebar':category_to_navebar,
@@ -155,6 +185,9 @@ def universityPage(request):
 def singleUniversity(request, university_url):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
 
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
@@ -167,6 +200,7 @@ def singleUniversity(request, university_url):
     university_program_count = university_program.count()
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'university_program_count':university_program_count,
         'university_program':university_program,
@@ -181,6 +215,9 @@ def postCategory(request):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
 
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
+
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
@@ -188,6 +225,7 @@ def postCategory(request):
 
 
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'post_category':post_category,
         'category_to_navebar':category_to_navebar,
@@ -197,13 +235,15 @@ def postCategory(request):
 def singlePostCategory(request, post_category_url):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
-
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
     single_post_category = PostCategory.objects.get(post_category_title = post_category_url, set_draft = False)
     post_content = single_post_category.blogpost_set.all().filter(set_draft = False)
     context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'post_content':post_content,
         'single_post_category':single_post_category,
@@ -213,6 +253,9 @@ def singlePostCategory(request, post_category_url):
 
 class BlogPostPage(ListView):
     queryset = BlogPost.objects.filter(set_draft = False).order_by('-date_created')
+
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
 
     #Display programs category on the navbar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
@@ -225,6 +268,7 @@ class BlogPostPage(ListView):
     paginate_by = 16
     
     extra_context = {
+        'program_to_form':program_to_form,
         'featured_post':featured_post,
         'category_to_navebar':category_to_navebar,
     }
@@ -233,12 +277,15 @@ def singlePost(request, single_post_url):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
 
+    # Query programs for the select form field
+    program_to_form = Program.objects.all().filter(set_draft = False)
     single_post = BlogPost.objects.get(post_title = single_post_url, set_draft = False)
     post_tag = single_post.tag_set.all().filter(set_draft = False)
 
     post_comment = single_post.postcomment_set.all().filter(set_draft = False).order_by('-date_created')
     post_comment_count = post_comment.count()
     context = {
+        'program_to_form':program_to_form,
         'post_comment_count':post_comment_count,
         'post_comment':post_comment,
         'post_tag':post_tag,
@@ -246,6 +293,61 @@ def singlePost(request, single_post_url):
         'category_to_navebar':category_to_navebar,
     }
     return render(request, 'main/blog-post-single.html', context)
+
+
+def contactUsPage(request):
+    # Featured post on page bottum
+    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
+    # To display items in nav bar
+    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+
+    if request.is_ajax():
+        firt_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        nationality = request.POST.get('nationality')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        graduate_date = request.POST.get('graduate_date')
+        program_name = request.POST.get('program_name')
+        educational_qualification = request.POST.get('educational_qualification')
+
+
+        save_form = GetIntouch.objects.create(
+            firt_name =firt_name,
+            last_name =last_name,
+            nationality =nationality,
+            email=email,
+            phone_number = phone,
+            graduation_year = graduate_date,
+            course_of_interest = program_name,
+            educational_qualification = educational_qualification
+        )
+
+        save_form.save()
+        return JsonResponse(
+            {
+                'text':'Your form has been submitted successfully. We will contact you shortly'
+            }
+        )
+
+    context = {
+        'featured_post':featured_post,
+        'category_to_navebar':category_to_navebar,
+    }
+    return render(request, 'main/contact-page.html', context)
+
+
+def aboutUsPage(request):
+    # Featured post on page bottum
+    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
+    # To display items in nav bar
+    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+
+    context = {
+        'featured_post':featured_post,
+        'category_to_navebar':category_to_navebar,
+    }
+    return render(request, 'main/about-us.html', context)
 
 def error_404(request, exception):
     return render(request, 'main/404.html')

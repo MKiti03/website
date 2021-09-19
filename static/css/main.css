@@ -1069,7 +1069,7 @@ p {
 }
 
 .header .toolbar-area .toolbar-sl-share ul li a i {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .header .toolbar-area .toolbar-sl-share ul li a:hover {
@@ -1385,24 +1385,16 @@ p {
    02. Hero Area CSS
 ========================================*/
 
-.hero-slider {
-    width: 100%;
-    position: relative;
-    z-index: 0;
-}
-
 .hero-slider .single-slider {
     width: 100%;
     background-image: url(../images/hero-bg.jpg);
     background-size: cover;
     background-position: center;
-    padding-bottom: 110px;
     z-index: 0;
 }
 
 .hero-slider .hero-text {
     width: 100%;
-    float: none;
     margin-top: 90px;
 }
 
@@ -1413,23 +1405,6 @@ p {
     padding: 5px 18px;
     display: inline-block;
     margin-bottom: 15px;
-}
-
-.hero-slider .hero-text h1 {
-    color: rgb(29, 29, 29);
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 50px;
-    margin-bottom: 25px;
-}
-
-.hero-slider .hero-text h1 span {
-    font-weight: 300;
-}
-
-.hero-slider .hero-text p {
-    color: rgb(54, 54, 54);
-    font-size: 16px;
 }
 
 .hero-slider .hero-text .button {
@@ -1471,21 +1446,16 @@ p {
 /* Slider Dots*/
 
 .hero-slider .home-slider {
-    position: relative;
+    position: absolute;
     width: 100%;
 }
 
 .hero-slider .tns-nav {
-    background: #273c75;
-    display: inline-block;
+    display: none;
     padding: 8px 20px 8px 20px;
     border-radius: 3px;
-    position: absolute;
-    left: -30px;
-    top: 260px;
-    transform: rotate(90deg);
-    border-radius: 12px 12px 0px 0;
     z-index: 9;
+    position: relative;
 }
 
 .hero-slider .tns-nav button {
@@ -1496,7 +1466,7 @@ p {
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
     margin: 0;
-    background: #fff;
+    background: #273c75;
     display: inline-block;
     border: none;
     margin-right: 9px;
@@ -1526,7 +1496,7 @@ p {
 }
 
 .feature-bg-blue {
-    background-color: #273c75;
+    background-color: #273c75a9;
 }
 
 .Features .feature-content {
@@ -1709,7 +1679,6 @@ p {
 
 .services {
     background: #eceef7;
-    padding-bottom: 30px;
 }
 
 .services .section-title {
@@ -1734,30 +1703,29 @@ p {
 }
 
 .services .single-service .serial span {
-    font-size: 50px;
+    font-size: 35px;
+    font-weight: 200;
     left: 20px;
     top: 10px;
     height: 80px;
     width: 80px;
     line-height: 85px;
     text-align: center;
-    background: #273c75;
-    color: #ffffff;
+    color: #273c75a9;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    background: #c8a64a;
-    border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+    background: transparent;
 }
 
 .services .single-service:hover {
-    background: #273c75;
+    background: #273c7581;
 }
 
 .services .single-service:hover .serial span {
     border-color: transparent;
-    background: #c8a64a;
-    color: #ffffff;
+    background: #ffffff;
+    color: #273c75a9;
     border-radius: 50%;
 }
 
@@ -2196,7 +2164,7 @@ p {
 
 .testimonials .tns-nav {
     background: #fff;
-    display: inline-block;
+    display: none;
     padding: 8px 12px 11px 20px;
     border-radius: 3px;
     position: absolute;

@@ -1,4 +1,10 @@
-{% extends 'main/index.html' %} {% load static %} {% block contain%}
+{% extends 'main/index.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block contain%}
+<!--  -->
+{% load fontawesome_5 %}
 
 <section class="services section p-lg-4">
     <div class="container-fluid">
@@ -6,10 +12,16 @@
         <div class="row">
             {% for item in all_programs %}
             <div class="col-lg-3 col-md-6 col-12">
-                <a href="#">
+                <a href="{% url 'single-program' item.program_name %}">
                     <div class="single-service wow fadeInUp" data-wow-delay=".2s">
                         <div class="serial">
-                            <span><i class="lni lni-code"></i></span>
+                            {% if item.program_icon %}
+                            <span>{{item.program_icon.as_html}}</span>
+                            <!--  -->
+                            {% else %}
+                            <span><i class="lni lni-graduation"></i></span>
+                            <!--  -->
+                            {% endif %}
                         </div>
                         <h3><a href="{% url 'single-program' item.program_name %}">{{item.program_name}}</a></h3>
                     </div>

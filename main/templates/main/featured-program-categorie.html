@@ -1,7 +1,7 @@
 {% load static %}
 <!--  -->
 {% if feature_program %}
-<section class="services section">
+<section style="padding: 20px 0 30px 0; " class="services">
     <div class="container-lg">
         <div class="row">
             {% for items in feature_program %}
@@ -9,7 +9,13 @@
                 <a href="{% url 'single-program' items.program_name %}">
                     <div class="single-service wow fadeInUp" data-wow-delay=".2s">
                         <div class="serial">
-                            <span><i class="lni lni-code"></i></span>
+                            {% if items.program_icon %}
+                            <span>{{items.program_icon.as_html}}</span>
+                            <!--  -->
+                            {% else %}
+                            <span><i class="lni lni-graduation"></i></span>
+                            <!--  -->
+                            {% endif %}
                         </div>
                         <h3><a href="{% url 'single-program' items.program_name %}">{{items.program_name}}</a></h3>
                     </div>

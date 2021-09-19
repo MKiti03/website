@@ -23,4 +23,8 @@ urlpatterns = [
 
     path('all-posts', BlogPostPage.as_view(), name= 'post'),
     path('all-posts/<str:single_post_url>/', views.singlePost, name='single-post'),
+
+    path("contact-us/", views.contactUsPage, name="contact"),
+    path("about-us/", views.aboutUsPage, name="about"),
+
 ]
