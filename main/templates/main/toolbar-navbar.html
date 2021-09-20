@@ -1,6 +1,6 @@
 {% load static %}
 
-<header class="header navbar-light bg-light navbar-area d-none d-lg-block">
+<div class="container">
     <!-- Toolbar Start -->
     {% include 'main/toolbar.html' %}
     <!-- Toolbar End -->
@@ -10,8 +10,8 @@
     <!-- Navbar End -->
     <!-- container -->
 
-</header>
-<nav style="height: 80px; z-index: 106;" class="navbar navbar-expand-lg navbar-light bg-light d-lg-none .d-xl-block">
+</div>
+<!-- <nav style="height: 80px; z-index: 106;" class="navbar navbar-expand-lg navbar-light bg-light d-lg-none .d-xl-block">
     <div class="container-md">
         <a class="navbar-brand" href="{% url 'index' %}">
             <img src="{% static 'images/logo.png' %}" alt="Logo">
@@ -46,9 +46,7 @@
                 <li class="nav-item">
                     <a class="page-scroll mx-1" href="{% url 'index' %}">Home</a>
                 </li>
-                {% if category_to_navebar %}
-                <!--  -->
-                {% for item in category_to_navebar %}
+                {% if category_to_navebar %} {% for item in category_to_navebar %}
                 <li class="nav-item">
                     <a class="page-scroll mx-1" href="{% url 'single-category' item.program_category_title %}">{{item.program_category_title}}</a>
                 </li>
@@ -72,4 +70,4 @@
 
         </div>
     </div>
-</div>
+</div> -->

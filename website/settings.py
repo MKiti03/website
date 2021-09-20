@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=34b_m_=t)p7@!$(0v(zxttudc*8diz@+66#7_@2g-i@*$s@!j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vecademy-consulting.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['vecademy-consulting.herokuapp.com', 'localhost', '127.0.0.1', '192.168.100.13']
 
 
 # Application definition
@@ -148,5 +148,33 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Tawto config
 TAWKTO_ID_SITE='613d75e625797d7a89fe8033'
 TAWKTO_API_KEY='b57f673dff8d9650191293800d6abd1db9dad74d'
+
+
+CKEDITOR_CONFIGS = {
+    # django-ckeditor defaults
+    'default': {
+        # tab key conversion space number
+        'tabSpaces': 4,
+        # Toolbar Style
+        'toolbar': 'Custom',
+        # Toolbar buttons
+        'toolbar_Custom': [
+            # Emotional Code Block
+            ['Smiley', 'CodeSnippet'], 
+            # Font Style
+            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
+            # Font color
+            ['TextColor', 'BGColor'],
+            # Link link
+            ['Link', 'Unlink'],
+            # List of items
+            ['NumberedList', 'BulletedList'],
+            # Maximization
+            ['Maximize']
+        ],
+        # Add Code Block Plug-ins
+        'extraPlugins': ','.join(['codesnippet']),
+    }
+}
 
 

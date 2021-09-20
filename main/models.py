@@ -28,8 +28,8 @@ class Country(models.Model):
     country_name = models.CharField(max_length=254, null=True, blank=True)
     map_latitud = models.IntegerField(null=True, blank=True)
     map_longitud = models.IntegerField(null=True, blank=True)
-    country_flag = models.ImageField(default = 'default.png')
-    country_image = models.ImageField(default = 'default.png')
+    country_flag = models.ImageField(default = 'default.png', upload_to = 'countries-flags/%Y/%m/%d/')
+    country_image = models.ImageField(default = 'default.png', upload_to = 'countries-images/%Y/%m/%d/')
     country_description = RichTextField(null = True, blank = True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -47,7 +47,7 @@ class CountryFact(models.Model):
     fact_name = models.CharField(max_length=254, null=True, blank=True)
     chose_country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True, blank=True)
     fact_description = models.TextField(max_length=254, null=True, blank=True)
-    fact_icon = models.CharField(max_length=254, null=True, blank=True)
+    fact_icon =IconField(null = True, blank =True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
@@ -63,8 +63,8 @@ class CountryFact(models.Model):
 class University(models.Model):
     university_name = models.CharField(max_length=254, null=True, blank=True)
     chose_country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True, blank=True)
-    university_logo = models.ImageField(default = 'default.png')
-    university_image = models.ImageField(default = 'default.png')
+    university_logo = models.ImageField(default = 'default.png', upload_to = 'universities-images/%Y/%m/%d/')
+    university_image = models.ImageField(default = 'default.png', upload_to = 'universities-images/%Y/%m/%d/')
     university_description = RichTextField(blank = True, null = True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -82,7 +82,7 @@ class UniversityFact(models.Model):
     fact_name = models.CharField(max_length=254, null=True, blank=True)
     chose_university = models.ForeignKey(University, on_delete=models.PROTECT, null=True, blank=True)
     fact_description = models.TextField(max_length=254, null=True, blank=True)
-    fact_icon = models.CharField(max_length=254, null=True, blank=True)
+    fact_icon = IconField(null = True, blank =True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
@@ -98,7 +98,7 @@ class UniversityFact(models.Model):
 class ProgramCategory(models.Model):
     program_category_title = models.CharField(max_length=254, null= True, blank=True)
     program_category_description = RichTextField(null = True, blank = True)
-    program_category_image = models.ImageField(default = 'default')
+    program_category_image = models.ImageField(default = 'default', upload_to = 'programs-images/%Y/%m/%d/')
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
@@ -117,8 +117,9 @@ class Program(models.Model):
     program_name = models.CharField(max_length=254, null=True, blank=True)
     program_category = models.ForeignKey(ProgramCategory, blank=True, null=True, on_delete=models.PROTECT)
     choose_university = models.ForeignKey(University, on_delete=models.PROTECT, null=True, blank=True)
+    program_short_description = models.TextField(max_length=200, null=True, blank=True)
     program_description = RichTextField(blank = True, null = True)
-    program_image = models.ImageField(default = 'default.png')
+    program_image = models.ImageField(default = 'default.png', upload_to = 'programs-images/%Y/%m/%d/')
     program_icon = IconField(null = True, blank =True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -138,7 +139,7 @@ class ProgramFact(models.Model):
     fact_name = models.CharField(max_length=254, null=True, blank=True)
     chose_program = models.ForeignKey(Program, on_delete=models.PROTECT, null=True, blank=True)
     fact_description = models.TextField(max_length=40, null=True, blank=True)
-    fact_icon = models.CharField(max_length=254, null=True, blank=True)
+    fact_icon = IconField(null = True, blank =True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
@@ -154,7 +155,7 @@ class ProgramFact(models.Model):
 class PostCategory(models.Model):
     post_category_title = models.CharField(max_length=254, null= True, blank=True)
     post_category_description = models.TextField(max_length=254 ,null = True, blank = True)
-    post_category_image = models.ImageField(default = 'default')
+    post_category_image = models.ImageField(default = 'default', upload_to = 'blog-images/%Y/%m/%d/')
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
@@ -172,7 +173,7 @@ class BlogPost(models.Model):
     post_title = models.CharField(max_length=254, null =True, blank=True)
     post_category = models.ManyToManyField(PostCategory, blank=True)
     post_description = RichTextField(null = True, blank = True)
-    post_image = models.ImageField(default = 'default.png')
+    post_image = models.ImageField(default = 'default.png', upload_to = 'blog-images/%Y/%m/%d/')
     
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -223,7 +224,7 @@ class PostComment(models.Model):
 class TeamMember(models.Model):
     name = models.CharField(max_length=254, null =True, blank=True)
     role = models.CharField(max_length=254, null=True, blank=True)
-    profile_image = models.ImageField(default = 'default.png')
+    profile_image = models.ImageField(default = 'default.png', upload_to = 'testimonials-images/%Y/%m/%d/')
 
     phone_number = models.CharField(max_length=254, null=True,blank=True)
     email = models.EmailField(max_length=254, null=True, blank=True)

@@ -1,5 +1,10 @@
 {% load static %}
 <!--  -->
+<style>
+    .fact_icon i {
+        display: none;
+    }
+</style>
 {% if program_fact %}
 <div style="border: 1px solid #1332869c;" class="card p-2 mt-10">
     <div class="row g0">
@@ -15,13 +20,21 @@
             {% for item in program_fact %}
             <div class="col-lg-4">
                 <div class="card border-none mb-3">
-                    <div class="fact-icon-container">
-                        <i class="fact-icon lni lni-investment"></i>
-                    </div>
-                    <div class="fact-content-container">
-                        <div class="card-body">
-                            <h5 class="fact-title card-title">{{item.fact_name}}</h5>
-                            <p class="fact-content card-text">{{item.fact_description}}</p>
+                    <div class="row g-2">
+                        <div class="col-lg-3">
+                            <div class="fact-icon">
+                                {% if item.fact_icon %}
+                                <!--  -->
+                                {{item.fact_icon.as_html}}
+                                <!--  -->
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="card-body">
+                                <h5 class="fact-title card-title">{{item.fact_name}}</h5>
+                                <p class="fact-content card-text">{{item.fact_description}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
