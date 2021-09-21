@@ -1,39 +1,37 @@
-{% extends 'main/index.html' %} {% load static %} {% block contain%}
-<section style="margin-top: -40px;" class="section p-lg-5 service-single">
-    <div class="container-fluid">
-        <h3 class="program-name mb-20">{{single_program.program_name}}</h3>
+{% extends 'main/index.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block contain%}
+<main>
+    <div class="container-fluid p-4">
+        <h3 class="mb-4 display-6">
+            <span class="main-color">{{single_program.program_name}}</span>
+        </h3>
         <div class="row g-5">
             <div class="col-lg-8 col-md-7 col-12">
                 <div class="row g-5">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <!-- start Page sidebar -->
                         {% include 'main/single-program-contain.html' %}
                         <!-- End Page sidebar -->
                     </div>
-                    <!-- start Related University -->
-                    <!-- <div class="col-lg-12">
-                        
-                        {% include 'main/single-program-related-university.html' %}
-                        
-                    </div> -->
-                    <!-- End Related University -->
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <a class="btn btn-on-white" href="{% url 'programs' %}">All programs</a>
+                            <a class="btn btn-on-white" href=" {% url 'contact' %} ">Apply now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <aside class="col-lg-4 col-md-5">
                 <!-- start Page sidebar -->
-                {% include 'main/page-sidebar.html' %}
+                <div class="position-sticky" style="top: 2rem;">
+                    {% include 'main/page-sidebar.html' %}
+                </div>
                 <!-- End Page sidebar -->
             </aside>
         </div>
     </div>
-</section>
-<!-- Start Partners Area -->
-{% include 'main/latest-new.html' %}
-<!-- End Partners Area -->
-
-
-<!-- Start Newsletter Area -->
-{% include 'main/newsletter.html' %}
-<!-- /End Newsletter Area -->
-
-{% endblock %}
+</main>
+<hr> {% endblock %}

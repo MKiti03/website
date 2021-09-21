@@ -120,7 +120,7 @@ class Program(models.Model):
     program_short_description = models.TextField(max_length=200, null=True, blank=True)
     program_description = RichTextField(blank = True, null = True)
     program_image = models.ImageField(default = 'default.png', upload_to = 'programs-images/%Y/%m/%d/')
-    program_icon = IconField(null = True, blank =True)
+    program_icon = IconField(null = True, blank =True, default = 'Graduation Cap')
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)

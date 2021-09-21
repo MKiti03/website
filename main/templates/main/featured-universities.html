@@ -9,20 +9,22 @@
         <div class="row align-items-stretch g-4 py-4">
             {% for item in featured_universities %}
             <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-white rounded-3 shadow-lg" style="background-image: url('{{item.university_image.url}}');">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 overlay">
-                        <h2 class="pt-5 mt-5 mb-4 lh-1 fw-bold position-relative">{{item.university_name}}</h2>
+                <a style="text-decoration: none;" href="{% url 'signle-university' item.university_name %}">
+                    <div class="card card-cover h-100 overflow-hidden text-white rounded-3 shadow-lg" style="background-image: url('{{item.university_image.url}}');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 overlay">
+                            <h2 class="pt-5 mt-5 mb-4 lh-1 fw-bold position-relative">{{item.university_name}}</h2>
 
-                        <div class="row g-4 position-relative">
-                            <div class="col-3">
-                                <img src="{{item.university_logo.url}}" alt="Bootstrap" width="50" height="50" class="rounded-circle border border-white">
-                            </div>
-                            <div class="col-3">
-                                <img src="{{item.chose_country.country_flag.url}}" alt="Bootstrap" width="50" height="50" class="rounded-circle border border-white">
+                            <div class="row g-4 position-relative">
+                                <div class="col-3">
+                                    <img src="{{item.university_logo.url}}" alt="Bootstrap" width="50" height="50" class="rounded-circle border border-white">
+                                </div>
+                                <div class="col-3">
+                                    <img src="{{item.chose_country.country_flag.url}}" alt="Bootstrap" width="50" height="50" class="rounded-circle border border-white">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
