@@ -1,57 +1,14 @@
 {% load static %}
-<!-- <div class="container-fluid pad-r-30">
-    <div class="row align-items-center">
-        <div class="col-lg-12">
-            <div class="nav-inner">
-                <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="{% url 'index' %}">
-                        <img src="{% static 'images/logo.png' %}" alt="Logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="toggler-icon"></span>
-                    <span class="toggler-icon"></span>
-                    <span class="toggler-icon"></span>
-                </button>
-                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-
-                        <ul id="nav" class="navbar-nav ms-auto mx-1">
-                            <li class="nav-item">
-                                <a class="page-scroll mx-1" href="{% url 'index' %}">Home</a>
-                            </li>
-                            {% if category_to_navebar %} {% for item in category_to_navebar %}
-                            <li class="nav-item">
-                                <a class="page-scroll mx-1" href="{% url 'single-category' item.program_category_title %}">{{item.program_category_title}}</a>
-                            </li>
-                            {% endfor %} {% endif %}
-                            <li class="nav-item">
-                                <a class="page-scroll" href="{% url 'universitis' %}">Universities</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="page-scroll" href="{% url 'countries' %}">Countries</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="page-scroll" href="{% url 'post' %}">Post & Event</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
+<!--  -->
+{% if category_to_navebar %}
+<div class="container">
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav">
+            {% for item in category_to_navebar %}
+            <a class="p-2 " href="{% url 'single-category' item.program_category_title %}">{{item.program_category_title}}</a>
+            <!--  -->
+            {% endfor %}
+        </nav>
     </div>
-</div> -->
-<div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-        <a class="p-2 link-secondary" href="#">World</a>
-        <a class="p-2 link-secondary" href="#">U.S.</a>
-        <a class="p-2 link-secondary" href="#">Technology</a>
-        <a class="p-2 link-secondary" href="#">Design</a>
-        <a class="p-2 link-secondary" href="#">Culture</a>
-        <a class="p-2 link-secondary" href="#">Business</a>
-        <a class="p-2 link-secondary" href="#">Politics</a>
-        <a class="p-2 link-secondary" href="#">Opinion</a>
-        <a class="p-2 link-secondary" href="#">Science</a>
-        <a class="p-2 link-secondary" href="#">Health</a>
-        <a class="p-2 link-secondary" href="#">Style</a>
-        <a class="p-2 link-secondary" href="#">Travel</a>
-    </nav>
 </div>
+{% endif %}

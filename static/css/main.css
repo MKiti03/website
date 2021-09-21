@@ -1,29 +1,175 @@
-/*
-Template Name: Bizfinity
-Author: GrayGrids
-*/
-
-
-/*===========================
-    01.COMMON css 
-===========================*/
-
-@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Sen:wght@400;700;800&display=swap");
-html {
-    scroll-behavior: smooth;
+body {
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
 }
 
-.error {
-    color: orangered;
+h3 {
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+    font-size: 20px;
 }
 
-.success {
-    color: green;
+h2 {
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    line-height: 36px;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+    font-size: 18px;
+    padding-left: 2%;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.main-bg-color {
+    background-color: #273c75;
+}
+
+.btn-bg-main {
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    background-color: #3a61cc;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.btn-bg-main:hover {
+    background-color: #ffffff;
+    color: #273c75;
+}
+
+.divider {
+    height: 5px;
+}
+
+.btn-bg-white {
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: #3a61cc;
+    font-size: 18px;
+}
+
+.btn-bg-white:hover {
+    background-color: #3a61cc;
+    color: #ffffff;
+}
+
+.main-color {
+    color: #273c75;
+    text-decoration: none;
+}
+
+.toolbar {
+    background-color: #ffffff;
+    line-height: 1;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.toolbar i {
+    font-size: 18px;
+    margin-right: 5px;
+    color: #000000;
+}
+
+.toolbar span {
+    font-size: 16px;
+    margin-right: 5px;
+    color: #000000;
+}
+
+.toolbar ul li a {
+    font-size: 16px;
+    margin-left: -15px;
+    margin-right: 5px;
+    color: #000000;
+}
+
+.toolbar ul li a:hover {
+    color: #132d74;
+}
+
+.toolbar img {
+    max-width: 150px;
+}
+
+.toolbar-logo {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif
+    /*rtl:Amiri, Georgia, "Times New Roman", serif*/
+    ;
+    font-size: 2.25rem;
+}
+
+.toolbar-logo:hover {
+    text-decoration: none;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroller .nav a {
+    text-decoration: none;
+    font-size: 17px;
+    color: #273c75;
+    font-weight: 500;
+}
+
+.nav-scroller .nav-link {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: .875rem;
 }
 
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
+/* overalay propreties */
+
+.overlay {
+    position: relative
+}
+
+.overlay::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background: #000;
+    content: "";
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.carousel-item.overlay::before {
+    opacity: 0.55;
+    background: #000;
+}
 
 
 /* Carousel base class */
@@ -32,12 +178,23 @@ html {
     margin-bottom: 4rem;
 }
 
+.carousel-btn {
+    height: 50px;
+    width: 50px;
+}
+
 
 /* Since positioning the image, we need to help out the caption */
 
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
+}
+
+.bg-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 
@@ -55,13 +212,6 @@ html {
     height: 32rem;
 }
 
-
-/* MARKETING CONTENT
-  -------------------------------------------------- */
-
-
-/* Center align the text within the three columns below the carousel */
-
 .marketing .col-lg-4 {
     margin-bottom: 1.5rem;
     text-align: center;
@@ -77,20 +227,6 @@ html {
 .marketing .col-lg-4 p {
     margin-right: .75rem;
     margin-left: .75rem;
-}
-
-
-/* Featurettes
-  ------------------------- */
-
-
-/* Thin out the marketing headings */
-
-.featurette-heading {
-    font-weight: 300;
-    line-height: 1;
-    /* rtl:remove */
-    letter-spacing: -.05rem;
 }
 
 
@@ -118,12 +254,35 @@ html {
 
 /* Start featured section CSS */
 
-.b-example-divider {
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+.icon-bg-color {
+    background-color: #0d2e86;
+}
+
+.description {
+    color: rgb(124, 124, 124);
+}
+
+.main-color a {
+    color: #0d2e86;
+    text-decoration: none;
+}
+
+.main-color a:hover {
+    color: #3a61cc;
+    text-decoration: none;
+}
+
+.read-more {
+    width: auto;
+    padding: 5px 10px 5px 10px;
+    background-color: #0d2e86;
+    text-decoration: none;
+    color: white;
+}
+
+.read-more:hover {
+    background-color: #3a61cc;
+    color: white;
 }
 
 .bi {
@@ -141,18 +300,6 @@ html {
     font-size: 2rem;
     color: #fff;
     border-radius: .75rem;
-}
-
-.icon-link {
-    display: inline-flex;
-    align-items: center;
-}
-
-.icon-link>.bi {
-    margin-top: .125rem;
-    margin-left: .125rem;
-    transition: transform .25s ease-in-out;
-    fill: currentColor;
 }
 
 .icon-link:hover>.bi {
@@ -198,31 +345,6 @@ html {
 
 /* stylelint-disable selector-list-comma-newline-after */
 
-.blog-header {
-    line-height: 1;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.blog-header-logo {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/
-    ;
-    font-size: 2.25rem;
-}
-
-.blog-header-logo:hover {
-    text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/
-    ;
-}
-
 .display-4 {
     font-size: 2.5rem;
 }
@@ -231,30 +353,6 @@ h6 {
     .display-4 {
         font-size: 3rem;
     }
-}
-
-.nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
-
-.nav-scroller .nav-link {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    font-size: .875rem;
 }
 
 .card-img-right {
@@ -274,53 +372,6 @@ h6 {
     .h-md-250 {
         height: 250px;
     }
-}
-
-
-/* Pagination */
-
-.blog-pagination {
-    margin-bottom: 4rem;
-}
-
-.blog-pagination>.btn {
-    border-radius: 2rem;
-}
-
-
-/*
-   * Blog posts
-   */
-
-.blog-post {
-    margin-bottom: 4rem;
-}
-
-.blog-post-title {
-    margin-bottom: .25rem;
-    font-size: 2.5rem;
-}
-
-.blog-post-meta {
-    margin-bottom: 1.25rem;
-    color: #727272;
-}
-
-
-/*
-   * Footer
-   */
-
-.blog-footer {
-    padding: 2.5rem 0;
-    color: #727272;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-top: .05rem solid #e5e5e5;
-}
-
-.blog-footer p:last-child {
-    margin-bottom: 0;
 }
 
 blockquote {
@@ -567,321 +618,75 @@ blockquote h4 {
 .blog-list .single-list .button .btn {}
 
 
-/*======================================
-	16. End Blog post and Even CSS
-========================================*/
+/* Footer style */
 
-
-/*======================================
-	17. Start Footer CSS
-========================================*/
-
-.footer {
-    background-color: #fff;
-    z-index: 2;
-    position: relative;
-}
-
-.footer .footer-top {
-    padding-top: 80px;
-    padding-bottom: 50px;
-}
-
-.footer .logo {
-    margin-bottom: 25px;
-}
-
-.footer .logo img {
-    width: 170px;
-}
-
-.footer .f-about {
-    padding-right: 30px;
-}
-
-.footer .f-about p {
-    color: #777;
-    font-size: 16px;
-    display: block;
-    line-height: 27px;
-}
-
-.footer .f-about .footer-social {
-    margin-top: 35px;
-}
-
-.footer .f-about .footer-social ul {}
-
-.footer .f-about .footer-social ul li {
-    display: inline-block;
-    margin-right: 6px;
-}
-
-.footer .f-about .footer-social ul li:last-child {
-    margin: 0;
-}
-
-.footer .f-about .footer-social ul li a {
-    font-size: 14px;
-    color: #333;
-    height: 35px;
-    width: 35px;
-    text-align: center;
-    display: block;
-    border: 1px solid #eee;
-    line-height: 35px;
-    background: #273c75;
-    border: none;
-    color: #fff;
-}
-
-.footer .f-about .footer-social ul li a:hover {
-    background: #c8a64a;
-    color: #fff;
-}
-
-.footer .newsletter-form {
-    padding: 41px;
-    border: 1px solid #eee;
-}
-
-.footer .newsletter-form form {}
-
-.footer .newsletter-form input {
-    width: 400px;
-    border-bottom: 3px solid #eee;
-    color: #333;
-    height: 60px;
-    display: inline-block;
-    border: none;
-    border: 2px solid #eee;
-    border-radius: 0;
-    font-weight: 500;
-    font-size: 14px;
-    display: block;
-    width: 100%;
-    padding: 0px 20px;
-}
-
-.footer .newsletter-form .button {
-    display: inline-block;
+.footer-about {
     width: 100%;
 }
 
-.footer .newsletter-form .button .btn {
-    height: 60px;
-    width: 100%;
-    display: block;
-    margin-top: 14px;
+.footer-about a i {
+    background-color: #273c75;
+    padding: 10px;
+    height: 70px;
+    width: 70px;
+    color: #ffffff;
+    font-size: 22px;
+    border-radius: 5px;
 }
 
-.footer .footer-middle {
-    padding-bottom: 50px;
-    padding-top: 50px;
-}
-
-.footer .single-footer {
-    margin-top: 30px;
-}
-
-.footer .single-footer h3 {
-    color: #273c75;
-    font-size: 23px;
-    font-weight: 600;
-    position: relative;
-    text-transform: capitalize;
-    margin-bottom: 25px;
-}
-
-
-/* Footer Link */
-
-.footer .f-link ul li {
-    margin-bottom: 13px;
-    position: relative;
-}
-
-.footer .f-link ul li:last-child {
-    margin: 0;
-}
-
-.footer .f-link ul li:hover:before {
-    background: #333;
-}
-
-.footer.index2 .f-link ul li:hover:before {
-    background: #333;
-}
-
-.footer .f-link ul li:last-child {
-    margin-bottom: 0px;
-}
-
-.footer .f-link ul li a {
-    display: inline-block;
-    color: #555;
-    font-size: 17px;
-    font-weight: 400;
-    position: relative;
-}
-
-.footer .f-link ul li a:hover {
-    color: #273c75;
-    padding-left: 5px;
-}
-
-
-/* Footer Contact */
-
-.footer .f-contact {}
-
-.footer .f-contact p {
-    color: #555;
-    margin-bottom: 20px;
-    line-height: 30px;
-}
-
-.footer .f-contact ul {}
-
-.footer .f-contact ul li {
-    display: inline-block;
-    color: #555555;
-    font-size: 17px;
-    font-weight: 400;
-}
-
-.footer .f-contact ul li a {
-    display: inline-block;
-    color: #555;
-    font-size: 17px;
-    font-weight: 500;
-    font-weight: 400;
-}
-
-.footer .f-contact ul li a:hover {
-    padding: 0;
-}
-
-.footer .f-contact ul li a i {}
-
-.footer .f-contact ul li i {
-    display: inline-block;
-    margin-right: 7px;
-    font-size: 20px;
+.footer-about a i:hover {
+    transition: 0.6s;
+    background-color: #273c7536;
     color: #273c75;
 }
 
-.footer .custom-flex {
-    margin-right: -15px;
-}
-
-.footer .custom-flex li {
-    width: calc(33.33% - 15px);
-    margin-bottom: 15px;
-    margin-right: 15px;
-}
-
-.footer .gallery ul {
-    margin-left: -10px;
-    overflow: hidden;
-}
-
-.footer .gallery ul li {
-    float: left;
-    margin: 10px 0 0 10px;
-    padding: 0;
-}
-
-.footer .gallery ul li a {
-    position: relative;
-}
-
-.footer .gallery ul li a:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background: #273c75;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-}
-
-.footer .gallery ul li a:hover:before {
-    opacity: 0.8;
-    visibility: visible;
-}
-
-.footer .gallery ul li a i {
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
+.footer-link ul li a {
+    text-decoration: none;
+    color: rgb(65, 65, 65);
     font-size: 18px;
-    color: #fff;
-    display: block;
-    border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -15px;
-    margin-top: -15px;
-    text-align: center;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0);
-}
-
-.footer .gallery ul li a:hover i {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1);
-    opacity: 1;
-    visibility: visible;
-}
-
-.footer .gallery ul li img {
-    width: 120px;
-    height: 120px;
-}
-
-.footer .footer-bottom {}
-
-.footer .footer-bottom .inner {
-    padding: 30px 0;
-    border-top: 2px solid #eee;
-}
-
-.footer .footer-bottom p {
-    color: #555;
-}
-
-.footer .footer-bottom p a {
     font-weight: 400;
-    display: inline-block;
-    margin-left: 6px;
-    color: #333;
 }
 
-.footer .footer-bottom p a:hover {
-    color: #3E54FF;
+.footer-linkli ul li a:hover {
+    transition: 0.8s;
+    color: #273c75;
+    margin-left: 4px;
 }
 
-.footer .footer-bottom .left {}
-
-.footer .footer-bottom .right {
-    text-align: right;
+.footer-link ul li {
+    margin-top: 10px;
 }
 
+.footer-contact {
+    min-width: 100%;
+}
 
-/*======================================
-	End Footer	CSS
-========================================*/
+.footer-contact ul li {
+    margin-top: 10px;
+}
+
+.footer-contact ul li i {
+    margin-top: 10px;
+    font-size: 24px;
+    font: 600;
+    margin-right: 10px;
+}
+
+.footer-contact ul li a {
+    color: #272727;
+    text-decoration: none;
+    pointer-events: none;
+    font-size: 20px;
+    font: 400;
+}
+
+.footer-bottum p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #666;
+}
+
+.footer-bottum p a {
+    text-decoration: none;
+    color: #273c75;
+}

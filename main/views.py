@@ -9,12 +9,21 @@ from contact_form.models import GetIntouch
 def index(request):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    
     # Display featured program on the home page
     feature_program = Program.objects.all().filter(set_featured = True, set_draft = False).order_by('-date_created')[:16]
+
+    # display countries on the home page
+    featured_coutries = Country.objects.all().filter(set_draft = False).order_by('-date_created')[:6]
+    
+    # featured universities on  the home page
+    featured_universities = University.objects.all().filter(set_draft = False).order_by('-date_created')[:6]
 
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
     context = {
+        'featured_universities':featured_universities,
+        'featured_coutries':featured_coutries,
         'featured_post':featured_post,
         'category_to_navebar':category_to_navebar,
         'feature_program':feature_program,

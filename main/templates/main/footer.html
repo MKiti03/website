@@ -1,97 +1,69 @@
 {% load static %}
-<footer class="footer">
-    <!-- Start Middle Top -->
-    <div class="footer-middle">
-        <div class="container">
-            <div class="row">
-                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-5 col-sm-12 col-xs-12">
-                    <!-- Single Widget -->
-                    <div class="f-about single-footer">
-                        <div class="logo">
-                            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="#"></a>
-                        </div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
-                        <div class="footer-social">
-                            <ul>
-                                <li><a href="#"><i class="lni lni-facebook-filled"></i></a></li>
-                                <li><a href="#"><i class="lni lni-twitter-original"></i></a></li>
-                                <li><a href="#"><i class="lni lni-linkedin-original"></i></a></li>
-                                <li><a href="#"><i class="lni lni-instagram-original"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- End Single Widget -->
+
+<!-- Start Middle Top -->
+<div class="container-fluid px-3 mt-5 py-3">
+    <div class="row g-4">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 d-flex justify-content-center">
+            <!-- Single Widget -->
+            <div class="footer-about">
+                <div class="logo">
+                    <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="#"></a>
                 </div>
-                <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-12 col-xs-12">
-                    <div class="row">
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-link">
-                                <h3>Company</h3>
-                                <ul>
-                                    <li><a href="#">About Comapny</a></li>
-                                    <li><a href="#">World Wide Clients</a></li>
-                                    <li><a href="#">Happy People’s</a></li>
-                                    <li><a href="#">Winning Awards</a></li>
-                                    <li><a href="#">Company Statics</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-contact f-link">
-                                <h3>Contact Us</h3>
-                                <p>Get in touch with our costumer service</p>
-                                <ul class="footer-contact">
-                                    <li><i class="lni lni-phone"></i> <a href="#">(+237) 650 274 877 / 693 420 100</a></li>
-                                    <li><i class="lni lni-envelope"></i> <a href="#">info@vecademy.com</a></li>
-                                    <li><i class="lni lni-map-marker"></i> Bastos, Nkoleton, Entree Meumi Hotel, Yaounde, Cameroon.</li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
+                <p class="mt-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+                <div class="row g-2 mx-4 mt-4">
+                    <div class="col-2">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
                     </div>
-                </div>
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 col-12">
-                    <!-- Single Widget -->
-                    <div class="single-footer gallery">
-                        <h3>Instagram Feed</h3>
-                        <ul class="list">
-                            <li>
-                                <a href="#"><img src="{% static 'images/gallery1.jpg' %}" alt="#"><i class="lni lni-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="{% static 'images/gallery2.jpg' %}" alt="#"><i class="lni lni-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="{% static 'images/gallery3.jpg' %}" alt="#"><i class="lni lni-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="{% static 'images/gallery4.jpg' %}" alt="#"><i class="lni lni-instagram"></i></a>
-                            </li>
-                        </ul>
+                    <div class="col-2">
+                        <a href="#"><i class="bi bi-twitter"></i></a>
                     </div>
-                    <!-- End Single Widget -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/ End Footer Middle -->
-    <!-- Start Footer Bottom -->
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="inner">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="left">
-                            <p>Copyright<a href="https://vecademy.com/" rel="nofollow" target="_blank">Vecademy</a> 2021 all rights reserved.</p>
-                        </div>
+                    <div class="col-auto">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                    <div class="col-2">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
             </div>
+            <!-- End Single Widget -->
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 d-flex justify-content-center">
+            <div class="footer-link">
+                <h3 class="main-color">Quick links</h3>
+                <ul class="navbar-nav">
+                    <li><a href="{% url 'about' %}">About us</a></li>
+                    <li><a href="{% url 'contact' %}">Get in touch</a></li>
+                    <li><a href="{% url 'programs' %}">All programs</a></li>
+                    <li><a href="{% url 'countries' %}">All countries</a></li>
+                    <li><a href="{% url 'universitis' %}">All universities</a></li>
+                    <li><a href="{% url 'program-category' %}">Programs categories</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 d-flex justify-content-center">
+            <!-- Single Widget -->
+            <div class="footer-contact">
+                <h3 class="main-color">Contact Us</h3>
+                <ul class="navbar-nav">
+                    <li><i class="bi bi-telephone"></i> <a href="#">(+237) 650 274 877 / 693 420 100</a></li>
+                    <li><i class="bi bi-envelope"></i> <a href="#">info@vecademy.com</a></li>
+                    <li><i class="bi bi-geo-alt"></i> <a href="#"> Bastos, Nkoleton, Entree Meumi Hotel, Yaounde, Cameroon.</a></li>
+                </ul>
+            </div>
+            <!-- End Single Widget -->
         </div>
     </div>
-    <!-- End Footer Middle -->
-</footer>
+
+    <div class="row mt-5 pt-3">
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="footer-bottum">
+                <p>Copyright<a href="https://vecademy.com/" rel="nofollow" target="_blank"> Vecademy</a> 2021 all rights reserved.</p>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="footer-bottum">
+                <p>Developed and designed by Vecademy team</p>
+            </div>
+        </div>
+    </div>
+</div>

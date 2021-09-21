@@ -1,48 +1,32 @@
 {% load static %}
-<!-- <div class="toolbar-area">
+<header class="toolbar py-3">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-5">
-                <div class="toolbar-contact">
-                    <p><i class="lni lni-envelope"></i><a href="#">info@vecademy.com</a></p>
-                    <p><i class="lni lni-phone"></i><a href="#">(+237) 650 274 877 / 693 420 100</a></p>
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-5 pt-1">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <i class="bi bi-telephone"></i>
+                        <span>(+237)650274877/693420100</span>
+                    </div>
+                    <div class="col-lg-5">
+                        <i class="bi bi-envelope"></i></i>
+                        <span>info@vecademy.com</span>
+                    </div>
                 </div>
             </div>
-            <div class="col-5">
-                <div class="toolbar-contact">
-                    <ul style="float: right;">
-                        <li class="toolbar-link"><a style="color: #ffff;" href="{% url 'about' %}">About us</a></li>
-                        <li class="toolbar-link"><a style="color: #ffff;" href="{% url 'contact' %}">Contact us</i></a></li>
-                    </ul>
-                </div>
+            <div class="col-1 d-flex justify-content-end align-items-center">
+                <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
             </div>
-            <div class="col-2">
-                <div class="toolbar-sl-share">
-                    <ul>
-                        <li><a href="#"><i class="lni lni-facebook-original"></i></a></li>
-                        <li><a href="#"><i class="lni lni-twitter-original"></i></a></li>
-                        <li><a href="#"><i class="lni lni-linkedin-original"></i></a></li>
-                        <li><a href="#"><i class="lni lni-instagram-original"></i></a></li>
-                    </ul>
-                </div>
+            <div class="col-6 d-flex justify-content-end align-items-center">
+                <ul class="nav">
+                    <li class="nav-items">
+                        <a class="nav-link" href="{% url 'about' %}">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact us</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </div>
-</div> -->
-
-<header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-        <div class="col-4 pt-1">
-            <a class="link-secondary" href="#">Subscribe</a>
-        </div>
-        <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">Large</a>
-        </div>
-        <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="link-secondary" href="#" aria-label="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-            </a>
-            <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
         </div>
     </div>
 </header>
