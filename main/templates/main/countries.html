@@ -1,40 +1,36 @@
 {% extends 'main/index.html' %} {% load static %} {% block contain%}
 <!-- Start Hero Area -->
-<div class="section">
-    <div class="container-md">
-        <div class="row mb-4 text-center">
-            <div class="col-lg-12 d-flex justify-content-center">
-                <h1 class="h2 text-bald ">Countries</h1>
+<main>
+    <div class="p-4">
+        <div class="container-fluid">
+            <div class="row mb-4 text-center">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <h1 class="h2 text-bald ">Countries</h1>
+                </div>
             </div>
-        </div>
-        {% if all_countries %}
-        <div class="row g-3 ">
-            {% for item in all_countries %}
-            <div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center">
-                <a class="remove-decoration" href="{% url 'single-country' item.country_name %}">
-                    <div class="card border-none ">
-                        <img src="{{item.country_flag.url}}" class="card-img-top country-image" alt="{{item.country_image}} ">
-                        <div class="card-body ">
-                            <h5 class="university-name card-title ">{{item.country_name}}</h5>
-                            <!-- <div>
-                                <h6 class="university-count">universities count <span class="university-count-span">5</span></h6>
-                            </div> -->
-                            <div style="width: 100%;">
-                                <a style="color: white;" href="{% url 'single-country' item.country_name %}" class="university-read-more">Fine out more</a>
+            {% if all_countries %}
+            <div class="row align-items-stretch g-4 py-4">
+                {% for item in all_countries %}
+                <div class="col-lg-3 col-md-6 col-12">
+                    <a style="text-decoration: none;" href="{% url 'single-country' item.country_name %}">
+                        <div class="card card-cover h-100 overflow-hidden text-white rounded-3 shadow-lg" style="background-image: url('{{item.country_image.url}}');">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 overlay">
+                                <h2 class="lh-1 fw-bold position-relative">Study in {{item.country_name}}</h2>
+                                <div class="row g-4 position-relative">
+                                    <div class="col-3">
+                                        <img src="{{item.country_flag.url}}" alt="{{item.country_name}}" width="50" height="50" class="rounded-circle border border-white position-relative">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+            {% endif %}
         </div>
-        {% endif %}
     </div>
-</div>
-<!-- Start Partners Area -->
-{% include 'main/latest-new.html' %}
-<!-- End Partners Area -->
-
+</main>
 
 <!-- Start Newsletter Area -->
 {% include 'main/newsletter.html' %}

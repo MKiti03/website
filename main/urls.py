@@ -15,7 +15,7 @@ urlpatterns = [
     path('countries', views.countryPage, name='countries'),
     path('countries/<str:country_url>/', views.singleCountry, name='single-country'),
 
-    path('universties', views.universityPage, name='universitis'),
+    path('universities', views.universityPage, name='universitis'),
     path('universities/<str:university_url>/', views.singleUniversity, name='signle-university'),
 
     path('posts-categories', views.postCategory, name = 'post-category'),
@@ -26,5 +26,7 @@ urlpatterns = [
 
     path("contact-us/", views.contactUsPage, name="contact"),
     path("about-us/", views.aboutUsPage, name="about"),
+
+    path('success/', views.successPage, name='success')
 
 ]

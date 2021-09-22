@@ -6,21 +6,13 @@
                 <img style="width: 100%; max-height: 320px;" src="{{single_university.university_image.url}}" alt="{{single_country.country_name}}">
             </div>
             {% if university_program_count %}
-            <div class="mt-20">
-                <h6 class="university-count">Program(s) count <span class="university-count-span">{{university_program_count}}</span></h6>
+            <div class="mt-4">
+                <h6 style="font-size: 22px; font-weight:600">Program(s) count <span style="height: 40px; width: 60px; border-radius: 100%" class="main-bg-color text-white py-2 px-2">{{university_program_count}}</span></h6>
             </div>
             {% endif %}
         </div>
     </div>
     <div class="row g-3">
-        {% if university_fact %}
-        <div class="col-lg-12">
-
-            <!-- Start University Fact -->
-            {% include 'main/university-fact.html' %}
-            <!-- End University Fact -->
-        </div>
-        {% endif %}
         <div class="col-lg-12">
             <div class="content-body">
                 {{single_university.university_description|safe}}

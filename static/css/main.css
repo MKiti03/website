@@ -92,6 +92,9 @@ p {
     text-decoration: none;
 }
 
+
+/* toolbar styling */
+
 .toolbar {
     background-color: #ffffff;
     line-height: 1;
@@ -121,6 +124,30 @@ p {
     color: #132d74;
 }
 
+.toolbar ul li ul {
+    padding: 11px;
+    background-color: #273c75;
+    border-radius: 0px;
+}
+
+.toolbar ul li ul li {
+    margin-top: 15px;
+}
+
+.toolbar ul li ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+.toolbar ul li ul li a:hover {
+    color: rgb(207, 207, 207);
+}
+
+.dropdown-toggle:hover .dropdown-menu {
+    display: block;
+}
+
 .toolbar img {
     max-width: 150px;
 }
@@ -135,6 +162,49 @@ p {
 .toolbar-logo:hover {
     text-decoration: none;
 }
+
+
+/* toggle icon style */
+
+.toggle-icon a i {
+    font-size: 35px;
+    color: #0a2368;
+    background-color: #273c7523;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.item-container {
+    background-color: #273c75;
+    padding: 5px;
+    width: fit-content;
+}
+
+.item-container p {
+    color: #bebebe;
+}
+
+.item-container hr {
+    color: #d8d8d8;
+}
+
+.item-container i,
+span {
+    color: #ffffff;
+}
+
+.nav-link-container ul li {
+    margin-top: 10px;
+}
+
+.nav-link-container ul li a {
+    color: #273c75;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* navbar styling */
 
 .nav-scroller {
     position: relative;

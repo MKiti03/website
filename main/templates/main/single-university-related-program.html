@@ -1,25 +1,36 @@
 {% load static %}
+<!--  -->
+{% if university_program %}
 <hr style="height: 3px; background-color: #273c75;">
 <div class="row mb-4 text-center">
     <div class="col-lg-12">
         <h1 class="h2 text-bald">Program(s) in {{single_university.university_name}}</h1>
     </div>
 </div>
-<div class="row g-4">
+<div class="row align-items-stretch g-4 mb-5 ">
     {% for item in university_program %}
-    <div class="col-lg-4 col-6">
+    <div class="feature col-lg-6 col-md-6 col-12">
         <a href="{% url 'single-program' item.program_name %}">
-            <div class="card border-none">
-                <img src="{{item.program_image.url}}" class="card-img-top university-image" alt="...">
-                <div class="card-body">
-                    <h5 class="university-name card-title">{{item.program_name|truncatechars:40}}</h5>
-                    <p>
-                        <a style="color: white;" href="{% url 'single-program' item.program_name %}" class="university-read-more">Read more</a>
-                    </p>
-
+            <div style="border-color: #273c75a8;" class="card p-3">
+                <div class="feature-icon icon-bg-color">
+                    {% if item.program_icon %}
+                    <span>{{item.program_icon.as_html}}</span>
+                    <!--  -->
+                    {% else %}
+                    <span><i class="lni lni-graduation"></i></span>
+                    <!--  -->
+                    {% endif %}
+                </div>
+                <h3 class="main-color"><a href="{% url 'single-program' item.program_name %}">{{item.program_name}}</a></h3>
+                <p style="color: rgb(97, 97, 97);">{{item.program_short_description|truncatechars:120}}</p>
+                <div class="row">
+                    <div class="col-5">
+                        <a href="{% url 'single-program' item.program_name %}" class="btn read-more">Read more</a>
+                    </div>
                 </div>
             </div>
         </a>
     </div>
     {% endfor %}
 </div>
+{% endif %}

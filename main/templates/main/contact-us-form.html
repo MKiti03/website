@@ -1,66 +1,66 @@
 {% load static %}
-<form method='POST' class="row g-3 needs-validation" id='getInTouchForm' novalidate ">
-    {% csrf_token %}
-    <div class="row gy-3 ">
-        <div class="col-lg-6 col-12 ">
-            <div class="mb-1 form-flied ">
-                <label for="validationCustom01 " class="form-label ">Your Full Name
-                    <span style="color: rgb(153, 10, 10); ">*</span>
-                </label>
-                <input name='full_name' type="text " class="form-input form-control " id="validationCustom01 " required style="border: none; padding-left: 20px; ">
-                <div class="valid-feedback ">
-                    Looks good!
-                </div>
-            </div>
+<form class="row g-3 needs-validation " novalidate>
+    <div class="col-lg-6 col-md-6 col-12 ">
+        <label for="full_name " class="form-label ">Your name</label>
+        <input name="full_name" type="text" class="form-control " id="full_name" required>
+        <div class="valid-feedback ">
+            Looks good!
         </div>
-        <div class="col-lg-6 col-12 ">
-            <div class="mb-1 form-flied ">
-                <label for="validationCustom05 " class="form-label ">Phone number
-                    <span style="color: rgb(153, 10, 10); ">*</span>
-                </label>
-                <input name='phone' type="tel " class="form-input form-control " id="validationCustom05 " required style="border: none; padding-left: 20px; ">
-                <div class="valid-feedback ">
-                    Looks good!
-                </div>
-            </div>
+        <div class="invalid-feedback ">
+            This field is required.
         </div>
-        <div class="col-lg-6 col-12 ">
-            <div class="mb-1 ">
-                <label for="validationCustom04 " class="form-label ">Your Email Address
-                    <span style="color: rgb(153, 10, 10); ">*</span>
-                </label>
-                <input name='email' type="email " class="form-input form-control " id="validationCustom04 " required style="border: none; padding-left: 20px; ">
-                <div class="valid-feedback ">
-                    Looks good!
-                </div>
-            </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12 ">
+        <label for="phone " class="form-label ">Your phone number</label>
+        <input name="phone" type="text" class="form-control " id="phone " required>
+        <div class="valid-feedback ">
+            Looks good!
         </div>
-        <div class="col-lg-6 col-12 ">
-            <div class="mb-1 ">
-                <label for="validationCustom01 " class="form-label "> Your Subject
-                    <span style="color: rgb(153, 10, 10); ">*</span>
-                </label>
-                <input name='subject' type="text " class="form-input form-control " id="validationCustom01 " required style="border: none; padding-left: 20px; ">
-                <div class="valid-feedback ">
-                    Looks good!
-                </div>
-            </div>
+        <div class="invalid-feedback ">
+            This field is required.
         </div>
-        <div class="col-12 ">
-            <div class="mb-1 ">
-                <label for="validationCustom08 " class="form-label ">Your message 
-                    <span style="color: rgb(153, 10, 10); ">*</span> 
-                </label>
-                <textarea name='message' class="form-control form-texterea mb-10 " id="validationCustom08 " required rows="5 " style="padding-left: 20px; "></textarea>
-                <div class="valid-feedback ">
-                    Looks good!
-                </div>
-            </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12 ">
+        <label for="email " class="form-label ">Your Email Address</label>
+        <input name="email" type="email" class="form-control " id="email " required>
+        <div class="valid-feedback ">
+            Looks good!
         </div>
-        <div class="col-12 ">
-            <div class="contacts-button button ">
-                <button type="submit " class="btn btn-on-white ">Get A Quote</button>
-            </div>
+        <div class="invalid-feedback ">
+            This field is required.
         </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12 ">
+        <label for="subject " class="form-label ">Your Subject</label>
+        <input name="subject" type="text" class="form-control " id="subject " required>
+        <div class="invalid-feedback ">
+            This field is required.
+        </div>
+        <div class="valid-feedback ">
+            Looks good!
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-12">
+        <label for="message" class="form-label">Your message</label>
+        <textarea name="message" class="form-control" id="message" rows="5" required></textarea>
+        <div class="invalid-feedback ">
+            This field is required.
+        </div>
+        <div class="valid-feedback ">
+            Looks good!
+        </div>
+    </div>
+    <!-- <div class="col-md-3 ">
+        <label for="validationCustom04 " class="form-label ">State</label>
+        <select class="form-select " id="validationCustom04 " required>
+        <option selected disabled value=" ">Choose...</option>
+        <option>...</option>
+      </select>
+        <div class="invalid-feedback ">
+            Please select a valid state.
+        </div>
+    </div> -->
+    <div class="col-12 ">
+        <button class="btn btn-on-white " type="submit ">Get a quote</button>
     </div>
 </form>

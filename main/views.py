@@ -1,10 +1,13 @@
+from django.core.checks import messages
+from django.http.response import HttpResponseRedirect
 from django.views.generic import ListView
-from main.forms import UserProfileForm
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
 from django.http import JsonResponse
-from contact_form.models import GetIntouch
+from contact_form.models import ContactUs
+
+import datetime
 # Create your views here.
 def index(request):
     # To display items in nav bar
@@ -310,34 +313,26 @@ def contactUsPage(request):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
 
-    if request.is_ajax():
-        firt_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        nationality = request.POST.get('nationality')
-        email = request.POST.get('email')
+    if request.method =='POST':
+
+        full_name = request.POST.get('full_name')
         phone = request.POST.get('phone')
-        graduate_date = request.POST.get('graduate_date')
-        program_name = request.POST.get('program_name')
-        educational_qualification = request.POST.get('educational_qualification')
+        email = request.POST.get('email')
+        object = request.POST.get('objec')
+        description = request.POST.get('description')
 
-
-        save_form = GetIntouch.objects.create(
-            firt_name =firt_name,
-            last_name =last_name,
-            nationality =nationality,
-            email=email,
+        contact_form = ContactUs.objects.create(
+            full_name = full_name,
             phone_number = phone,
-            graduation_year = graduate_date,
-            course_of_interest = program_name,
-            educational_qualification = educational_qualification
+            email = email,
+            object = object,
+            description = description
         )
 
-        save_form.save()
-        return JsonResponse(
-            {
-                'text':'Your form has been submitted successfully. We will contact you shortly'
-            }
-        )
+        contact_form.save()
+        messages.Info(request, 'Your Form has been submited')
+        return redirect('success')
+
 
     context = {
         'featured_post':featured_post,
@@ -360,3 +355,6 @@ def aboutUsPage(request):
 
 def error_404(request, exception):
     return render(request, 'main/404.html')
+
+def successPage(request):
+    return render(request, 'main/success-page.html')

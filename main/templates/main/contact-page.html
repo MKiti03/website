@@ -4,8 +4,8 @@
 <!--  -->
 {% block contain%}
 <main>
-    <div class="containerf-luid p-5 ">
-        <div class="row py-2 px-3">
+    <div class="container-fluid p-lg-5 p-2 ">
+        <div class="row py-2 px-lg-3 px-2">
             <div class="col-xl-5 col-lg-5 col-md-4 col-12">
                 <div class="d-flex justify-content-left">
                     <h3 class="main-color mb-2">Contacts Informations</h3>
@@ -26,7 +26,16 @@
                 {% include 'main/contact-us-form.html' %}
             </div>
         </div>
+        <div class="row mt-5 py-5">
+            <div class="d-flex justify-content-center">
+                <h2 class="main-color">Book an appointment</h2>
+            </div>
+            <div class="col-12">
+                <embed style="width: 100%; height: 650px;" src="https://calendly.com/meetsonfack/test-my-first-event" type="text/html">
+            </div>
+        </div>
     </div>
+
 </main>
 <!-- Start Newsletter Area -->
 {% include 'main/newsletter.html' %}
