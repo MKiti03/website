@@ -10,7 +10,7 @@ class UniversityAdmin(admin.ModelAdmin):
 
 
 
-
+admin.site.register(ContactUs)
 admin.site.register(UserProfile)
 admin.site.register(UniversityFact)
 admin.site.register(CountryFact)

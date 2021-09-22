@@ -20,21 +20,4 @@ class GetIntouch(models.Model):
         verbose_name = 'Get in touch'
         verbose_name_plural = 'Get in touchs'
 
-class ContactUs(models.Model):
-    full_name = models.CharField(max_length=254, null=True, blank=True)
-    email = models.EmailField(max_length=254, null=True, blank=True)
-    phone_number = models.CharField(max_length=254, null=True, blank=True)
-    object = models.CharField(max_length=254, null=True, blank=True)
-    message = models.TextField(max_length= 254, null=True, blank=True)
-
-    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-
-
-    def __str__(self):
-        return self.first_name
-
-    class Meta:
-        verbose_name = 'Contact us form'
-        verbose_name_plural = 'Contact us forms'
-
     

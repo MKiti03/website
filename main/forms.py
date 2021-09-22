@@ -1,7 +1,8 @@
 from django.forms import ModelForm
 from .models import *
 
-class UserProfileForm(ModelForm):
+class ContactForm(ModelForm):
     class Meta:
-        model = UserProfile
-        fields = ['profile_description']
+        model = ContactUs
+        fields = '__all__'
+        exclude = ['date_created']

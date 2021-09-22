@@ -1,5 +1,6 @@
 {% load static %}
-<form class="row g-3 needs-validation " novalidate>
+<form method="POST" class="row g-3 needs-validation " novalidate>
+    {% csrf_token %}
     <div class="col-lg-6 col-md-6 col-12 ">
         <label for="full_name " class="form-label ">Your name</label>
         <input name="full_name" type="text" class="form-control " id="full_name" required>
@@ -50,17 +51,35 @@
             Looks good!
         </div>
     </div>
-    <!-- <div class="col-md-3 ">
-        <label for="validationCustom04 " class="form-label ">State</label>
-        <select class="form-select " id="validationCustom04 " required>
-        <option selected disabled value=" ">Choose...</option>
-        <option>...</option>
-      </select>
-        <div class="invalid-feedback ">
-            Please select a valid state.
-        </div>
-    </div> -->
+
     <div class="col-12 ">
         <button class="btn btn-on-white " type="submit ">Get a quote</button>
     </div>
+
+    {% if messages %}
+    <!--  -->
+
+    <div class="col-12">
+        {% for message in messages %}
+        <div id="message-div">
+            {% if message.tags == 'success' %}
+            <div class="alert btn-success text-white alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% elif message.tags == 'info' %}
+            <div class="alert btn-info text-white alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% elif message.tags == 'error' %}
+            <div class="alert btn-danger text-white alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 </form>

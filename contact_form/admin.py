@@ -3,4 +3,3 @@ from .models import *
 # Register your models here.
 
 admin.site.register(GetIntouch)
-admin.site.register(ContactUs)

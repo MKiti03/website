@@ -1,11 +1,12 @@
-from django.core.checks import messages
+from django.contrib import messages
 from django.http.response import HttpResponseRedirect
 from django.views.generic import ListView
 from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
 from django.http import JsonResponse
-from contact_form.models import ContactUs
+from .forms import *
+from django.urls import reverse
 
 import datetime
 # Create your views here.
@@ -313,26 +314,25 @@ def contactUsPage(request):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
 
-    if request.method =='POST':
-
+    if request.method == 'POST':
         full_name = request.POST.get('full_name')
         phone = request.POST.get('phone')
         email = request.POST.get('email')
-        object = request.POST.get('objec')
-        description = request.POST.get('description')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
 
         contact_form = ContactUs.objects.create(
-            full_name = full_name,
+            full_name =full_name,
             phone_number = phone,
             email = email,
-            object = object,
-            description = description
+            object = subject,
+            message = message
         )
 
         contact_form.save()
-        messages.Info(request, 'Your Form has been submited')
-        return redirect('success')
-
+        messages.success(request, 'Your request has been submited. We will get back to you as soon as possible')
+        return redirect('contact')
+    
 
     context = {
         'featured_post':featured_post,
