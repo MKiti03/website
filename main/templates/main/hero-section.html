@@ -19,43 +19,58 @@
                             <p>With Vecademy, you may apply directly.
                                 <br> There is a scholarship program! Advice and application management are both provided free of charge.
                             </p>
-                            <p><a class="btn btn-lg btn-bg-main" href="{% url 'about' %}">Find out more</a></p>
+                            <p>
+                                <a class="btn btn-lg btn-bg-main" href="{% url 'about' %}">Find out more</a>
+                                <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div style="background-image: url('../images/hero-slide-2.jpg');" class="bg-cover overlay carousel-item">
+                <div style="background-image: url('../images/site-images/img4.jpg');" class="bg-cover overlay carousel-item">
                     <div class="container">
                         <div class="carousel-caption text-start">
                             <h2>Find the study program that matches your ambitions</h2>
                             <p>You have the privilege of choosing among the hundreds of programs available in our partner university's institutes around the world. We take care of the procedures for you</p>
-                            <p><a class="btn btn-lg btn-bg-main " href="{% url 'programs' %}">Our programs</a></p>
+                            <p>
+                                <a class="btn btn-lg btn-bg-main " href="{% url 'programs' %}">Our programs</a>
+                                <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div style="background-image: url('../images/hero-slide-1.jpg');" class="bg-cover overlay carousel-item">
+                <div style="background-image: url('../images/site-images/img5.jpg');" class="bg-cover overlay carousel-item">
                     <div class="container">
                         <div class="carousel-caption text-start">
                             <h2 class="wow fadeInUp" data-wow-delay=".5s">Study at the university of your choice </h2>
                             <p class="wow fadeInUp" data-wow-delay=".7s">Prestigious universities allowing you to follow a perfect academic path in order to secure your ideal career.</p>
-                            <p><a href="{% url 'universitis' %}" class="btn btn-lg btn-bg-main ">Find out more </span></a></p>
-                        </div>
-                    </div>
-                </div>
-                <div style="background-image: url('../images/hero-slide-2.jpg');" class="bg-cover overlay carousel-item">
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h2>Study in the country of your choice</h2>
-                            <p>Find the university that suits you according to the country of your choice</p>
-                            <p><a href="{% url 'countries' %}" class="btn btn-lg btn-bg-main ">Find out more </span></a></p>
+                            <p>
+                                <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
+                                <a href="{% url 'universitis' %}" class="btn btn-lg btn-bg-main ">Find out more </span></a>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div style="background-image: url('../images/hero-slide-1.jpg');" class="bg-cover overlay carousel-item">
                     <div class="container">
                         <div class="carousel-caption text-start">
+                            <h2>Study in the country of your choice</h2>
+                            <p>Find the university that suits you according to the country of your choice</p>
+                            <p>
+                                <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
+                                <a href="{% url 'countries' %}" class="btn btn-lg btn-bg-main ">Find out more </span></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="background-image: url('../images/image-2.webp');" class="bg-cover overlay carousel-item">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
                             <h2>We make it easier for you</h2>
                             <p>Join us today and let us help you choose your next academic destination.</p>
-                            <p><a href="{% url 'contact' %}" class="btn btn-lg btn-bg-main ">Contact us </span></a></p>
+                            <p>
+                                <a href="{% url 'about' %}" class="btn btn-lg btn-bg-main ">About us </span></a>
+                                <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
+                            </p>
                         </div>
                     </div>
                 </div>

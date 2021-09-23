@@ -7,7 +7,7 @@
             {% for item in feature_program %}
             <div class="feature col-lg-4 col-md-6 col-12">
                 <a href="{% url 'single-program' item.program_name %}">
-                    <div style="border-color: #273c75a8;" class="card p-3">
+                    <div style="border-color: #273c75a8; min-height: 330px" class="card p-3">
                         <div class="feature-icon icon-bg-color">
                             {% if item.program_icon %}
                             <span>{{item.program_icon.as_html}}</span>
@@ -17,7 +17,7 @@
                             <!--  -->
                             {% endif %}
                         </div>
-                        <h3 class="main-color"><a href="{% url 'single-program' item.program_name %}">{{item.program_name}}</a></h3>
+                        <h3 style="font-size: 20px; font-weight: 500" class="main-color"><a href="{% url 'single-program' item.program_name %}">{{item.program_name}}</a></h3>
                         <p style="color: rgb(97, 97, 97);">{{item.program_short_description|truncatechars:120}}</p>
                         <div class="row">
                             <div class="col-5">

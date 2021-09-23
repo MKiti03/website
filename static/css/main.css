@@ -25,6 +25,11 @@ p {
     padding-left: 2%;
 }
 
+.f-26-50 {
+    font-size: 26px;
+    font-weight: 500;
+}
+
 .position-relative {
     position: relative;
 }
@@ -114,9 +119,8 @@ p {
 }
 
 .toolbar ul li a {
-    font-size: 16px;
-    margin-left: -15px;
-    margin-right: 5px;
+    font-size: 17px;
+    margin-left: -19px;
     color: #000000;
 }
 
@@ -226,7 +230,7 @@ span {
 
 .nav-scroller .nav a {
     text-decoration: none;
-    font-size: 17px;
+    font-size: 19px;
     color: #273c75;
     font-weight: 500;
 }
@@ -250,7 +254,6 @@ span {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.5;
     background: #000;
     content: "";
     -webkit-transition: all 0.4s ease;
@@ -259,7 +262,7 @@ span {
 }
 
 .carousel-item.overlay::before {
-    opacity: 0.55;
+    opacity: 0.6;
     background: #000;
 }
 
