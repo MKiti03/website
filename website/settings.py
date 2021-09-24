@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=34b_m_=t)p7@!$(0v(zxttudc*8diz@+66#7_@2g-i@*$s@!j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['studyabroad.vecademy.com', '138.197.183.144']
+ALLOWED_HOSTS = ['studyabroad.vecademy.com', '161.35.66.30']
 # ALLOWED_HOSTS = []
 
 # Application definition
