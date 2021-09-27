@@ -1,85 +1,51 @@
 {% load static %}
-<form method="POST" class="row g-3 needs-validation " novalidate>
+<form method="POST" class="row g-3 pe-4" id="contact-form">
     {% csrf_token %}
+    <div class="col-12" id="message-box">
+
+    </div>
     <div class="col-lg-6 col-md-6 col-12 ">
         <label for="full_name " class="form-label ">Your name</label>
-        <input name="full_name" type="text" class="form-control " id="full_name" required>
+        <!--  -->
+        {{form.full_name}}
         <div class="valid-feedback ">
             Looks good!
-        </div>
-        <div class="invalid-feedback ">
-            This field is required.
         </div>
     </div>
     <div class="col-lg-6 col-md-6 col-12 ">
         <label for="phone " class="form-label ">Your phone number</label>
-        <input name="phone" type="tel" class="form-control " id="phone " required>
+        <!--  -->
+        {{form.phone_number}}
         <div class="valid-feedback ">
             Looks good!
         </div>
-        <div class="invalid-feedback ">
-            This field is required.
-        </div>
     </div>
     <div class="col-lg-6 col-md-6 col-12 ">
-        <label for="email " class="form-label ">Your Email Address</label>
-        <input name="email" type="email" class="form-control " id="email " required>
-        <div class="valid-feedback ">
+        <label for="email" class="form-label ">Your Email Address</label>
+        <!--  -->
+        {{form.email}}
+        <div class="valid-feedback">
             Looks good!
         </div>
-        <div class="invalid-feedback ">
-            This field is required.
-        </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-12 ">
+    <div class="col-lg-6 col-md-6 col-12">
         <label for="subject " class="form-label ">Your Subject</label>
-        <input name="subject" type="text" class="form-control " id="subject " required>
-        <div class="invalid-feedback ">
-            This field is required.
-        </div>
-        <div class="valid-feedback ">
+        <!--  -->
+        {{form.object}}
+        <div class="valid-feedback">
             Looks good!
         </div>
     </div>
     <div class="col-lg-12 col-md-12 col-12">
         <label for="message" class="form-label">Your message</label>
-        <textarea name="message" class="form-control" id="message" rows="5" required></textarea>
-        <div class="invalid-feedback ">
-            This field is required.
-        </div>
-        <div class="valid-feedback ">
+        <!--  -->
+        {{form.message}}
+        <div class="valid-feedback">
             Looks good!
         </div>
     </div>
 
-    <div class="col-12 ">
-        <button class="btn btn-on-white " type="submit ">Get a quote</button>
-    </div>
-
-    {% if messages %}
-    <!--  -->
-
     <div class="col-12">
-        {% for message in messages %}
-        <div id="message-div">
-            {% if message.tags == 'success' %}
-            <div class="alert btn-success text-white alert-dismissible fade show" role="alert">
-                {{message}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% elif message.tags == 'info' %}
-            <div class="alert btn-info text-white alert-dismissible fade show" role="alert">
-                {{message}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% elif message.tags == 'error' %}
-            <div class="alert btn-danger text-white alert-dismissible fade show" role="alert">
-                {{message}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% endif %}
-        </div>
-        {% endfor %}
+        <button class="btn btn-on-white" type="submit">Get a quote</button>
     </div>
-    {% endif %}
 </form>

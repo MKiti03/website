@@ -289,13 +289,13 @@ class InterpriseContactInformatiom(models.Model):
         verbose_name_plural = 'Interprise contact informations'
 
 class ContactUs(models.Model):
-    full_name = models.CharField(max_length=254, null=True, blank=True)
-    email = models.EmailField(max_length=254, null=True, blank=True)
-    phone_number = models.CharField(max_length=254, null=True, blank=True)
-    object = models.CharField(max_length=254, null=True, blank=True)
-    message = models.TextField(max_length= 254, null=True, blank=True)
+    full_name = models.CharField(max_length=254, null=True)
+    email = models.EmailField(max_length=254, null=True)
+    phone_number = models.CharField(max_length=254, null=True)
+    object = models.CharField(max_length=254, null=True)
+    message = models.TextField(max_length= 254, null=True)
 
-    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
 
 
     def __str__(self):

@@ -314,27 +314,22 @@ def contactUsPage(request):
     # To display items in nav bar
     category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
 
-    if request.method == 'POST':
-        full_name = request.POST.get('full_name')
-        phone = request.POST.get('phone')
-        email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
+    form = ContactForm(request.POST)
 
-        contact_form = ContactUs.objects.create(
-            full_name =full_name,
-            phone_number = phone,
-            email = email,
-            object = subject,
-            message = message
-        )
+    if request.is_ajax():
+        if form.is_valid():
+            form.save()
 
-        contact_form.save()
-        messages.success(request, 'Your request has been submited. We will get back to you as soon as possible')
-        return redirect('contact')
-    
+            return JsonResponse({
+                'message': 'Your request has been submited, we will get abck to you as soon as possible'
+            })
+        else:
+            return JsonResponse({
+                'error': 'Error !, your form can not be submited'
+            })
 
     context = {
+        'form':form,
         'featured_post':featured_post,
         'category_to_navebar':category_to_navebar,
     }

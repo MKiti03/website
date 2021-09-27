@@ -1,8 +1,26 @@
+from django import forms
 from django.forms import ModelForm
 from .models import *
 
 class ContactForm(ModelForm):
+    full_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class':'form-control'
+    }))
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={
+        'class':'form-control'
+    }))
+    email = forms.CharField(widget=forms.TextInput(attrs={
+        'class':'form-control'
+    }))
+    object = forms.CharField(widget=forms.TextInput(attrs={
+        'class':'form-control'
+
+    }))
+
+    message = forms.CharField(widget=forms.Textarea(attrs={
+        'class':'form-control',
+        'rows': 5,
+    }))
     class Meta:
         model = ContactUs
-        fields = '__all__'
-        exclude = ['date_created']
+        fields = ['full_name', 'phone_number', 'email', 'object', 'message']
