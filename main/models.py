@@ -63,7 +63,7 @@ class CountryFact(models.Model):
 class University(models.Model):
     university_name = models.CharField(max_length=254, null=True, blank=True)
     chose_country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True, blank=True)
-    university_logo = models.ImageField(default = 'default.png', upload_to = 'universities-images/%Y/%m/%d/')
+    university_logo = models.ImageField(default = 'default.png', upload_to = 'universities-logo/%Y/%m/%d/')
     university_image = models.ImageField(default = 'default.png', upload_to = 'universities-images/%Y/%m/%d/')
     university_description = RichTextField(blank = True, null = True)
 

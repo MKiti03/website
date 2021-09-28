@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-=34b_m_=t)p7@!$(0v(zxttudc*8diz@+66#7_@2g-i@*$s@!j
 # SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['studyabroad.vecademy.com', '164.90.179.111']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['studyabroad.vecademy.com', '164.90.179.111']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -69,7 +69,7 @@ ROOT_URLCONF = 'website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR /'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,25 +88,23 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'vecademy_consulting',
-        'USER': 'vecademy',
-        'PASSWORD': 'vecademy@CONSULTING#2021',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'vecademy_consulting',
+#         'USER': 'vecademy',
+#         'PASSWORD': 'vecademy@CONSULTING#2021',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation
@@ -144,15 +142,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticlocal')
+   BASE_DIR / 'static',
+   BASE_DIR / 'main' / 'static',
+   BASE_DIR / 'contact_form' / 'static',
+   BASE_DIR / 'admin_dashboard' / 'static',
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'staticlocal/images')
-MEDIA_URL = '/images/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
