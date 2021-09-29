@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=34b_m_=t)p7@!$(0v(zxttudc*8diz@+66#7_@2g-i@*$s@!j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['studyabroad.vecademy.com', '206.81.18.115', 'localhost']
+ALLOWED_HOSTS = ['studyabroad.vecademy.com', '206.81.18.115']
 # ALLOWED_HOSTS = []
 
 # Application definition
@@ -151,7 +151,7 @@ STATICFILES_DIRS = [
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/')
-MEDIA_URL = '/images/'
+MEDIA_URL = '/static/images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
