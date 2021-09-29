@@ -63,10 +63,6 @@ blockquote {
     background-color: #273c75;
 }
 
-.active {
-    background-color: #273c75;
-}
-
 .btn-bg-main {
     width: auto;
     padding: 10px 20px 10px 20px;
@@ -79,7 +75,7 @@ blockquote {
 .btn-on-white {
     width: auto;
     padding: 10px 20px 10px 20px;
-    background-color: #3a61cc;
+    background-color: #273c75;
     text-decoration: none;
     color: white;
     font-size: 18px;
@@ -93,6 +89,14 @@ blockquote {
 .btn-bg-main:hover {
     background-color: #ffffff;
     color: #273c75;
+}
+
+.border-none {
+    border: none;
+}
+
+.border-1 {
+    border-bottom: 1px solid;
 }
 
 .divider {

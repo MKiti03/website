@@ -9,11 +9,11 @@
                 <a href="{% url 'single-program' item.program_name %}">
                     <div style="border-color: #273c75a8; min-height: 330px" class="card p-3">
                         <div class="feature-icon icon-bg-color">
-                            {% if item.program_icon %}
+                            {% if item.program_icon.as_html %}
                             <span>{{item.program_icon.as_html}}</span>
                             <!--  -->
                             {% else %}
-                            <span><i class="fas fa-graduation-cap "></span>
+                            <span><i class="fas fa-graduation-cap "></i></span>
                             <!--  -->
                             {% endif %}
                         </div>

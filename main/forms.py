@@ -4,12 +4,12 @@ from .models import *
 
 class ContactForm(ModelForm):
     full_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class':'form-control'
+        'class':'form-control',
     }))
     phone_number = forms.CharField(widget=forms.TextInput(attrs={
         'class':'form-control'
     }))
-    email = forms.CharField(widget=forms.TextInput(attrs={
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class':'form-control'
     }))
     object = forms.CharField(widget=forms.TextInput(attrs={
@@ -19,7 +19,7 @@ class ContactForm(ModelForm):
 
     message = forms.CharField(widget=forms.Textarea(attrs={
         'class':'form-control',
-        'rows': 5,
+        'rows': 4,
     }))
     class Meta:
         model = ContactUs
