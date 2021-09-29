@@ -139,10 +139,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-   BASE_DIR / 'static',
-   BASE_DIR / 'main' / 'static',
-   BASE_DIR / 'contact_form' / 'static',
-   BASE_DIR / 'admin_dashboard' / 'static',
+   BASE_DIR / 'static'
 ]
 
 
