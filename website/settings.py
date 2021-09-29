@@ -92,7 +92,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'vecademy_consulting',
-        'USER': 'vecademy',
+        'USER': 'vecademyuser',
         'PASSWORD': 'vecademy@CONSULTING#2021',
         'HOST': 'localhost',
         'PORT': '',
