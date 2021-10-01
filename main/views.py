@@ -348,8 +348,18 @@ def aboutUsPage(request):
     }
     return render(request, 'main/about-us.html', context)
 
+def successPage(request):
+    return render(request, 'main/success-page.html')
+
+# Custun error handler page
 def error_404(request, exception):
     return render(request, 'main/404.html')
 
-def successPage(request):
-    return render(request, 'main/success-page.html')
+# def error_400(request, exception):
+#     return render(request, 'main/404.html')
+
+# def error_500(request):
+#     return render(request, 'main/404.html')
+
+# def error_403(request, exception):
+#     return render(request, 'main/404.html')
