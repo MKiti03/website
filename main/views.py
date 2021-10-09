@@ -20,7 +20,7 @@ def index(request):
     
 
     # Display featured program on the home page
-    feature_dicipline = Dicipline.objects.all().filter(set_featured = True, set_draft = False).order_by('-date_created')[:14]
+    feature_dicipline = Dicipline.objects.all().filter(set_featured = True, set_draft = False).order_by('short_name')[:14]
 
     feature_dicipline_count = feature_dicipline.count()
 
@@ -50,7 +50,7 @@ def articlePage(request, article):
     
     # Page content
     get_article = BasePage.objects.get(page_name = article, set_draft = False)
-    dicipline = get_article.dicipline_set.all().filter(set_draft = False).order_by('-date_created')
+    dicipline = get_article.dicipline_set.all().filter(set_draft = False).order_by('short_name')
     university = get_article.university_set.all().filter(set_draft = False).order_by('-date_created')
     speciality = get_article.speciality_set.all().filter(set_draft = False).order_by('-date_created')
     country = get_article.country_set.all().filter(set_draft = False).order_by('-date_created')
