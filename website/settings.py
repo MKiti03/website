@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = ['studyabroad.vecademy.com', '206.81.18.115']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['192.168.100.13', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -45,11 +45,14 @@ INSTALLED_APPS = [
     'main',
     'admin_dashboard',
     'contact_form',
+    'post',
+    'interprise',
 
     # Third party apps
     'ckeditor',
     'tawkto',
     'fontawesome_5',
+    'osm_field',
 ]
 
 MIDDLEWARE = [
@@ -152,7 +155,7 @@ STATICFILES_DIRS = [
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/')
-MEDIA_URL = '/static/images/'
+MEDIA_URL = 'static/images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -163,31 +166,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TAWKTO_ID_SITE='613d75e625797d7a89fe8033'
 TAWKTO_API_KEY='b57f673dff8d9650191293800d6abd1db9dad74d'
 
-
 CKEDITOR_CONFIGS = {
-    # django-ckeditor defaults
     'default': {
-        # tab key conversion space number
-        'tabSpaces': 4,
-        # Toolbar Style
-        'toolbar': 'Custom',
-        # Toolbar buttons
-        'toolbar_Custom': [
-            # Emotional Code Block
-            ['Smiley', 'CodeSnippet'], 
-            # Font Style
-            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
-            # Font color
-            ['TextColor', 'BGColor'],
-            # Link link
-            ['Link', 'Unlink'],
-            # List of items
-            ['NumberedList', 'BulletedList'],
-            # Maximization
-            ['Maximize']
+        'toolbar_CustomConfig': [
+            {'name': 'clipboard', 'items': ['Undo', 'Redo']},
+            {'name': 'yourcustomtools', 'items': [
+                'Preview',
+                'Maximize',
+            ]},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format']},
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', 'Blockquote']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor', 'JustifyLeft', 'JustifyCenter', 'JustifyRight']},
+            {'name': 'insert',
+             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'cmsplugins', '-', 'ShowBlocks']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor', 'Source']},
         ],
-        # Add Code Block Plug-ins
-        'extraPlugins': ','.join(['codesnippet']),
+        'toolbar': 'CustomConfig',  # put selected toolbar config here
+        'tabSpaces': 4,
     }
 }
 

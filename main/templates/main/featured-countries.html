@@ -2,27 +2,32 @@
 <!--  -->
 {% if featured_coutries %}
 <main>
-    <div class="container px-4 py-5" id="custom-cards">
-        <div class="d-flex justify-content-center">
-            <h2 style="font-size: 26px; font-weight: 500" class="main-color">Countries where you can study</h2>
+    <div class="container py-5" id="custom-cards">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-12 mb-4">
+                <h4 class="fw-600">Countries where you can study</h4>
+            </div>
         </div>
-        <div class="row align-items-stretch g-4 py-4">
+        <div class="row row-cols-lg-3 row-cols-1 g-4">
             {% for item in featured_coutries %}
             <div class="col">
-                <a style="text-decoration: none;" href="{% url 'single-country' item.country_name %}">
-                    <div class="card card-cover h-100 overflow-hidden text-white rounded-3 shadow-lg" style="background-image: url('{{item.country_image.url}}');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 overlay">
-                            <h2 class="lh-1 fw-bold position-relative">Study in {{item.country_name}}</h2>
-                            <div class="row g-4 position-relative">
-                                <div class="col-3">
-                                    <img src="{{item.country_flag.url}}" alt="{{item.country_name}}" width="50" height="50" class="rounded-circle border border-white position-relative">
-                                </div>
-                            </div>
-                        </div>
+                <div class="bg-white no-border shadow">
+                    <a href="{% url 'single-country' item.country_name %}">
+                        <img style="width: 100%; max-height:160px" class="image-fluid" src="{{item.country_image.url}}" alt="{{item.country_name}}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="fw-600 main-color">
+                            <a class="no-decoration" href="{% url 'single-country' item.country_name %}">
+                            Study in {{item.country_name}}
+                        </a>
+                        </h5>
+                        <p class="card-text">{{item.country_description|safe|truncatechars:125}}</p>
+                        <a href="{% url 'single-country' item.country_name %}" class="btn btn-sm read-more">Find out more</a>
                     </div>
-                </a>
+                </div>
             </div>
             {% endfor %}
+
         </div>
     </div>
 </main>

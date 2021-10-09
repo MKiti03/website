@@ -1,31 +1,182 @@
 {% extends 'index.html' %} {% load static %} {% block contain%}
 <main>
-    <div class="p-4 mt-4">
-        <div class="container-fluid">
-            <h3 class="main-color mb-4">Discover All About
-                <span style="background-color: #273c75e1; padding: 5px 15px 5px 15px; color: white;">{{single_country.country_name}}</span>
-            </h3>
-            <div class="row g-5">
-                <div class="col-lg-8 col-md-7 col-12">
-                    <div class="row g-5">
-                        <div class="col-lg-12">
-                            <!-- start Page sidebar -->
-                            {% include 'main/single-country-content.html' %}
-                            <!-- End Page sidebar -->
-                        </div>
-                        <div class="col-lg-12">
-                            <!-- start Page sidebar -->
-                            {% include 'main/single-country-related-university.html' %}
-                            <!-- End Page sidebar -->
+    <div class="container px-lg-5 mt-2">
+        <div style="background-image: url('{{single_country.country_image.url}}');" class="dicipline-bg position-relative bg-cover overlay">
+            <div class="row px-lg-5 py-lg-5 px-3">
+                <div class="col-lg-6">
+                    <hr class="spacer-150">
+                    <div class="row">
+                        <div class="col-auto">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-auto">
+                                    <img height="70px" width="70px" class="image-fluid position-relative rounded-circle shadow" src="{{single_country.country_flag.url}}" alt="{{single_country.country_name}} flag">
+                                </div>
+                                <div class="col">
+                                    <h2 class="fw-500 px-lg-2 lh-3 text-start text-white text-capitalize position-relative"> Study in {{single_country.country_name}}</h2>
+                                </div>
+                            </div>
+                            <div class="mt-5 mb-4">
+                                <div class="row row-cols-md-auto row-cols-1 gy-md-0 gy-4 gx-md-5">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-bage mx-lg-5 text-white bage-bg position-relative pe-none">
+                                            Universities found
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                                <span style="font-size: 18px;">{{related_universities.count}}</span>
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-5">
-                    <!-- start Page sidebar -->
-                    <div class="position-sticky" style="top: 2rem;">
-                        {% include 'main/page-sidebar.html' %}
+                <div class="col-lg-6 mt-3">
+                    <!-- <div class="card single-dicipline-card mb-lg-2 mb-4">
+                        <h5 class="card-header fw-500 bage-bg text-white">About this speciality</h5>
+                        <div class="card-body">
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <div class="bage-bg rounded p-2 spaciality-fact">
+                                        <h6 class="fw-600 mb-0">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <i class="bi bi-tags"> </i> {{university.speciality_name|truncatechars:30}} programs
+                                                </div>
+                                                <div class="col">
+                                                    <span class="d-flex justify-content-end fw-500 h5 text-white">{{program.count}}</span>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bage-bg rounded p-2 spaciality-fact">
+                                        <h6 class="fw-600 mb-0">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <i class="bi bi-clock-history"></i>Duration of studies
+                                                </div>
+                                                <div class="col">
+                                                    <span class="d-flex justify-content-end fw-500 h5 text-white">{{spaciality.year_of_study}}</span>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bage-bg rounded p-2 spaciality-fact">
+                                        <h6 class="fw-600 mb-0">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <i class="bi bi-piggy-bank"></i> Average fees
+                                                </div>
+                                                <div class="col">
+                                                    <span class="d-flex justify-content-end fw-500 h5 text-white">~ 250,000 CFA</span>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bage-bg rounded p-2 spaciality-fact">
+                                        <h6 class="fw-600 mb-0">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <i class="bi bi-wallet"></i> Average annual salary
+                                                </div>
+                                                <div class="col">
+                                                    <span class="d-flex justify-content-end fw-500 h5 text-white">~ 1,000,000 CFA</span>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-lg-8">
+                <div class="row row-cols-1 gy-3">
+                    <div class="col">
+                        <div class="shadow bg-white p-3">
+                            <div class="col text-center">
+                                <h6 class="fw-500 text-uppercase main-color px-lg-4"> Discover more about <span class="fw-600 main-color">{{single_country.country_name}}</span>.</h6>
+                            </div>
+
+                            <div class="speciality-description text-start mt-3">
+                                {{single_country.country_description|safe}}
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-auto">
+                                    <i class="bi bi-globe main-color"></i>
+                                </div>
+                            </div>
+                            {% if country_fact %}
+                            <div class="row gy-3 mt-3">
+                                {% for item in country_fact %}
+                                <div class="col-auto">
+                                    <div class="bage-bg p-2 rounded" data-bs-toggle="tooltip" data-bs-html="true" title="{{item.fact_name}}">
+                                        <span class="text-muted">{{item.fact_icon.as_html}} {{item.fact_name|truncatechars:22}}</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
                     </div>
-                    <!-- End Page sidebar -->
+                    <div class="col">
+                        <div class="col text-center mt-4">
+                            <h6 class="fw-500 text-uppercase main-color px-lg-4">Universities in <span class="fw-600 main-color">{{single_country.country_name}}</span></h5>
+                        </div>
+                        {% if related_universities %}
+                        <!--  -->
+                        {% for item in related_universities %}
+                        <div class="row row-cols-1 py-2">
+                            <div class="col">
+                                <div class="related-university card mb-3 no-border shadow">
+                                    <div class="row g-0 d-flex align-items-center">
+                                        <div class="col-md-4">
+                                            <img style="width: 100%; height:230px" src="{{item.university_image.url}}" class="img-fluid" alt="{{item.university_name}}">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title main-color fw-600"><a href="{% url 'single-university' item.university_name %}">{{item.university_name}}</a></h5>
+                                                <p class="card-text">{{item.university_description|truncatechars:100}}</p>
+                                                <div class="row">
+                                                    <div class="col-auto">
+                                                        <i class="bi bi-geo-alt main-color"></i> {{item.choose_country}}, {{item.region}}
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <span class="text-success fw-600"> <i class="bi bi-file-earmark-person"></i> Admission open</span>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text"><small class="text-muted">Last updated: {{item.last_update.date}}</small></p>
+                                                <div class="row mt-3">
+                                                    <div class="col d-flex justify-content-end">
+                                                        <a href="{% url 'single-university' item.university_name %}" class="btn read-more ">Browse Programs</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!--  -->
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="position-sticky mt-lg-0 mt-5" style="top: 2rem; ">
+                    {% include 'page-sidebar.html' %}
                 </div>
             </div>
         </div>

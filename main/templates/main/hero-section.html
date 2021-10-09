@@ -7,9 +7,6 @@
             <div class="carousel-indicators">
                 <button style="height: 20px; width:20px; border-radius:100%" type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
                 <button style="height: 20px; width:20px; border-radius:100%" type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button style="height: 20px; width:20px; border-radius:100%" type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button style="height: 20px; width:20px; border-radius:100%" type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                <button style="height: 20px; width:20px; border-radius:100%" type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
             </div>
             <div class="carousel-inner ">
                 <div style="background-image: url('../static/images/hero-slide-1.jpg' );" class="bg-cover carousel-item overlay active">
@@ -20,44 +17,8 @@
                         </p>
                         <p>
                             <a class="btn btn-lg btn-bg-main" href="{% url 'about' %}">Find out more</a>
-                            <a class="btn btn-bg-white mt-sm-10" href=" {% url 'contact' %} ">Get in touch</a>
+                            <a class="btn btn-bg-white mt-sm-10" href=" {% url 'contact' %} ">Contact us</a>
                         </p>
-                    </div>
-                </div>
-                <div style="background-image: url('../static/images/img4.jpg');" class="bg-cover overlay carousel-item">
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h2>Find the study program that matches your ambitions</h2>
-                            <p>You have the privilege of choosing among the hundreds of programs available in our partner university's institutes around the world. We take care of the procedures for you</p>
-                            <p>
-                                <a class="btn btn-lg btn-bg-main " href="{% url 'programs' %}">Our programs</a>
-                                <a class="btn btn-bg-white mt-sm-10" href=" {% url 'contact' %} ">Get in touch</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div style="background-image: url('../static/images/img5.jpg');" class="bg-cover overlay carousel-item">
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h2 class="wow fadeInUp" data-wow-delay=".5s">Study at the university of your choice </h2>
-                            <p class="wow fadeInUp" data-wow-delay=".7s">Prestigious universities allowing you to follow a perfect academic path in order to secure your ideal career.</p>
-                            <p>
-                                <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
-                                <a href="{% url 'universitis' %}" class="btn btn-lg btn-bg-main mt-sm-10">Find out more </span></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div style="background-image: url('../static/images/hero-slide-1.jpg');" class="bg-cover overlay carousel-item">
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h2>Study in the country of your choice</h2>
-                            <p>Find the university that suits you according to the country of your choice</p>
-                            <p>
-                                <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
-                                <a href="{% url 'countries' %}" class="btn btn-lg btn-bg-main mt-sm-10">Find out more </span></a>
-                            </p>
-                        </div>
                     </div>
                 </div>
                 <div style="background-image: url('../static/images/image-2.webp');" class="bg-cover overlay carousel-item">
@@ -67,7 +28,7 @@
                             <p>Join us today and let us help you choose your next academic destination.</p>
                             <p>
                                 <a href="{% url 'about' %}" class="btn btn-lg btn-bg-main ">About us </span></a>
-                                <a class="btn btn-bg-white mt-sm-10" href=" {% url 'contact' %} ">Get in touch</a>
+                                <a class="btn btn-bg-white mt-sm-10" href=" {% url 'get-in-touch' %} ">Get in touch</a>
                             </p>
                         </div>
                     </div>
@@ -79,7 +40,7 @@
 
 <!-- Mobile display -->
 <main class="d-block d-md-none mb-5">
-    <div style="background-image: url('../static/images/img4.jpg'); height: 450px;" class="main-bg-color p-4 bg-cover overlay">
+    <div style="background-image: url('../static/images/img4.jpg'); height: 340px;" class="mobile-baner main-bg-color p-4 bg-cover overlay">
         <div class="position-relative text-white py-5">
             <h2 class="">Student recruitment agencies should be avoided!</h2>
             <p>With Vecademy, you may apply directly.
@@ -87,7 +48,7 @@
             </p>
             <p>
                 <a class="btn btn-lg btn-bg-main" href="{% url 'about' %}">Find out more</a>
-                <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
+                <a class="btn btn-bg-white" href=" {% url 'get-in-touch' %} ">Get in touch</a>
             </p>
         </div>
     </div>

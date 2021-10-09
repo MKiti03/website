@@ -2,29 +2,38 @@
 <!--  -->
 {% if featured_universities %}
 <main>
-    <div class="container px-4 py-5" id="custom-cards">
+    <div class="container py-5" id="custom-cards">
         <div class="d-flex justify-content-center">
             <h2 style="font-size: 26px; font-weight: 500" class="main-color">Our Universities</h2>
         </div>
-        <div class="row align-items-stretch g-4 py-4">
+        <div class="row row-cols-lg-2 row-cols-1 py-2">
             {% for item in featured_universities %}
             <div class="col">
-                <a style="text-decoration: none;" href="{% url 'signle-university' item.university_name %}">
-                    <div class="card card-cover h-100 overflow-hidden text-white rounded-3 shadow-lg" style="background-image: url('{{item.university_image.url}}');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 overlay">
-                            <h2 class="pt-5 mt-5 mb-4 lh-1 fw-bold position-relative">{{item.university_name}}</h2>
-
-                            <div class="row g-4 position-relative">
-                                <div class="col-3">
-                                    <img src="{{item.university_logo.url}}" alt="Bootstrap" width="50" height="50" class="rounded-circle border border-white">
-                                </div>
-                                <div class="col-3">
-                                    <img src="{{item.chose_country.country_flag.url}}" alt="Bootstrap" width="50" height="50" class="rounded-circle border border-white">
+                <div class="mb-3 bg-white shadow px-lg-0">
+                    <div class="row g-0 d-flex align-items-center">
+                        <div class="col-md-5">
+                            <img style="width: 100%; height:180px" src="{{item.university_image.url}}" class="img-fluid " alt="{{item.university_name}}">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h6 class="card-title main-color fw-600">
+                                    <a href="{% url 'single-university' item.university_name %}" data-bs-toggle="tooltip" data-bs-html="true" title="{{item.university_name}}">
+                                            {{item.university_name|truncatechars:36}}
+                                        </a>
+                                </h6>
+                                <p class="card-text">{{item.university_description|truncatechars:50}}</p>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <i class="bi bi-geo-alt main-color"></i> {{item.choose_country}}, {{item.region}}
+                                    </div>
+                                    <div class="col-auto">
+                                        <span class="text-success fw-600"> <i class="bi bi-file-earmark-person"></i> Admission open</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
             {% endfor %}
         </div>

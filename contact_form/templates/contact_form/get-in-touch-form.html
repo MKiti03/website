@@ -1,72 +1,68 @@
 <main>
-    <div class="container-fluid px-lg-5 mt-lg-5 mt-md-5 mb-5">
-        <div class="row g-3">
-            <div class="col-xl-8 col-md-7 col-12">
-                <div class="container-md">
-                    <div class="my-3" id="floating-labels">
-                        <div class="bd-example">
-                            <form method="POST" id="get-in-touch">
-                                {% csrf_token %}
-                                <div class="row g-2">
-                                    <!-- messages -->
-                                    {% include 'messages.html' %}
-                                    <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
-                                        <input required name="first_name" type="text" class="form-control" id="first_name" placeholder="Your First Name">
-                                        <label for="first_name">Your First Name <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    <div class="form-floating col-lg-6 col-md-6 col-12">
-                                        <input required name="last_name" type="text" class="form-control" id="last_name" placeholder="Your Last Name">
-                                        <label for="last_name">Your Last Name <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
-                                        <input required name="email" type="email" class="form-control" id="get_email" placeholder="Your Email Address">
-                                        <label for="get_email">Your Email Address <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    <div class="form-floating col-lg-6 col-md-6 col-12">
-                                        <input required name="phone" type="text" class="form-control" id="get_phone" placeholder="Your Phone Number">
-                                        <label for="get_phone">Your Phone Number <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
-                                        <input required name="nationality" type="text" class="form-control" id="nationality" placeholder="Your Nationality">
-                                        <label for="nationality">Your Nationality <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    <div class="form-floating col-lg-6 col-md-6 col-12">
-                                        <input required name="country" type="text" class="form-control" id="country_of_resident" placeholder="Actual Country of Resident">
-                                        <label for="country_of_resident">Actual Country of Resident <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    <div class="form-floating col-12">
-                                        <input required name="date" type="date" class="form-control" id="graduation_year" placeholder="Graduation Year">
-                                        <label for="graduation_year">Graduation Year <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    {% if program_qs %}
-                                    <div class="form-floating col-12 ">
-                                        <select name="program" required class="form-control " id="program_name">
+    <div class="container mb-5 mt-5">
+        <div class="row g-5">
+            <div class="col-lg-8 col-md-7 col-12">
+                <div class="shadow bg-white p-4">
+                    <form method="POST" id="get-in-touch">
+                        {% csrf_token %}
+                        <div class="row g-2">
+                            <!-- messages -->
+                            {% include 'messages.html' %}
+                            <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
+                                <input required name="first_name" type="text" class="form-control" id="first_name" placeholder="Your First Name">
+                                <label for="first_name">Your First Name <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            <div class="form-floating col-lg-6 col-md-6 col-12">
+                                <input required name="last_name" type="text" class="form-control" id="last_name" placeholder="Your Last Name">
+                                <label for="last_name">Your Last Name <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
+                                <input required name="email" type="email" class="form-control" id="get_email" placeholder="Your Email Address">
+                                <label for="get_email">Your Email Address <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            <div class="form-floating col-lg-6 col-md-6 col-12">
+                                <input required name="phone" type="text" class="form-control" id="get_phone" placeholder="Your Phone Number">
+                                <label for="get_phone">Your Phone Number <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
+                                <input required name="nationality" type="text" class="form-control" id="nationality" placeholder="Your Nationality">
+                                <label for="nationality">Your Nationality <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            <div class="form-floating col-lg-6 col-md-6 col-12">
+                                <input required name="country" type="text" class="form-control" id="country_of_resident" placeholder="Actual Country of Resident">
+                                <label for="country_of_resident">Actual Country of Resident <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            <div class="form-floating col-12">
+                                <input required name="date" type="date" class="form-control" id="graduation_year" placeholder="Graduation Year">
+                                <label for="graduation_year">Graduation Year <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            {% if program_qs %}
+                            <div class="form-floating col-12 ">
+                                <select name="program" required class="form-control " id="program_name">
                                             <option value="0 " selected disabled>Click To Chose</option>
                                                 {% for item in program_qs %}
                                                 <option value="{{item.program_name}} ">{{item.program_name}}
                                                 {% endfor %}
                                             </option>
                                         </select>
-                                        <label for="program_name ">Choose a program <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    {% endif %}
-                                    <div class="form-floating col-12 mt-3 ">
-                                        <textarea name="education" required class="form-control " id="educational_qualification " placeholder="Educational Qualification " rows="5 "></textarea>
-                                        <label for="educational_qualification ">Educational Qualification <span style="color :rgb(126, 20, 20)">*</span></label>
-                                    </div>
-                                    <div class="col-12 mt-3 ">
-                                        <button onclick="getProgram " class="btn btn-on-white " type="submit ">Get in touch</button>
-                                    </div>
-                                </div>
-                            </form>
+                                <label for="program_name ">Choose a program <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            {% endif %}
+                            <div class="form-floating col-12 mt-3 ">
+                                <textarea name="education" required class="form-control " id="educational_qualification " placeholder="Educational Qualification " rows="5 "></textarea>
+                                <label for="educational_qualification ">Educational Qualification <span style="color :rgb(126, 20, 20)">*</span></label>
+                            </div>
+                            <div class="col-12 mt-3 ">
+                                <button onclick="getProgram " class="btn btn-on-white " type="submit ">Get in touch</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-5 col-12 ">
+            <div class="col-lg-4 col-md-5 col-12 ">
                 <!-- start Page sidebar -->
                 <div class="position-sticky " style="top: 2rem; ">
-                    {% include 'contact_form/page-sidebar.html' %}
+                    {% include 'page-sidebar.html' %}
                 </div>
                 <!-- End Page sidebar -->
             </div>

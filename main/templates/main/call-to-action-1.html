@@ -1,13 +1,15 @@
 {% load static %}
 <main>
-    <div class="main-bg-color px-4 py-2 text-center">
-        <div class="py-5">
-            <h2 style="font-weight: 500;" class="text-white">Free advice and assistance to Study around the world</h2>
-            <div class="col-lg-6 mx-auto">
-                <p style="color: rgb(204, 204, 204);" class="mb-4">Avoid the embarrassment of dealing with fee-charging agents; our service is completely free*.</p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a class="btn btn-bg-main" href="{% url 'about' %}">Find out more</a>
-                    <a class="btn btn-bg-white" href=" {% url 'contact' %} ">Get in touch</a>
+    <div class="main-bg-color px-4 py-2">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h4 class="text-white">Free advice and assistance to Study around the world</h4>
+                    <p class="mb-4 text-white-50">Avoid the embarrassment of dealing with fee-charging agents; our service is completely free*.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a class="btn btn-bg-main" href="{% url 'about' %}">Find out more</a>
+                        <a class="btn btn-bg-white" href=" {% url 'get-in-touch' %} ">Get in touch</a>
+                    </div>
                 </div>
             </div>
         </div>

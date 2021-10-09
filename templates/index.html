@@ -45,13 +45,16 @@
     </p>
     [endif] -->
     <!-- ========================= header start ========================= -->
-    {% include 'toolbar-navbar.html' %}
+    <div class="sticky-top">
+        {% include 'toolbar-navbar.html' %}
+    </div>
     <!-- ========================= header end ========================= -->
 
-    {% block contain %} {% endblock %}
-    <!-- Start Footer Area -->
+    {% block contain %}
+    <!--  -->
+    {% endblock %}
+    <!--  -->
     {% include 'footer.html' %}
-    <!--/ End Footer Area -->
 
     <!-- ========================= JS here ========================= -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -61,6 +64,13 @@
     <script src="{% static 'js/ajax.js' %}" defer></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}" defer></script>
     <script src="{% static 'js/contact-form.js' %}" defer></script>
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 </html>

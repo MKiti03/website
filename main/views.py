@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.db.models.fields import related
 from django.http.response import HttpResponseRedirect
 from django.views.generic import ListView
 from django.shortcuts import redirect, render
@@ -7,18 +8,24 @@ from .forms import *
 from django.http import JsonResponse
 from .forms import *
 from django.urls import reverse
+from post.models import BlogPost
 
 import datetime
 # Create your views here.
 def index(request):
     # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
     
+    base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+    
+
     # Display featured program on the home page
-    feature_program = Program.objects.all().filter(set_featured = True, set_draft = False).order_by('-date_created')[:16]
+    feature_dicipline = Dicipline.objects.all().filter(set_featured = True, set_draft = False).order_by('-date_created')[:14]
+
+    feature_dicipline_count = feature_dicipline.count()
 
     # display countries on the home page
-    featured_coutries = Country.objects.all().filter(set_draft = False).order_by('-date_created')[:6]
+    featured_coutries = Country.objects.all().filter(set_draft = False).order_by('-date_created')[:3]
     
     # featured universities on  the home page
     featured_universities = University.objects.all().filter(set_draft = False).order_by('-date_created')[:6]
@@ -26,293 +33,210 @@ def index(request):
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
     context = {
+        'base_page_dicipline':base_page_dicipline,
+        'feature_dicipline_count':feature_dicipline_count,
         'featured_universities':featured_universities,
         'featured_coutries':featured_coutries,
         'featured_post':featured_post,
-        'category_to_navebar':category_to_navebar,
-        'feature_program':feature_program,
+        'dicipline_to_navebar':dicipline_to_navebar,
+        'feature_dicipline':feature_dicipline,
     }
     return render(request, 'main/main-home-page.html', context)
 
-def programCategory(request):
+
+def articlePage(request, article):
     # To display items in nav bar and Category page
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False)
     
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
+    # Page content
+    get_article = BasePage.objects.get(page_name = article, set_draft = False)
+    dicipline = get_article.dicipline_set.all().filter(set_draft = False).order_by('-date_created')
+    university = get_article.university_set.all().filter(set_draft = False).order_by('-date_created')
+    speciality = get_article.speciality_set.all().filter(set_draft = False).order_by('-date_created')
+    country = get_article.country_set.all().filter(set_draft = False).order_by('-date_created')
+
 
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
     context = {
-        'program_to_form':program_to_form,
+        'country':country,
+        'speciality':speciality,
+        'university':university,
+        'dicipline':dicipline,
         'featured_post':featured_post,
-        'category_to_navebar':category_to_navebar,
+        'dicipline_to_navebar':dicipline_to_navebar,
     }
-    return render(request, 'main/category-page.html', context)
 
-def singleProgramCategory(request, category_url):
+    if get_article.page_name == 'Diciplines':
+        return render(request, 'main/dicipline-page.html', context)
+    elif get_article.page_name == 'Universities':
+        return render(request, 'main/university-page.html', context)
+    elif get_article.page_name == 'Specialties':
+        return render(request, 'main/speciality-page.html', context)
+
+    elif get_article.page_name == 'Continents':
+        return render(request, 'main/countries-page.html', context)
+        
+
+def singleDicipline(request, dicipline_url):
     # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
+    # GEt Dicipline
+    single_dicipline = Dicipline.objects.get(short_name =dicipline_url, set_draft = False)
 
-    # GEt fategorie programs
-    program_category = ProgramCategory.objects.get(program_category_title =category_url, set_draft =False)
+    master_level = DiciplineTag.objects.get(name = 'Master')
+    bachelor_level = DiciplineTag.objects.get(name = 'Bachelor')
+    phd_level = DiciplineTag.objects.get(name = 'PhD')
 
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
+    speciality_in_dicipline = single_dicipline.speciality_set.all().filter(set_draft = False)
+    speciality_in_dicipline_count = speciality_in_dicipline.count()
 
-    program = program_category.program_set.all().filter(set_draft = False)
+    master_speciality = speciality_in_dicipline.filter(study_level = master_level)
+    bachelor_speciality = speciality_in_dicipline.filter(study_level = bachelor_level)
+    phd_speciality = speciality_in_dicipline.filter(study_level = phd_level)
+
+    # program_in_dicipline = single_dicipline.program_set.all().filter(set_draft = False)
+    # program_in_dicipline_count = program_in_dicipline.count()
 
     context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'program_category':program_category,
-        'program':program,
-        'category_to_navebar':category_to_navebar,
+        'phd_speciality':phd_speciality,
+        'bachelor_speciality':bachelor_speciality,
+        'master_speciality':master_speciality,
+        # 'program_in_dicipline_count':program_in_dicipline_count,
+        'speciality_in_dicipline_count':speciality_in_dicipline_count,
+        'speciality_in_dicipline':speciality_in_dicipline,
+        'single_dicipline':single_dicipline,
+        'dicipline_to_navebar':dicipline_to_navebar,
     }
-    return render(request, 'main/single-category.html', context)
+    return render(request, 'main/single-dicipline.html', context)
 
-def programPage(request):
+
+def singleSpeciality(request, speciality_url):
     # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
+    spaciality = Speciality.objects.get(speciality_name = speciality_url, set_draft = False)
 
-    # Query all programs
-    all_programs = Program.objects.all().filter(set_draft = False)
+    related_university = spaciality.university_set.all().filter(set_draft = False).order_by('-date_created')
+    related_university_count = related_university.count()
 
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
+    related_program = spaciality.program_set.all().filter(set_draft = False)
 
+    
+    
     context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'all_programs':all_programs,
-        'category_to_navebar':category_to_navebar,
+        'related_program':related_program,
+        'related_university_count':related_university_count,
+        'related_university':related_university,
+        'spaciality':spaciality,
+        'dicipline_to_navebar':dicipline_to_navebar,
     }
+    return render(request, 'main/signle-speciality.html', context)
 
-    return render(request, 'main/program.html', context)
-
-def singleProgram(request, program_url):
-    # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
-
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
-
-    # Query sigle programe
-    single_program = Program.objects.get(program_name = program_url, set_draft = False)
-    program_fact = single_program.programfact_set.all().filter(set_draft = False)
-
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
-
-    context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'program_fact':program_fact,
-        'single_program':single_program,
-        'category_to_navebar':category_to_navebar,
-    }
-
-    return render(request, 'main/single-program.html', context)
-
-
-def countryPage(request):
-    # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
-    # Query all countries
-    all_countries = Country.objects.all().filter(set_draft = False)
-
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
-
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
-
-
-    context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'all_countries':all_countries,
-        'category_to_navebar':category_to_navebar,
-    }
-    return render(request, 'main/countries.html', context)
-
-def singleCountry(request, country_url):
-    # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
-
-    single_country = Country.objects.get(country_name=country_url, set_draft = False)
-
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
-
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
-
-    country_fact = single_country.countryfact_set.all().filter(set_draft = False)
-    related_universities = single_country.university_set.all().filter(set_draft = False)
-    universities_count = related_universities.count()
-
-    print(related_universities)
-
-    context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'related_universities':related_universities,
-        'universities_count':universities_count,
-        'country_fact':country_fact,
-        'single_country':single_country,
-        'category_to_navebar':category_to_navebar,
-    }
-    return render(request, 'main/single-country.html', context)
-
-
-
-def universityPage(request):
-    # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
-
-    all_universities = University.objects.all().filter(set_draft = False)
-
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
-
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
-
-    context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'all_universities':all_universities,
-        'category_to_navebar':category_to_navebar,
-    }
-
-    return render(request, 'main/university.html', context)
 
 def singleUniversity(request, university_url):
     # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
+    university = University.objects.get(university_name = university_url)
 
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
+    university_fact = university.universityfact_set.all().filter(set_draft = False).order_by('-date_created')
 
-    single_university = University.objects.get(university_name=university_url, set_draft = False)
+    program = university.program_set.all().filter(set_draft = False).order_by('-date_created')
 
-    university_fact = single_university.universityfact_set.all().filter(set_draft = False)
+    master_level = DiciplineTag.objects.get(name = 'Master')
+    bachelor_level = DiciplineTag.objects.get(name = 'Bachelor')
+    phd_level = DiciplineTag.objects.get(name = 'PhD')
 
-    university_program = single_university.program_set.all().filter(set_draft = False)
-    university_program_count = university_program.count()
+    master_speciality = program.filter(study_level = master_level)
+    bachelor_speciality = program.filter(study_level = bachelor_level)
+    phd_speciality = program.filter(study_level = phd_level)
 
     context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'university_program_count':university_program_count,
-        'university_program':university_program,
+        'phd_speciality':phd_speciality,
+        'bachelor_speciality':bachelor_speciality,
+        'master_speciality':master_speciality,
+        'program':program,
         'university_fact':university_fact,
-        'single_university':single_university,
-        'category_to_navebar':category_to_navebar,
+        'university':university,
+        'dicipline_to_navebar':dicipline_to_navebar,
     }
     return render(request, 'main/single-university.html', context)
 
 
-def postCategory(request):
+# def programPage(request):
+#     # To display items in nav bar
+#     category_to_navebar = Speciality.objects.all().filter(set_draft = False, set_featured = True)
+
+#     # Query programs for the select form field
+#     program_to_form = Program.objects.all().filter(set_draft = False)
+
+#     # Query all programs
+#     all_programs = Program.objects.all().filter(set_draft = False)
+
+#     # Featured post on page bottum
+#     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
+
+#     context = {
+#         'program_to_form':program_to_form,
+#         'featured_post':featured_post,
+#         'all_programs':all_programs,
+#         'category_to_navebar':category_to_navebar,
+#     }
+
+#     return render(request, 'main/program.html', context)
+
+# def singleProgram(request, program_url):
+#     # To display items in nav bar
+#     category_to_navebar = Speciality.objects.all().filter(set_draft = False, set_featured = True)
+
+#     # Query programs for the select form field
+#     program_to_form = Program.objects.all().filter(set_draft = False)
+
+#     # Query sigle programe
+#     single_program = Program.objects.get(program_name = program_url, set_draft = False)
+#     program_fact = single_program.programfact_set.all().filter(set_draft = False)
+
+#     # Featured post on page bottum
+#     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
+
+#     context = {
+#         'program_to_form':program_to_form,
+#         'featured_post':featured_post,
+#         'program_fact':program_fact,
+#         'single_program':single_program,
+#         'category_to_navebar':category_to_navebar,
+#     }
+
+#     return render(request, 'main/single-program.html', context)
+
+
+def singleCountry(request, country_url):
     # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
+    single_country = Country.objects.get(country_name=country_url, set_draft = False)
 
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
-
-    post_category = PostCategory.objects.all().filter(set_draft = False)
-
+    related_universities = single_country.university_set.all().filter(set_draft = False)
+    country_fact = single_country.countryfact_set.all().filter(set_draft = False).order_by('-date_created')
 
     context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'post_category':post_category,
-        'category_to_navebar':category_to_navebar,
+        'country_fact':country_fact,
+        'related_universities':related_universities,
+        'single_country':single_country,
+        'dicipline_to_navebar':dicipline_to_navebar,
     }
-    return render(request, 'main/post-category.html', context)
+    return render(request, 'main/single-country.html', context)
 
-def singlePostCategory(request, post_category_url):
-    # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
-
-    single_post_category = PostCategory.objects.get(post_category_title = post_category_url, set_draft = False)
-    post_content = single_post_category.blogpost_set.all().filter(set_draft = False)
-    context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'post_content':post_content,
-        'single_post_category':single_post_category,
-        'category_to_navebar':category_to_navebar,
-    }
-    return render(request, 'main/single-post-category.html', context)
-
-class BlogPostPage(ListView):
-    queryset = BlogPost.objects.filter(set_draft = False).order_by('-date_created')
-
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
-
-    #Display programs category on the navbar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
-
-    # Featured post on page bottum
-    featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
-    
-    template_name = 'main/blog-post.html'
-
-    paginate_by = 16
-    
-    extra_context = {
-        'program_to_form':program_to_form,
-        'featured_post':featured_post,
-        'category_to_navebar':category_to_navebar,
-    }
-
-def singlePost(request, single_post_url):
-    # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
-
-    # Query programs for the select form field
-    program_to_form = Program.objects.all().filter(set_draft = False)
-    single_post = BlogPost.objects.get(post_title = single_post_url, set_draft = False)
-    post_tag = single_post.tag_set.all().filter(set_draft = False)
-
-    post_comment = single_post.postcomment_set.all().filter(set_draft = False).order_by('-date_created')
-    post_comment_count = post_comment.count()
-    context = {
-        'program_to_form':program_to_form,
-        'post_comment_count':post_comment_count,
-        'post_comment':post_comment,
-        'post_tag':post_tag,
-        'single_post':single_post,
-        'category_to_navebar':category_to_navebar,
-    }
-    return render(request, 'main/blog-post-single.html', context)
 
 
 def contactUsPage(request):
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
     # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
     form = ContactForm(request.POST)
 
@@ -331,7 +255,7 @@ def contactUsPage(request):
     context = {
         'form':form,
         'featured_post':featured_post,
-        'category_to_navebar':category_to_navebar,
+        'dicipline_to_navebar':dicipline_to_navebar,
     }
     return render(request, 'main/contact-page.html', context)
 
@@ -340,26 +264,51 @@ def aboutUsPage(request):
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
     # To display items in nav bar
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
     context = {
         'featured_post':featured_post,
-        'category_to_navebar':category_to_navebar,
+        'dicipline_to_navebar':dicipline_to_navebar,
     }
     return render(request, 'main/about-us.html', context)
 
 def successPage(request):
-    return render(request, 'main/success-page.html')
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+
+    context = {
+        'dicipline_to_navebar':dicipline_to_navebar,
+    }
+    return render(request, 'success-page.html', context)
 
 # Custun error handler page
 def error_404(request, exception):
-    return render(request, 'main/404.html')
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+
+    context = {
+        'dicipline_to_navebar':dicipline_to_navebar,
+    }
+    return render(request, 'main/404.html', context)
 
 def error_400(request, exception):
-    return render(request, 'main/404.html')
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+
+    context = {
+        'dicipline_to_navebar':dicipline_to_navebar,
+    }
+    return render(request, 'main/404.html', context)
 
 def error_500(request):
-    return render(request, 'main/404.html')
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+
+    context = {
+        'dicipline_to_navebar':dicipline_to_navebar,
+    }
+    return render(request, 'main/404.html', context)
 
 def error_403(request, exception):
-    return render(request, 'main/404.html')
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+
+    context = {
+        'dicipline_to_navebar':dicipline_to_navebar,
+    }
+    return render(request, 'main/404.html', context)

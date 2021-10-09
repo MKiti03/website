@@ -1,38 +1,51 @@
 body {
-    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f7f7f7;
 }
 
-h3 {
-    font-family: proxima-nova, Helvetica, Arial, sans-serif;
-    font-weight: 600;
-    line-height: 24px;
-    font-size: 20px;
+.form-control:focus {
+    box-shadow: none;
 }
 
-h2 {
-    font-family: proxima-nova, Helvetica, Arial, sans-serif;
-    font-weight: 800;
-    line-height: 36px;
-    font-size: 35px;
-    margin-bottom: 20px;
+.spacer-150 {
+    opacity: 0;
+    margin-top: 150px;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767px) {
-    h2 {
-        font-family: proxima-nova, Helvetica, Arial, sans-serif;
-        font-weight: 600;
-        line-height: 33px;
-        font-size: 25px;
-        margin-bottom: 20px;
-    }
+.fw-100 {
+    font-weight: 100;
 }
 
-p {
-    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
     font-weight: 400;
-    line-height: 24px;
-    font-size: 18px;
-    padding-left: 2%;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fw-900 {
+    font-weight: 900;
 }
 
 blockquote {
@@ -57,6 +70,10 @@ blockquote {
 
 .no-decoration {
     text-decoration: none;
+}
+
+.no-border {
+    border: none;
 }
 
 .main-bg-color {
@@ -181,25 +198,14 @@ blockquote {
     max-width: 150px;
 }
 
-.toolbar-logo {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif
-    /*rtl:Amiri, Georgia, "Times New Roman", serif*/
-    ;
-    font-size: 2.25rem;
-}
-
-.toolbar-logo:hover {
-    text-decoration: none;
-}
-
 
 /* toggle icon style */
 
 .toggle-icon a i {
-    font-size: 35px;
+    font-size: 25px;
     color: #0a2368;
     background-color: #273c7523;
-    padding: 5px 10px 5px 10px;
+    padding: 2px 5px 2px 5px;
     border-radius: 5px;
 }
 
@@ -255,7 +261,7 @@ span {
 
 .nav-scroller .nav a {
     text-decoration: none;
-    font-size: 19px;
+    font-size: 17px;
     color: #273c75;
     font-weight: 500;
 }
@@ -279,7 +285,6 @@ span {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.6;
     content: '';
     background: #273c75;
     -webkit-transition: all 0.4s ease;
@@ -287,13 +292,23 @@ span {
     transition: all 0.4s ease;
 }
 
-
-/* Carousel base class */
-
 .carousel-item.overlay::before {
-    opacity: 0.6;
+    opacity: 0.8;
     background: #273c75;
 }
+
+.dicipline-bg.overlay::before {
+    opacity: 0.8;
+    background: #273c75;
+}
+
+.mobile-baner.overlay::before {
+    opacity: 0.8;
+    background: #273c75;
+}
+
+
+/* Carousel base class */
 
 
 /* Since positioning the image, we need to help out the caption */
@@ -302,6 +317,27 @@ span {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+.bage-bg {
+    background-color: #becdf8ad;
+}
+
+.bage-bg:hover {
+    background-color: #becdf8ad;
+}
+
+.btn-bage:focus {
+    box-shadow: none;
+}
+
+.single-dicipline-card {
+    background-color: #273c758a;
+}
+
+.single-dicipline-card-header {
+    background-color: #273c75d3;
 }
 
 
@@ -353,6 +389,10 @@ span {
     color: white;
 }
 
+.read-more:focus {
+    box-shadow: none;
+}
+
 .bi {
     vertical-align: -.125em;
     fill: currentColor;
@@ -374,53 +414,10 @@ span {
     transform: translate(.25rem);
 }
 
-.icon-square {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.5rem;
-    border-radius: .75rem;
-}
-
-.rounded-4 {
-    border-radius: .5rem;
-}
-
-.rounded-5 {
-    border-radius: 1rem;
-}
-
-.text-shadow-1 {
-    text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25);
-}
-
-.text-shadow-2 {
-    text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25);
-}
-
-.text-shadow-3 {
-    text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25);
-}
-
 .card-cover {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-}
-
-
-/* stylelint-disable selector-list-comma-newline-after */
-
-.display-4 {
-    font-size: 2.5rem;
-}
-
-@media (min-width: 768px) {
-    .display-4 {
-        font-size: 3rem;
-    }
 }
 
 .card-img-right {
@@ -447,35 +444,25 @@ span {
 
 .footer-about {
     width: 100%;
+    font-size: 16px;
 }
 
 .footer-about a i {
-    background-color: #273c75;
-    padding: 10px;
-    height: 70px;
-    width: 70px;
-    color: #ffffff;
-    font-size: 22px;
-    border-radius: 5px;
-}
-
-.footer-about a i:hover {
-    transition: 0.6s;
-    background-color: #273c7536;
     color: #273c75;
+    font-size: 22px;
 }
 
 .footer-link ul li a {
     text-decoration: none;
     color: rgb(65, 65, 65);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
 }
 
 .footer-link ul li a:hover {
     transition: 0.8s;
     color: #273c75;
-    margin-left: 4px;
+    margin-left: 2px;
 }
 
 .footer-link ul li {
@@ -492,22 +479,20 @@ span {
 
 .footer-contact ul li i {
     margin-top: 10px;
-    font-size: 24px;
-    font: 600;
+    font-size: 22px;
     margin-right: 10px;
 }
 
 .footer-contact ul li a {
-    color: #272727;
+    color: #212529;
     text-decoration: none;
     pointer-events: none;
-    font-size: 20px;
+    font-size: 16px;
     font: 400;
 }
 
 .footer-bottum p {
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 14px;
     color: #666;
 }
 
@@ -529,7 +514,7 @@ span {
 
 .contact-info ul li i {
     margin-top: 10px;
-    font-size: 30px;
+    font-size: 20px;
     font: 600;
     margin-right: 10px;
     color: #273c75;
@@ -539,9 +524,99 @@ span {
     color: #272727;
     text-decoration: none;
     pointer-events: none;
-    font-size: 22px;
+    font-size: 18px;
     font: 400;
 }
 
 
-/* Form styling */
+/* Icon and icon box styling */
+
+.dicipline-icon-box {
+    padding-top: 15px;
+    color: #ffffff;
+}
+
+.dicipline-icon-box i {
+    font-size: 40px;
+}
+
+.single-dicipline-icon {
+    margin-right: 15px;
+    color: #cecfcf;
+    font-size: 40px;
+}
+
+.icon-box-dicipline {
+    height: 60px;
+    width: 60px;
+    background-color: #273c75;
+}
+
+.dicipline-tab-icon-box {
+    background-color: #273c75;
+}
+
+.dicipline-tab-icon-box i {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+
+.dicipline-tabs.nav-link.active {
+    background-color: #becff8a4;
+}
+
+.dicipline-tabs.nav-link {
+    border: none;
+}
+
+.dicipline-nav {
+    border-color: #273c75;
+}
+
+.spaciality-fact i {
+    font-size: 20px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.speciality-description h1 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.speciality-description h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.speciality-description h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.speciality-description h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.speciality-description h5 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.speciality-description h6 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.speciality-description ul li::marker {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+@media only screen and (min-width: 250px) and (max-width: 770px) {
+    .spacer-150 {
+        opacity: 0;
+        margin-top: 20px;
+    }
+}

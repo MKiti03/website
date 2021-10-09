@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block contain%}
+<!--  -->
+<main>
+    <div class="container p-lg-5  mt-3 mb-5">
+        <div class="row g-3">
+            <div class="col-xl-8 col-md-7 col-12">
+                <div class="shadow bg-white py-3">
+                    <div class="col text-center">
+                        <h6 class="fw-500 text-uppercase main-color px-lg-4"> Use this form to apply for <span class="fw-600 main-color">{{application_form.program_name}}</span></h6>
+                    </div>
+                    <div class="container-md">
+                        <div class="my-3" id="floating-labels">
+                            <form method="POST" id="get-in-touch">
+                                {% csrf_token %}
+                                <div class="row g-2">
+                                    <!-- messages -->
+                                    {% include 'messages.html' %}
+                                    <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                                        {{form.name}}
+                                        <label for="first_name">Your Name <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating col-lg-6 col-md-6 col-12 col-lg-6 col-md-6 col-12">
+                                        {{form.phone}}
+                                        <label for="last_name">Your Phone Number <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating mb-2 col-lg-12 col-md-12 col-12">
+                                        {{form.email}}
+                                        <label for="get_email">Your Email Address <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                                        {{form.nationality}}
+                                        <label for="get_phone">Your Nationality <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                                        {{form.actual_country}}
+                                        <label for="nationality">Actual Country of Resident <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                                        {{form.region}}
+                                        <label for="country_of_resident">Your Region <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                                        {{form.address}}
+                                        <label for="graduation_year">Your Address <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                                        {{form.year_of_graduation}}
+                                        <label for="graduation_year">Year of Graduation<span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                                        {{form.school}}
+                                        <label for="graduation_year">School <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating mb-2 col-12 ">
+                                        {{form.educational_qualification}}
+                                        <label for="educational_qualification ">Educational Qualification <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="form-floating col-12 mb-2">
+                                        {{form.message}}
+                                        <label for="educational_qualification ">Additional Request <span style="color :rgb(126, 20, 20)">*</span></label>
+                                    </div>
+                                    <div class="col-12 mt-3 ">
+                                        <button onclick="getProgram " class="btn btn-on-white " type="submit ">Apply now</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-5 col-12 ">
+                <!-- start Page sidebar -->
+                <div class="position-sticky " style="top: 2rem; ">
+                    {% include 'page-sidebar.html' %}
+                </div>
+                <!-- End Page sidebar -->
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--  -->
+{% endblock %}

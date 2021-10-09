@@ -1,17 +1,18 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-from main.models import ProgramCategory, Program
+from contact_form.forms import ApplyForm
+from main.models import Dicipline, Program
 from django.contrib import messages
 
-from .models import GetIntouch
+from .models import Application, GetIntouch
 
 
 # Create your views here.
 def getInTouch(request):
 
     # To display items in nav bar and Category page
-    category_to_navebar = ProgramCategory.objects.all().filter(set_draft = False, set_featured = True)
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
     # To display items in nav bar and Category page
     program_qs = Program.objects.all().filter(set_draft = False)
@@ -50,7 +51,43 @@ def getInTouch(request):
             return redirect('get-in-touch')
 
     context = {
-        'category_to_navebar' :category_to_navebar,
+        'dicipline_to_navebar' :dicipline_to_navebar,
         'program_qs' :program_qs,
     }
     return render(request, 'contact_form/main-page.html', context)
+
+
+
+def application(request, program_url):
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    application_form = Program.objects.get(id = program_url)
+
+    # print(get_program.study_level.name)
+    # init_level = []
+
+    # study_level = init_level.append(get_program.study_level.name)
+    
+    for item in application_form.study_level.all():
+        study_level =item.name
+
+
+    form = ApplyForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form_instance =form.save(commit=False)
+            form_instance.program = application_form
+            form_instance.specialty = application_form.program_speciality.speciality_name
+            form_instance.university = application_form.choose_university.university_name
+            form_instance.level = study_level
+            form_instance.save()
+
+            messages.success(request, 'Your application has been submited. We will get back to you as soon as possible')
+            return redirect('success')
+
+    context = {
+        'form':form,
+        'application_form':application_form,
+        'dicipline_to_navebar' :dicipline_to_navebar,
+    }
+
+    return render(request, 'contact_form/program-apply.html', context)

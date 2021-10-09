@@ -1,0 +1,164 @@
+{% extends 'index.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block contain %}
+<!--  -->
+<main>
+    <div style="background-image: url('{{spaciality.dicipline.dicipline_image.url}}');" class="dicipline-bg position-relative bg-cover overlay">
+        <div class="container">
+            <div class="row px-lg-3 py-lg-5">
+                <div class="col-lg-6">
+                    <hr class="spacer-150">
+                    <div class="row">
+                        <div class="col-auto">
+                            <h2 class="fw-500 px-lg-2 lh-3 text-start text-white text-capitalize position-relative"><span class="single-dicipline-icon">{{spaciality.dicipline.dicipline_icon.as_html}}</span> {{spaciality.speciality_name}}</h2>
+                            <div class="mt-4 mb-4">
+                                <div class="row row-cols-md-auto row-cols-1 gy-md-0 gy-4 gx-md-5">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-bage mx-lg-5 text-white bage-bg position-relative">
+                                            Universities found
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                                <span style="font-size: 18px;">{{related_university_count}}</span>
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-3">
+                    <div class="card single-dicipline-card mb-lg-2 mb-4">
+                        <h5 class="card-header fw-500 bage-bg text-white">About this speciality</h5>
+                        <div class="card-body">
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <div class="bage-bg rounded p-2 spaciality-fact">
+                                        <h6 class="fw-600 mb-0">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <i class="bi bi-tags"> </i> {{spaciality.speciality_name|truncatechars:30}} programs
+                                                </div>
+                                                <div class="col">
+                                                    <span class="d-flex justify-content-end fw-500 h5 text-white">{{related_program.count}}</span>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bage-bg rounded p-2 spaciality-fact">
+                                        <h6 class="fw-600 mb-0">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <i class="bi bi-clock-history"></i>Duration of studies
+                                                </div>
+                                                <div class="col">
+                                                    <span class="d-flex justify-content-end fw-500 h5 text-white">{{spaciality.year_of_study}}</span>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12">
+                                    <div class="bage-bg rounded p-2 spaciality-fact">
+                                        <h6 class="fw-600 mb-0">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <i class="bi bi-piggy-bank"></i> Average fees
+                                                </div>
+                                                <div class="col">
+                                                    <span class="d-flex justify-content-end fw-500 h5 text-white">~ 250,000 CFA</span>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bage-bg rounded p-2 spaciality-fact">
+                                        <h6 class="fw-600 mb-0">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <i class="bi bi-wallet"></i> Average annual salary
+                                                </div>
+                                                <div class="col">
+                                                    <span class="d-flex justify-content-end fw-500 h5 text-white">~ 1,000,000 CFA</span>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container px-lg-5">
+        <div class="row mt-5 mb-5">
+            <div class="col-lg-8">
+                <div class="shadow bg-white p-3">
+                    <div class="col text-center">
+                        <h6 class="fw-500 text-uppercase main-color px-lg-4"> Know more about <span class="fw-600 main-color">{{spaciality.speciality_name}}</span>.</h6>
+                    </div>
+
+                    <div class="speciality-description text-start mt-3">
+                        {{spaciality.speciality_description|safe}}
+                    </div>
+                </div>
+                <div class="col text-center mt-5">
+                    <h6 class="fw-500 text-uppercase main-color px-lg-4"> Universities offering <span class="fw-600 main-color">{{spaciality.speciality_name}}</span>.</h6>
+                </div>
+                {% if related_university %}
+                <!--  -->
+                {% for item in related_university %}
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <div class="related-university bg-white mb-3 shadow px-lg-2">
+                            <div class="row g-0 d-flex align-items-center">
+                                <div class="col-md-4">
+                                    <img style="width: 100%;" src="{{item.university_image.url}}" class="img-fluid rounded" alt="{{item.university_name}}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title main-color fw-600"><a href="{% url 'single-university' item.university_name %}">{{item.university_name}}</a></h5>
+                                        <p class="card-text">{{item.university_description|truncatechars:100}}</p>
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <i class="bi bi-geo-alt main-color"></i> {{item.choose_country}}, {{item.region}}
+                                            </div>
+                                            <div class="col-auto">
+                                                <span class="text-success fw-600"> <i class="bi bi-file-earmark-person"></i> Admission open</span>
+                                            </div>
+                                        </div>
+                                        <p class="card-text"><small class="text-muted">Last updated: {{item.last_update.date}}</small></p>
+                                        <div class="row mt-3">
+                                            <div class="col d-flex justify-content-end">
+                                                <a href="{% url 'single-university' item.university_name %}" class="btn btn-sm read-more ">Browse Programs</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!--  -->
+                {% endif %}
+            </div>
+            <div class="col-lg-4">
+                <div class="position-sticky " style="top: 2rem; ">
+                    {% include 'page-sidebar.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

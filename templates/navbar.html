@@ -1,12 +1,12 @@
 {% load static %}
 <!--  -->
-{% if category_to_navebar %}
-<div class="main-bg-color py-2">
-    <div class="container">
+{% if dicipline_to_navebar %}
+<div class="main-bg-color shadow">
+    <div class="container-lg-fluid px-4 py-2">
         <div class="nav-scroller">
             <nav class="nav">
-                {% for item in category_to_navebar %}
-                <a class="p-2 text-white" href="{% url 'single-category' item.program_category_title %}">{{item.program_category_title}}</a>
+                {% for item in dicipline_to_navebar %}
+                <a class="p-2 text-white" href="{% url 'single-dicipline' item.short_name %}">{{item.short_name}},</a>
                 <!--  -->
                 {% endfor %}
             </nav>

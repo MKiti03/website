@@ -1,49 +1,60 @@
 {% load static %}
-<form method="POST" class="row g-3 pe-4" id="contact-form">
+<style>
+    textarea {
+        height: 120px;
+    }
+</style>
+<form method="POST" class="row g-3" id="contact-form">
     {% csrf_token %}
     <div class="col-12" id="message-box">
 
     </div>
-    <div class="col-lg-6 col-md-6 col-12 ">
-        <label for="full_name " class="form-label ">Your name</label>
+    <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
         <!--  -->
         {{form.full_name}}
         <div class="valid-feedback ">
             Looks good!
         </div>
+        <label for="full_name " class="form-label ">Your name</label>
     </div>
-    <div class="col-lg-6 col-md-6 col-12 ">
-        <label for="phone " class="form-label ">Your phone number</label>
+
+    <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
+        <!--  -->
         <!--  -->
         {{form.phone_number}}
         <div class="valid-feedback ">
             Looks good!
         </div>
+        <label for="phone " class="form-label ">Your phone number</label>
     </div>
-    <div class="col-lg-6 col-md-6 col-12 ">
-        <label for="email" class="form-label ">Your Email Address</label>
+
+    <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
         <!--  -->
         {{form.email}}
         <div class="valid-feedback">
             Looks good!
         </div>
+        <label for="email" class="form-label ">Your Email Address</label>
     </div>
-    <div class="col-lg-6 col-md-6 col-12">
-        <label for="subject " class="form-label ">Your Subject</label>
+
+    <div class="form-floating mb-3 col-lg-6 col-md-6 col-12">
         <!--  -->
         {{form.object}}
         <div class="valid-feedback">
             Looks good!
         </div>
+        <label for="subject " class="form-label ">Your Subject</label>
     </div>
-    <div class="col-lg-12 col-md-12 col-12">
-        <label for="message" class="form-label">Your message</label>
+
+    <div class="form-floating mb-3 col-12">
         <!--  -->
         {{form.message}}
         <div class="valid-feedback">
             Looks good!
         </div>
+        <label for="message" class="form-label">Your message</label>
     </div>
+
 
     <div class="col-12">
         <button class="btn btn-on-white" type="submit">Get a quote</button>

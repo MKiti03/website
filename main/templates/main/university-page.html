@@ -1,0 +1,53 @@
+{% extends 'index.html' %} {% load static %} {% block contain%}
+<!-- Start Hero Area -->
+<main>
+    <div class="container px-lg-5">
+        <div class="row mt-5 mb-5">
+            <div class="col-lg-8">
+                {% if university %}
+                <!--  -->
+                {% for item in university %}
+                <div class="row row-cols-1 py-2">
+                    <div class="col">
+                        <div class="related-university card mb-3 no-border shadow">
+                            <div class="row g-0 d-flex align-items-center">
+                                <div class="col-md-4">
+                                    <img style="width: 100%; height:230px" src="{{item.university_image.url}}" class="img-fluid" alt="{{item.university_name}}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title main-color fw-600"><a href="{% url 'single-university' item.university_name %}">{{item.university_name}}</a></h5>
+                                        <p class="card-text">{{item.university_description|truncatechars:100}}</p>
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <i class="bi bi-geo-alt main-color"></i> {{item.choose_country}}, {{item.region}}
+                                            </div>
+                                            <div class="col-auto">
+                                                <span class="text-success fw-600"> <i class="bi bi-file-earmark-person"></i> Admission open</span>
+                                            </div>
+                                        </div>
+                                        <p class="card-text"><small class="text-muted">Last updated: {{item.last_update.date}}</small></p>
+                                        <div class="row mt-3">
+                                            <div class="col d-flex justify-content-end">
+                                                <a href="{% url 'single-university' item.university_name %}" class="btn read-more ">Browse Programs</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!--  -->
+                {% endif %}
+            </div>
+            <div class="col-lg-4">
+                <div class="position-sticky " style="top: 2rem; ">
+                    {% include 'page-sidebar.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

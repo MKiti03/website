@@ -23,7 +23,7 @@ contactForm.addEventListener('submit', e => {
         },
         success: function(response) {
             messageBox.innerHTML += `
-                <div class="alert btn-success text-white alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     ${response.message}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -32,7 +32,7 @@ contactForm.addEventListener('submit', e => {
         },
         error: function(error) {
             messageBox.innerHTML += `
-            <div class="alert btn-danger text-white alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 And error occured while submiting your form, please try again latter
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>

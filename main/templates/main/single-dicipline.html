@@ -1,0 +1,187 @@
+{% extends 'index.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block contain %}
+<!--  -->
+<main>
+    <div style="background-image: url('{{single_dicipline.dicipline_image.url}}');" class="dicipline-bg position-relative bg-cover overlay">
+        <div class="container">
+            <div class="row px-lg-5 py-lg-5">
+                <div class="col-lg-8">
+                    <hr class="spacer-150">
+                    <div class="row">
+                        <div class="col-auto">
+                            <h2 class="fw-500 px-lg-2 lh-3 text-start text-white text-capitalize position-relative"><span class="single-dicipline-icon">{{single_dicipline.dicipline_icon.as_html}}</span> {{single_dicipline.dicipline_name}}</h2>
+                            <div class="mt-4 mb-4">
+                                <div class="row row-cols-md-auto row-cols-1 gy-md-0 gy-4 gx-md-5">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-bage mx-lg-5 text-white bage-bg position-relative">
+                                            Specialities found
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                                <span style="font-size: 18px;">{{speciality_in_dicipline_count}}</span>
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3">
+                    <div class="card single-dicipline-card mb-lg-2 mb-4">
+                        <h5 class="card-header fw-500 bage-bg text-white">About this dicipline</h5>
+                        <div class="card-body">
+                            <p class="card-text text-white">{{single_dicipline.simple_description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5" id="specialities">
+        <div class="row mt-5">
+            <div class="col-lg-8">
+                <nav>
+                    <div class="dicipline-nav nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                        <div class="dicipline-tabs nav-link active" id="nav-bachelor-tab" data-bs-toggle="tab" data-bs-target="#nav-bachelor" type="button" role="tab" aria-controls="nav-bachelor" aria-selected="true">
+                            <div class="col d-flex align-items-center">
+                                <div class="dicipline-tab-icon-box p-3 rounded">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+
+                                <div class="mx-2 text-muted">
+                                    <h5 class="fw-600 mb-0">Bachelor</h5>
+                                    <p>Degree</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dicipline-tabs nav-link" id="nav-master-tab" data-bs-toggle="tab" data-bs-target="#nav-master" type="button " role="tab" aria-controls="nav-master" aria-selected="false">
+                            <div class="col d-flex align-items-center dicipline-button-bg">
+                                <div class="dicipline-tab-icon-box p-3 rounded">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+
+                                <div class="mx-2 text-muted">
+                                    <h5 class="fw-600 mb-0">Master</h5>
+                                    <p>Degree</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dicipline-tabs nav-link" id="nav-phd-tab" data-bs-toggle="tab" data-bs-target="#nav-phd" type="button" role="tab" aria-controls="nav-phd" aria-selected="false">
+                            <div class="col d-flex align-items-center">
+                                <div class="dicipline-tab-icon-box p-3 rounded">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+
+                                <div class="mx-2 text-muted">
+                                    <h5 class="fw-600 mb-0">PhD</h5>
+                                    <p>Degree</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade active show" id="nav-bachelor" role="tabpanel" aria-labelledby="nav-bachelor-tab">
+                        {% if bachelor_speciality %}
+                        <div class="row g-4 mt-4">
+                            {% for item in bachelor_speciality %}
+                            <div class="feature col-lg-6 col-md-6 col-12 ">
+                                <a href="{% url 'single-speciality' item.speciality_name %}">
+                                    <div class="card no-border p-3 shadow">
+                                        <h5 class="main-color "><a href="{% url 'single-speciality' item.speciality_name %}">{{item.speciality_name}}</a></h5>
+                                        <div class="row mt-3">
+                                            <div class="col ">
+                                                <a href="{% url 'single-speciality' item.speciality_name %}" class="btn read-more btn-sm">Browse Programs</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!--  -->
+                        {% else %}
+                        <div class="row g-4 p-5 mt-4">
+                            <div class="col-12 d-flex justify-items-center">
+                                <div class="card p-lg-5 p-4 no-border text-center">
+                                    <h2 class="text-muted">No Specialitty Found For the moment</h2>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="tab-pane fade" id="nav-master" role="tabpanel" aria-labelledby="nav-master-tab">
+                        {% if master_speciality %}
+                        <div class="row g-4 mt-4">
+                            {% for item in master_speciality %}
+                            <div class="feature col-lg-6 col-md-6 col-12 ">
+                                <a href="{% url 'single-speciality' item.speciality_name %}">
+                                    <div class="card no-border p-3 shadow">
+                                        <h5 class="main-color "><a href="{% url 'single-speciality' item.speciality_name %}">{{item.speciality_name}}</a></h5>
+                                        <div class="row mt-3">
+                                            <div class="col ">
+                                                <a href="{% url 'single-speciality' item.speciality_name %}" class="btn btn-sm read-more ">Browse Programs</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!--  -->
+                        {% else %}
+                        <div class="row g-4 p-5 mt-4">
+                            <div class="col-12 d-flex justify-items-center">
+                                <div class="card p-3 np-border text-center">
+                                    <h2 class="text-muted">No Specialitty Found For the moment</h2>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="tab-pane fade" id="nav-phd" role="tabpanel" aria-labelledby="nav-phd-tab">
+                        {% if phd_speciality %}
+                        <div class="row g-4 mt-4">
+                            {% for item in phd_speciality %}
+                            <div class="feature col-lg-6 col-md-6 col-12">
+                                <a href="{% url 'single-speciality' item.speciality_name %}">
+                                    <div class="card no-border p-3 shadow">
+                                        <h5 class="main-color "><a href="{% url 'single-speciality' item.speciality_name %}">{{item.speciality_name}}</a></h5>
+                                        <div class="row mt-3">
+                                            <div class="col ">
+                                                <a href="{% url 'single-speciality' item.speciality_name %}" class="btn btn-sm read-more ">Browse Programs</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!--  -->
+                        {% else %}
+                        <div class="row g-4 p-5 mt-4">
+                            <div class="col-12 d-flex justify-items-center">
+                                <div class="card p-3 no-border text-center">
+                                    <h2 class="text-muted">No Specialitty Found For the moment</h2>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="position-sticky mt-md-0 mt-5" style="top: 2rem; ">
+                    {% include 'page-sidebar.html' %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}

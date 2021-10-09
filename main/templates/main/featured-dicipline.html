@@ -1,0 +1,50 @@
+{% load static %}
+<!--  -->
+{% if feature_dicipline %}
+<main>
+    <div class="mt-lg-5 mt-4 mb-5">
+        <div class="container p-md-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-12 mb-3">
+                    <h4 class="fw-500">SELECT A DISCIPLINE AND SEARCH FOR UNIVERSITIES</h4>
+                </div>
+            </div>
+            <div class="row g-2 row-cols-lg-5 row-cols-md-3 row-cols-1 justify-items-center">
+                {% for item in feature_dicipline %}
+                <div class="col">
+                    <a href="{% url 'single-dicipline' item.short_name %}">
+                        <div style="min-height: 180px;" class="card text-center p-3 main-bg-color rounded-0">
+                            <div class="dicipline-icon-box">
+                                {{item.dicipline_icon.as_html}}
+                            </div>
+                            <div class="card-body">
+                                <h6 class="text-white fw-500">
+                                    <a class="text-white no-decoration" href="{% url 'single-dicipline' item.short_name %}">{{item.short_name}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                <!--  -->
+                {% if feature_dicipline_count == 14 %}
+                <div class="col">
+                    <a href="{% url 'article' base_page_dicipline.page_name %}">
+                        <div style="min-height: 180px;" class="card text-center p-3 main-bg-color rounded-0">
+                            <div class="dicipline-icon-box">
+                                <i class="fas fa-folder-plus"></i>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="text-white fw-500">
+                                    <a class="text-white no-decoration" href="{% url 'article' base_page_dicipline.page_name %}">Find out more diciplines</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endif %}

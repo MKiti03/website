@@ -1,0 +1,26 @@
+ {% extends 'index.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block contain%}
+<!--  -->
+<div class="container">
+    <div class="row justify-content-center mt-2 mb-2">
+        <div class="col-md-6 col-12 py-5">
+            <div class="py-5 shadow bg-white">
+                <div class="card no-border text-center" style="min-height: 250px;">
+                    <div>
+                        <i class="text-success" style="font-size: 100px; font-weight: 900;">✓</i>
+                    </div>
+                    <h1 class="main-color">Success</h1>
+                    <p>Medical Doorway needs the contact information you provide to us to contact you about our products and services. You may unsubscribe from these</p>
+                    {% if messages %} {% for item in messages %}
+                    <p class="px-lg-5">{{item}}</p>
+                    {% endfor %} {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+{% endblock %}
