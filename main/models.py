@@ -21,7 +21,7 @@ class BasePage(models.Model):
         verbose_name_plural = 'Base pages'
 
 def get_continent():
-    return BasePage.objects.get(id = 1)
+    return BasePage.objects.get(id = 2)
 class Country(models.Model):
     base_page = models.ForeignKey(BasePage, null=True, blank=True, on_delete=models.PROTECT, default=get_continent)
     country_name = models.CharField(max_length=254, null=True, blank=True)
@@ -73,7 +73,7 @@ class DiciplineTag(models.Model):
         verbose_name_plural = 'Dicipline tags'
 
 def get_dicipline():
-    return BasePage.objects.get(id = 3)
+    return BasePage.objects.get(id = 1)
 class Dicipline(models.Model):
     base_page = models.ForeignKey(BasePage, on_delete=models.PROTECT, null=True, blank=True, default=get_dicipline)
     dicipline_name = models.CharField(max_length=254, null=True, help_text='Enter the dicipline name :Ex Medecine & Health')
@@ -121,7 +121,7 @@ class Speciality(models.Model):
         verbose_name_plural = 'Specialities' 
 
 def get_university():
-    return BasePage.objects.get(id = 2)
+    return BasePage.objects.get(id = 3)
 class University(models.Model):
     base_page = models.ForeignKey(BasePage, on_delete=models.PROTECT, null=True, blank=True, default=get_university)
     university_name = models.CharField(max_length=254, null=True, blank=True)
