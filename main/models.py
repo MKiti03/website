@@ -23,8 +23,17 @@ class BasePage(models.Model):
 def get_continent():
     return BasePage.objects.get(id = 2)
 class Country(models.Model):
+    CHOICES = (
+        ('Asia', 'Asia'),
+        ('Africa', 'Africa')
+        ('Europe', 'Europe')
+        ('North America', 'North America')
+        ('South America', 'South America')
+        ('Oceania', 'Oceania')
+    )
     base_page = models.ForeignKey(BasePage, null=True, blank=True, on_delete=models.PROTECT, default=get_continent)
     country_name = models.CharField(max_length=254, null=True, blank=True)
+    select_continent = models.CharField(max_length=254, null=True, blank=True, choices=CHOICES)
     map_latitud = models.IntegerField(null=True, blank=True)
     map_longitud = models.IntegerField(null=True, blank=True)
     country_flag = models.ImageField(default = 'default.png', blank=True, upload_to = 'countries-flags/%Y/%m/%d/')
