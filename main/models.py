@@ -25,11 +25,11 @@ def get_continent():
 class Country(models.Model):
     CHOICES = (
         ('Asia', 'Asia'),
-        ('Africa', 'Africa')
-        ('Europe', 'Europe')
-        ('North America', 'North America')
-        ('South America', 'South America')
-        ('Oceania', 'Oceania')
+        ('Africa', 'Africa'),
+        ('Europe', 'Europe'),
+        ('North America', 'North America'),
+        ('South America', 'South America'),
+        ('Oceania', 'Oceania'),
     )
     base_page = models.ForeignKey(BasePage, null=True, blank=True, on_delete=models.PROTECT, default=get_continent)
     country_name = models.CharField(max_length=254, null=True, blank=True)
