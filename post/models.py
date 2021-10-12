@@ -9,7 +9,7 @@ from osm_field.fields import LatitudeField, LongitudeField, OSMField
 class PostCategory(models.Model):
     post_category_title = models.CharField(max_length=254, null= True, blank=True)
     post_category_description = models.TextField(max_length=254 ,null = True, blank = True)
-    post_category_image = models.ImageField(default = 'default', upload_to = 'blog-images/%Y/%m/%d/')
+    post_category_image = models.ImageField(default = 'default', upload_to = 'blog-images/%Y/%m/%d/', blank=True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
@@ -27,7 +27,7 @@ class BlogPost(models.Model):
     post_title = models.CharField(max_length=254, null =True, blank=True)
     post_category = models.ManyToManyField(PostCategory, blank=True)
     post_description = RichTextField(null = True, blank = True)
-    post_image = models.ImageField(default = 'default.png', upload_to = 'blog-images/%Y/%m/%d/')
+    post_image = models.ImageField(default = 'default.png', blank= True, upload_to = 'blog-images/%Y/%m/%d/')
     
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)

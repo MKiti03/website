@@ -77,8 +77,8 @@ def get_dicipline():
 class Dicipline(models.Model):
     base_page = models.ForeignKey(BasePage, on_delete=models.PROTECT, null=True, blank=True, default=get_dicipline)
     dicipline_name = models.CharField(max_length=254, null=True, blank=True, help_text='Enter the dicipline name :Ex Medecine & Health')
-    short_name = models.CharField(max_length=254, null=True)
-    dicipline_icon = IconField(null = True)
+    short_name = models.CharField(max_length=254, null=True, blank = True)
+    dicipline_icon = IconField(null = True, blank = True)
 
     dicipline_image = models.ImageField(default = 'default', blank=True, upload_to = 'dicipline-images/%Y/%m/%d/')
 
@@ -125,7 +125,7 @@ def get_university():
 class University(models.Model):
     base_page = models.ForeignKey(BasePage, on_delete=models.PROTECT, null=True, blank=True, default=get_university)
     university_name = models.CharField(max_length=254, null=True, blank=True)
-    university_specialities = models.ManyToManyField(Speciality)
+    university_specialities = models.ManyToManyField(Speciality, blank=True)
     choose_country = models.ForeignKey(Country, on_delete=models.PROTECT, blank=True, null=True)
     region = models.CharField(max_length=254, null=True, blank=True)
     university_logo = models.ImageField(default = 'default.png', blank=True, upload_to = 'universities-logo/%Y/%m/%d/')

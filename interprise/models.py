@@ -13,7 +13,7 @@ class UserProfile(models.Model):
 
     profile_description = RichTextField(null = True, blank = True)
 
-    user_profile_pic = models.ImageField(default = 'default.png')
+    user_profile_pic = models.ImageField(default = 'default.png', blank=True)
 
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_update = models.DateTimeField(null=True, blank=True)
@@ -30,7 +30,7 @@ class UserProfile(models.Model):
 class TeamMember(models.Model):
     name = models.CharField(max_length=254, null =True, blank=True)
     role = models.CharField(max_length=254, null=True, blank=True)
-    profile_image = models.ImageField(default = 'default.png', upload_to = 'testimonials-images/%Y/%m/%d/')
+    profile_image = models.ImageField(default = 'default.png', upload_to = 'testimonials-images/%Y/%m/%d/', blank=True)
 
     phone_number = models.CharField(max_length=254, null=True,blank=True)
     email = models.EmailField(max_length=254, null=True, blank=True)
