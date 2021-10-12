@@ -21,8 +21,9 @@ class ContactUsAdmin(admin.ModelAdmin):
 
 
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ('select_continent', 'country_flag', 'date_created', 'set_draft')
+    list_display = ('country_name', 'select_continent', 'date_created', 'set_draft')
     list_filter = ('select_continent', 'date_created')
+    search_fields = ['country_name', 'set_draft']
 
 class CountryFactAdmin(admin.ModelAdmin):
     list_display = ('fact_name', 'chose_country', 'date_created', 'set_draft')
