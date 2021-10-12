@@ -19,7 +19,7 @@
                                     Study in {{item.country_name}}
                                 </a>
                                 </h5>
-                                <p class="card-text">{{item.country_description|safe|truncatechars:120}}</p>
+                                <p class="card-text">{{item.country_description|safe|truncatechars:110}}</p>
                                 <a href="{% url 'single-country' item.country_name %}" class="btn btn-sm read-more">Find out more</a>
                             </div>
                         </div>
