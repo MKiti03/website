@@ -17,6 +17,8 @@ def index(request):
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
     
     base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+    base_page_continent = BasePage.objects.get(page_name = 'Continents')
+    base_page_university = BasePage.objects.get(page_name = 'Universities')
     
 
     # Display featured program on the home page
@@ -33,6 +35,8 @@ def index(request):
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
         'base_page_dicipline':base_page_dicipline,
         'feature_dicipline_count':feature_dicipline_count,
         'featured_universities':featured_universities,
