@@ -245,7 +245,7 @@ def contactUsPage(request):
             form.save()
 
             return JsonResponse({
-                'message': 'Your request has been submited, we will get abck to you as soon as possible'
+                'message': 'Your request has been submited, w\'ll get back to you as soon as possible'
             })
         else:
             return JsonResponse({
