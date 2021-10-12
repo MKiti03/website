@@ -25,10 +25,10 @@ def index(request):
     feature_dicipline_count = feature_dicipline.count()
 
     # display countries on the home page
-    featured_coutries = Country.objects.all().filter(set_draft = False).order_by('-date_created')[:3]
+    featured_coutries = Country.objects.all().filter(set_draft = False).order_by('-date_created')[:6]
     
     # featured universities on  the home page
-    featured_universities = University.objects.all().filter(set_draft = False).order_by('-date_created')[:6]
+    featured_universities = University.objects.all().filter(set_draft = False).order_by('-date_created')[:8]
 
     # Featured post on page bottum
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
