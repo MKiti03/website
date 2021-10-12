@@ -51,9 +51,9 @@ def articlePage(request, article):
     # Page content
     get_article = BasePage.objects.get(page_name = article, set_draft = False)
     dicipline = get_article.dicipline_set.all().filter(set_draft = False).order_by('short_name')
-    university = get_article.university_set.all().filter(set_draft = False).order_by('-date_created')
-    speciality = get_article.speciality_set.all().filter(set_draft = False).order_by('-date_created')
-    country = get_article.country_set.all().filter(set_draft = False).order_by('-date_created')
+    university = get_article.university_set.all().filter(set_draft = False).order_by('university_name')
+    speciality = get_article.speciality_set.all().filter(set_draft = False).order_by('speciality_name')
+    country = get_article.country_set.all().filter(set_draft = False).order_by('country_name')
 
 
     # Featured post on page bottum
