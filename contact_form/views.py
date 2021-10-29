@@ -1,12 +1,19 @@
+from django.core import mail
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.utils import html
 from contact_form.forms import ApplyForm
 from main.models import Dicipline, Program
 from django.contrib import messages
 
 from .models import Application, GetIntouch
 
+from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 # Create your views here.
 def getInTouch(request):
@@ -43,7 +50,34 @@ def getInTouch(request):
 
         try:
             get_in_touch.save()
-            
+
+            context = {
+                'first_name':first_name,
+                'last_name':last_name,
+                'nationality':nationality,
+                'email':email,
+                'phone':phone,
+                'country':country,
+                'date':date,
+                'program':program,
+                'education':education,
+            }
+            mail_template = render_to_string('email_get_in_touch.html', context)
+            mail_content = strip_tags(mail_template)
+
+            email_to_send = EmailMultiAlternatives(
+                "Study abroad form submited",
+                mail_content,
+                settings.EMAIL_HOST_USER,
+                ['patricknelson1995@gmail.com', 'info.servprov@gmail.com']
+            )
+
+            email_to_send.attach_alternative(
+                mail_template,
+                "text/html"
+            )
+
+            email_to_send.send()
             messages.success(request, 'Your request has been submited, we will get back to you as soon as possible')
             return redirect('get-in-touch')
         except:
@@ -91,3 +125,6 @@ def application(request, program_url):
     }
 
     return render(request, 'contact_form/program-apply.html', context)
+
+def testEmailTemplete(request):
+    return render(request, 'email_get_in_touch.html')
