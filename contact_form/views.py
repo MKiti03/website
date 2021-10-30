@@ -69,7 +69,7 @@ def getInTouch(request):
                 "Study abroad form submited",
                 mail_content,
                 settings.EMAIL_HOST_USER,
-                ['nelson.sonfack@vecademy.com',]
+                ['info@vecademy.com',]
             )
 
             email_to_send.attach_alternative(
