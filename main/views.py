@@ -16,10 +16,15 @@ def index(request):
     # To display items in nav bar
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
     
-    base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
-    base_page_continent = BasePage.objects.get(page_name = 'Continents')
-    base_page_university = BasePage.objects.get(page_name = 'Universities')
-    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     # Display featured program on the home page
     feature_dicipline = Dicipline.objects.all().filter(set_featured = True, set_draft = False).order_by('short_name')[:14]
@@ -52,6 +57,16 @@ def articlePage(request, article):
     # To display items in nav bar and Category page
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False)
     
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
+    
     # Page content
     get_article = BasePage.objects.get(page_name = article, set_draft = False)
     dicipline = get_article.dicipline_set.all().filter(set_draft = False).order_by('short_name')
@@ -64,6 +79,9 @@ def articlePage(request, article):
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'country':country,
         'speciality':speciality,
         'university':university,
@@ -87,6 +105,16 @@ def singleDicipline(request, dicipline_url):
     # To display items in nav bar
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
+    
     # GEt Dicipline
     single_dicipline = Dicipline.objects.get(short_name =dicipline_url, set_draft = False)
 
@@ -105,6 +133,9 @@ def singleDicipline(request, dicipline_url):
     # program_in_dicipline_count = program_in_dicipline.count()
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'phd_speciality':phd_speciality,
         'bachelor_speciality':bachelor_speciality,
         'master_speciality':master_speciality,
@@ -120,6 +151,16 @@ def singleDicipline(request, dicipline_url):
 def singleSpeciality(request, speciality_url):
     # To display items in nav bar
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     spaciality = Speciality.objects.get(speciality_name = speciality_url, set_draft = False)
 
@@ -131,6 +172,9 @@ def singleSpeciality(request, speciality_url):
     
     
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'related_program':related_program,
         'related_university_count':related_university_count,
         'related_university':related_university,
@@ -143,6 +187,16 @@ def singleSpeciality(request, speciality_url):
 def singleUniversity(request, university_url):
     # To display items in nav bar
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     university = University.objects.get(university_name = university_url)
 
@@ -159,6 +213,9 @@ def singleUniversity(request, university_url):
     phd_speciality = program.filter(study_level = phd_level)
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'phd_speciality':phd_speciality,
         'bachelor_speciality':bachelor_speciality,
         'master_speciality':master_speciality,
@@ -220,6 +277,16 @@ def singleUniversity(request, university_url):
 def singleCountry(request, country_url):
     # To display items in nav bar
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     single_country = Country.objects.get(country_name=country_url, set_draft = False)
 
@@ -227,6 +294,9 @@ def singleCountry(request, country_url):
     country_fact = single_country.countryfact_set.all().filter(set_draft = False).order_by('-date_created')
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'country_fact':country_fact,
         'related_universities':related_universities,
         'single_country':single_country,
@@ -241,6 +311,16 @@ def contactUsPage(request):
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
     # To display items in nav bar
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     form = ContactForm(request.POST)
 
@@ -257,6 +337,9 @@ def contactUsPage(request):
             })
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'form':form,
         'featured_post':featured_post,
         'dicipline_to_navebar':dicipline_to_navebar,
@@ -269,8 +352,21 @@ def aboutUsPage(request):
     featured_post = BlogPost.objects.all().filter(set_draft = False, set_featured = True).order_by('-date_created')[:8]
     # To display items in nav bar
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'featured_post':featured_post,
         'dicipline_to_navebar':dicipline_to_navebar,
     }
@@ -278,8 +374,20 @@ def aboutUsPage(request):
 
 def successPage(request):
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'dicipline_to_navebar':dicipline_to_navebar,
     }
     return render(request, 'success-page.html', context)
@@ -287,32 +395,80 @@ def successPage(request):
 # Custun error handler page
 def error_404(request, exception):
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'dicipline_to_navebar':dicipline_to_navebar,
     }
     return render(request, 'main/404.html', context)
 
 def error_400(request, exception):
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'dicipline_to_navebar':dicipline_to_navebar,
     }
     return render(request, 'main/404.html', context)
 
 def error_500(request):
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'dicipline_to_navebar':dicipline_to_navebar,
     }
     return render(request, 'main/404.html', context)
 
 def error_403(request, exception):
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     context = {
         'dicipline_to_navebar':dicipline_to_navebar,
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
     }
     return render(request, 'main/404.html', context)

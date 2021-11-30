@@ -5,7 +5,7 @@
 {% block contain %}
 <!--  -->
 <main>
-    <div style="background-image: url('{{university.university_image.url}}');" class="dicipline-bg position-relative bg-cover overlay">
+    <div style="background-image: url('{{university.university_image.url}}');" class="dicipline-bg container mt-3 position-relative bg-cover overlay">
         <div class="container">
             <div class="row px-lg-3 py-lg-5">
                 <div class="col-lg-6">
@@ -21,17 +21,18 @@
                                 </div>
                             </div>
                             <div class="mt-5 mb-4">
+                                {% if program.count > 0 %}
                                 <div class="row row-cols-md-auto row-cols-1 gy-md-0 gy-4 gx-md-5">
                                     <div class="col">
                                         <button type="button" class="btn btn-bage mx-lg-5 text-white bage-bg position-relative pe-none">
                                             Programs found
                                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
                                                 <span style="font-size: 18px;">{{program.count}}</span>
-                                                <span class="visually-hidden">unread messages</span>
                                             </span>
                                         </button>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -198,6 +199,12 @@
                                                 {% endfor %}
                                             </tbody>
                                         </table>
+                                        {% else %}
+                                        <div class="row g-3 p-3">
+                                            <div class="col-12">
+                                                <a class="text-decoration-none btn-lg btn-on-white" href="{% url 'contact' %}">Contact us for more informations</a>
+                                            </div>
+                                        </div>
                                         {% endif %}
                                     </div>
                                     <div class="tab-pane fade" id="nav-master" role="tabpanel" aria-labelledby="nav-master-tab">
@@ -227,6 +234,12 @@
                                                 {% endfor %}
                                             </tbody>
                                         </table>
+                                        {% else %}
+                                        <div class="row g-3 p-3">
+                                            <div class="col-12">
+                                                <a class="text-decoration-none btn-lg btn-on-white" href="{% url 'contact' %}">Contact us for more informations</a>
+                                            </div>
+                                        </div>
                                         {% endif %}
                                     </div>
                                     <div class="tab-pane fade" id="nav-phd" role="tabpanel" aria-labelledby="nav-phd-tab">
@@ -257,6 +270,12 @@
                                             </tbody>
                                         </table>
                                         <!--  -->
+                                        {% else %}
+                                        <div class="row g-3 p-3">
+                                            <div class="col-12">
+                                                <a class="text-decoration-none btn-lg btn-on-white" href="{% url 'contact' %}">Contact us for more informations</a>
+                                            </div>
+                                        </div>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -267,7 +286,7 @@
             </div>
 
             <div class="col-lg-4">
-                <div class="position-sticky mt-lg-0 mt-5" style="top: 2rem; ">
+                <div class="position-sticky mt-lg-0 mt-5" style="top: 10rem; ">
                     {% include 'page-sidebar.html' %}
                 </div>
             </div>

@@ -4,10 +4,11 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.utils import html
 from contact_form.forms import ApplyForm
-from main.models import Dicipline, Program
+from main.models import Country, Dicipline, DiciplineTag, Program, Speciality, University, get_specialty
 from django.contrib import messages
 
 from .models import Application, GetIntouch
+from main.models import BasePage
 
 from django.core.mail import send_mail
 from django.conf import settings
@@ -20,6 +21,16 @@ def getInTouch(request):
 
     # To display items in nav bar and Category page
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     # To display items in nav bar and Category page
     program_qs = Program.objects.all().filter(set_draft = False)
@@ -69,7 +80,7 @@ def getInTouch(request):
                 "Study abroad form submited",
                 mail_content,
                 settings.EMAIL_HOST_USER,
-                ['infos@vecademy.com',]
+                ['studyabroad@vecademy.com',]
             )
 
             email_to_send.attach_alternative(
@@ -85,6 +96,9 @@ def getInTouch(request):
             return redirect('get-in-touch')
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'dicipline_to_navebar' :dicipline_to_navebar,
         'program_qs' :program_qs,
     }
@@ -95,6 +109,16 @@ def getInTouch(request):
 def application(request, program_url):
     dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
     application_form = Program.objects.get(id = program_url)
+    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
 
     # print(get_program.study_level.name)
     # init_level = []
@@ -119,6 +143,9 @@ def application(request, program_url):
             return redirect('success')
 
     context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
         'form':form,
         'application_form':application_form,
         'dicipline_to_navebar' :dicipline_to_navebar,
@@ -128,3 +155,68 @@ def application(request, program_url):
 
 def testEmailTemplete(request):
     return render(request, 'email_get_in_touch.html')
+
+def quickApply(request):
+    dicipline_to_navebar = Dicipline.objects.all().filter(set_draft = False, set_featured = True)
+    country_to_form = Country.objects.all().filter(set_draft = False)
+    university_to_form = University.objects.all().filter(set_draft = False)
+    level_to_form = DiciplineTag.objects.all().filter(set_draft = False)
+    
+    base_page_continent = None
+    base_page_university = None
+    base_page_dicipline = None
+    try:
+        base_page_dicipline = BasePage.objects.get(page_name = 'Diciplines')
+        base_page_continent = BasePage.objects.get(page_name = 'Continents')
+        base_page_university = BasePage.objects.get(page_name = 'Universities')
+    except:
+        pass
+
+    dicipline_to_form = dicipline_to_navebar
+
+    form = ApplyForm(request.POST or None)
+
+    context = {
+        'base_page_continent':base_page_continent,
+        'base_page_university':base_page_university,
+        'base_page_dicipline':base_page_dicipline,
+        'dicipline_to_navebar' :dicipline_to_navebar,
+        'dicipline_to_form' :dicipline_to_form,
+        'university_to_form' :university_to_form,
+        'country_to_form' :country_to_form,
+        'level_to_form' :level_to_form,
+        'form':form,
+    }
+    return render(request, 'contact_form/quick-apply.html', context)
+
+def getDicipline(request):
+    if request.is_ajax():
+        dicipline = request.POST.get('dicipline')
+        level = request.POST.get('level')
+
+        get_specialty = Speciality.objects.all().filter(
+            set_draft = False,
+            dicipline = dicipline,
+            study_level = level,
+        )
+
+        return JsonResponse(
+            {
+                'get_specialty':get_specialty,
+            }
+        )
+
+def getSpecialty(request):
+    if request.is_ajax():
+        specialty = request.POST.get('specialty')
+
+        get_program = Speciality.objects.all().filter(
+            set_draft = False,
+            program_speciality = specialty
+        )
+
+        return JsonResponse(
+            {
+                'program_name':get_specialty.program_name,
+            }
+        )

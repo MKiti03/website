@@ -1,0 +1,162 @@
+{% extends 'index.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block contain%}
+<main>
+    <div class="container-fluid px-lg-5 mt-5 mb-5">
+        <form method="POST" id="quick-apply">
+            {% csrf_token %}
+            <div class="row ">
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="position-sticky mt-md-0" style="top: 10.6rem; ">
+                        <div id="selector-box" class="">
+                            <div class="shadow bg-white p-4 mt-md-0 mt-4">
+                                <div class="d-flex justify-content-left">
+                                    <h6 class="main-color mb-2 text-muted">Let quickly select your university</h6>
+                                </div>
+                                <div class="mt-3">
+
+                                    <div class="row gy-3">
+                                        <!-- messages -->
+                                        {% include 'messages.html' %}
+                                        <!--  -->
+                                        <div class="form-floating col-12 px-2">
+                                            <select name="level" class="form-control" id="level">
+                                            <option value="0" selected disabled>Select a level</option>
+                                            {% if level_to_form %}
+                                            <!--  -->
+                                            {% for item in level_to_form %}
+                                            <option value="{{item.name}}">{{item.name}}</option>
+                                            {% endfor %}
+                                            <!--  -->
+                                            {% endif %} 
+                                        </select>
+                                            <label for="level">Degree<span style="color :rgb(126, 20, 20)">*</span></label>
+                                        </div>
+                                        <div class="form-floating col-12 px-2">
+                                            <select name="dicipline" class="form-control" id="dicipline" onchange="getDiciplineLEvel()">
+                                            <option value="0 " selected disabled>Select a dicipline</option>
+                                            {% if dicipline_to_form %}
+                                            <!--  -->
+                                            {% for item in dicipline_to_form %}
+                                            <option value="{{item.short_name}}">{{item.short_name}}</option>
+                                            {% endfor %}
+                                            <!--  -->
+                                            {% endif %} 
+                                        </select>
+                                            <label for="dicipline">Dicipline<span style="color :rgb(126, 20, 20)">*</span></label>
+                                        </div>
+                                        <div class="form-floating col-12 px-2">
+                                            <select name="specialty" class="form-control " id="specialty">
+                                            <option value="0 " selected disabled>Select a specialty</option>
+                                            <option value="1"> Option one</option> 
+                                        </select>
+                                            <label for="specialty">Specialty<span style="color :rgb(126, 20, 20)">*</span></label>
+                                        </div>
+                                        <div class="form-floating col-12 px-2">
+                                            <select name="program" class="form-control " id="program">
+                                            <option value="0 " selected disabled>Select a program</option>
+                                            <option value="1"> Option one</option> 
+                                        </select>
+                                            <label for="program">Program <span style="color :rgb(126, 20, 20)">*</span></label>
+                                        </div>
+                                        <div class="form-floating col-12 px-2">
+                                            <select name="country" class="form-control " id="country">
+                                            <option value="0 " selected disabled>Select a country</option>
+                                            {% if country_to_form %}
+                                            <!--  -->
+                                            {% for item in country_to_form %}
+                                            <option value="{{item.country_name}}">{{item.country_name}}</option>
+                                            {% endfor %}
+                                            <!--  -->
+                                            {% endif %} 
+                                        </select>
+                                            <label for="country">country <span style="color :rgb(126, 20, 20)">*</span></label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row row-cols-1 py-2">
+                        <div id="university-box" class="">
+                            {% if university_to_form %}
+                            <!--  -->
+                            {% for item in university_to_form %}
+                            <div class="col">
+                                <div class="mb-3 bg-white shadow px-lg-0">
+                                    <div class="row g-0 d-flex align-items-center">
+                                        <div class="col-md-5">
+                                            <img style="width: 100%; height:200px" src="{{item.university_image.url}}" class="img-fluid " alt="{{item.university_name}}">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="card-body">
+                                                <h6 class="card-title main-color fw-600">
+                                                    <a href="#" data-bs-toggle="tooltip" data-bs-html="true" title="{{item.university_name}}">
+                                                        {{item.university_name|truncatechars:36}}
+                                                    </a>
+                                                </h6>
+                                                <p class="card-text">{{item.university_description|truncatechars:50}}</p>
+                                                <div class="row">
+                                                    <div class="col-auto">
+                                                        <i class="bi bi-geo-alt main-color"></i> {{item.choose_country}}, {{item.region}}
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <span class="text-success fw-600"> <i class="bi bi-file-earmark-person"></i> Admission open</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-end">
+                                                    <div class="mt-3 form-check">
+                                                        <input type="radio" onclick="getUniversity()" value="{{item.university_name}}" class="form-check-input visually-hidden" id="{{item.id}}">
+                                                        <label class="form-check-label btn btn-sm read-more" for="{{item.id}}">Apply now</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!--  -->
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row row-cols-1">
+                        <div class="visually-hidden" id="form-box">
+                            {% include 'contact_form/quick-apply-form.html' %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="position-sticky mt-md-0" style="top: 10.6rem; ">
+                        <div id="preview-box" class="shadow bg-white p-4 mt-md-0 mt-4">
+                            <div class="d-flex justify-content-center">
+                                <h4 class="text-muted fw-500">Previews</h4>
+                            </div>
+                            <div id="level-box"></div>
+                            <div id="dicipline-box" class="mt-3"></div>
+                            <div id="specialty-box" class="mt-3"></div>
+                            <div id="program-box" class="mt-3"></div>
+                            <div id="country-box" class="mt-3"></div>
+                            <div class="d-flex justify-content-center mt-4">
+                                <div class="mb-3 form-check block-dispaly" id="check-box">
+                                    <input type="checkbox" class="form-check-input visually-hidden" id="reset-input" onclick="resetForm()">
+                                    <label class="form-check-label btn btn-sm read-more visually-hidden" id="reset-btn" for="reset-input">Reset entriies</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</main>
+<script src="{% static 'js/quick-apply.js' %}" defer></script>
+{% endblock %}

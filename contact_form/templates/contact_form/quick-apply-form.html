@@ -1,0 +1,55 @@
+{% load static %}
+<div class="shadow bg-white p-4">
+    <div class="my-3" id="floating-labels">
+        <div class="row g-2">
+            <!-- messages -->
+            <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                {{form.name}}
+                <label for="first_name">Your Name <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating col-lg-6 col-md-6 col-12 col-lg-6 col-md-6 col-12">
+                {{form.phone}}
+                <label for="last_name">Your Phone Number <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating mb-2 col-lg-12 col-md-12 col-12">
+                {{form.email}}
+                <label for="get_email">Your Email Address <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                {{form.nationality}}
+                <label for="get_phone">Your Nationality <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                {{form.actual_country}}
+                <label for="nationality">Actual Country of Resident <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                {{form.region}}
+                <label for="country_of_resident">Your Region <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                {{form.address}}
+                <label for="graduation_year">Your Address <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                {{form.year_of_graduation}}
+                <label for="graduation_year">Year of Graduation<span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating mb-2 col-lg-6 col-md-6 col-12">
+                {{form.school}}
+                <label for="graduation_year">School <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating mb-2 col-12 ">
+                {{form.educational_qualification}}
+                <label for="educational_qualification ">Educational Qualification <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="form-floating col-12 mb-2">
+                {{form.message}}
+                <label for="educational_qualification ">Additional Request <span style="color :rgb(126, 20, 20)">*</span></label>
+            </div>
+            <div class="col-12 mt-3 ">
+                <button onclick="getProgram " class="btn btn-on-white " type="submit ">Apply now</button>
+            </div>
+        </div>
+    </div>
+</div>

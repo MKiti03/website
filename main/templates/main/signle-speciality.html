@@ -5,7 +5,7 @@
 {% block contain %}
 <!--  -->
 <main>
-    <div style="background-image: url('{{spaciality.dicipline.dicipline_image.url}}');" class="dicipline-bg position-relative bg-cover overlay">
+    <div style="background-image: url('{{spaciality.dicipline.dicipline_image.url}}');" class="dicipline-bg mt-lg-3 container position-relative bg-cover overlay">
         <div class="container">
             <div class="row px-lg-3 py-lg-5">
                 <div class="col-lg-6">
@@ -14,17 +14,18 @@
                         <div class="col-auto">
                             <h2 class="fw-500 px-lg-2 lh-3 text-start text-white text-capitalize position-relative"><span class="single-dicipline-icon">{{spaciality.dicipline.dicipline_icon.as_html}}</span> {{spaciality.speciality_name}}</h2>
                             <div class="mt-4 mb-4">
+                                {% if related_university_count > 0 %}
                                 <div class="row row-cols-md-auto row-cols-1 gy-md-0 gy-4 gx-md-5">
                                     <div class="col">
                                         <button type="button" class="btn btn-bage mx-lg-5 text-white bage-bg position-relative">
                                             Universities found
                                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
                                                 <span style="font-size: 18px;">{{related_university_count}}</span>
-                                                <span class="visually-hidden">unread messages</span>
                                             </span>
                                         </button>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -34,6 +35,7 @@
                         <h5 class="card-header fw-500 bage-bg text-white">About this speciality</h5>
                         <div class="card-body">
                             <div class="row g-2">
+                                {% if related_program.count > 0 %}
                                 <div class="col-12">
                                     <div class="bage-bg rounded p-2 spaciality-fact">
                                         <h6 class="fw-600 mb-0">
@@ -48,6 +50,7 @@
                                         </h6>
                                     </div>
                                 </div>
+                                {% endif %}
                                 <div class="col-12">
                                     <div class="bage-bg rounded p-2 spaciality-fact">
                                         <h6 class="fw-600 mb-0">
@@ -149,10 +152,16 @@
                 </div>
                 {% endfor %}
                 <!--  -->
+                {% else %}
+                <div class="row g-3 p-3">
+                    <div class="col-12">
+                        <a class="text-decoration-none btn-lg btn-on-white" href="{% url 'contact' %}">Contact us for more informations</a>
+                    </div>
+                </div>
                 {% endif %}
             </div>
             <div class="col-lg-4">
-                <div class="position-sticky " style="top: 2rem; ">
+                <div class="position-sticky " style="top: 10rem;">
                     {% include 'page-sidebar.html' %}
                 </div>
             </div>

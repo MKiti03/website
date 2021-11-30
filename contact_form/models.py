@@ -25,6 +25,7 @@ class GetIntouch(models.Model):
         verbose_name_plural = 'Get in touchs'
 
 class Application(models.Model):
+    dicipline = models.CharField(max_length= 254, null=True, blank=True)
     program = models.ForeignKey(Program, null=True, blank=True, on_delete=models.PROTECT)
     university = models.CharField(max_length=254, null=True, blank=True)
     specialty = models.CharField(max_length=254, null=True, blank=True)

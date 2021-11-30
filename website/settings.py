@@ -156,15 +156,10 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/')
 MEDIA_URL = 'static/images/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Tawto config
-TAWKTO_ID_SITE='613d75e625797d7a89fe8033'
-TAWKTO_API_KEY='b57f673dff8d9650191293800d6abd1db9dad74d'
 
 CKEDITOR_CONFIGS = {
     'default': {

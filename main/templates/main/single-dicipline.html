@@ -5,14 +5,15 @@
 {% block contain %}
 <!--  -->
 <main>
-    <div style="background-image: url('{{single_dicipline.dicipline_image.url}}');" class="dicipline-bg position-relative bg-cover overlay">
-        <div class="container">
+    <div style="background-image: url('{{single_dicipline.dicipline_image.url}}');" class="dicipline-bg container mt-2 position-relative bg-cover overlay">
+        <div class="">
             <div class="row px-lg-5 py-lg-5">
                 <div class="col-lg-8">
                     <hr class="spacer-150">
                     <div class="row">
                         <div class="col-auto">
                             <h2 class="fw-500 px-lg-2 lh-3 text-start text-white text-capitalize position-relative"><span class="single-dicipline-icon">{{single_dicipline.dicipline_icon.as_html}}</span> {{single_dicipline.dicipline_name}}</h2>
+                            {% if speciality_in_dicipline_count > 0 %}
                             <div class="mt-4 mb-4">
                                 <div class="row row-cols-md-auto row-cols-1 gy-md-0 gy-4 gx-md-5">
                                     <div class="col">
@@ -20,12 +21,12 @@
                                             Specialities found
                                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
                                                 <span style="font-size: 18px;">{{speciality_in_dicipline_count}}</span>
-                                                <span class="visually-hidden">unread messages</span>
                                             </span>
                                         </button>
                                     </div>
                                 </div>
                             </div>
+                            {%endif%}
                         </div>
                     </div>
                 </div>
@@ -104,6 +105,12 @@
                             {% endfor %}
                         </div>
                         <!--  -->
+                        {% else %}
+                        <div class="row g-3 p-3">
+                            <div class="col-12">
+                                <a class="text-decoration-none btn-lg btn-on-white" href="{% url 'contact' %}">Contact us for more informations</a>
+                            </div>
+                        </div>
                         {% endif %}
                     </div>
                     <div class="tab-pane fade" id="nav-master" role="tabpanel" aria-labelledby="nav-master-tab">
@@ -123,6 +130,12 @@
                                 </a>
                             </div>
                             {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="row g-3 p-3">
+                            <div class="col-12">
+                                <a class="text-decoration-none btn-lg btn-on-white" href="{% url 'contact' %}">Contact us for more informations</a>
+                            </div>
                         </div>
                         <!--  -->
                         {% endif %}
@@ -150,8 +163,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="position-sticky mt-md-0 mt-5" style="top: 2rem; ">
+            <div class="col-lg-4 mt-3">
+                <div class="position-sticky mt-md-0 mt-5" style="top: 10rem;">
                     {% include 'page-sidebar.html' %}
                 </div>
             </div>
